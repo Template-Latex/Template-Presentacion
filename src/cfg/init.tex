@@ -1,0 +1,494 @@
+% Template:     Template Presentación LaTeX
+% Documento:    Configuración inicial del template
+% Versión:      0.0.0 (16/05/2021)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        Facultad de Ciencias Físicas y Matemáticas
+%        Universidad de Chile
+%        pablo@ppizarror.com
+%
+% Sitio web:    [https://latex.ppizarror.com/presentacion]
+% Licencia MIT: [https://opensource.org/licenses/MIT]
+
+\def\titulodelinforme{\titulodelreporte}
+\checkvardefined{\autordeldocumento}
+\checkvardefined{\departamentouniversidad}
+\checkvardefined{\localizacionuniversidad}
+\checkvardefined{\nombredelcurso}
+\checkvardefined{\nombrefacultad}
+\checkvardefined{\nombreuniversidad}
+\checkvardefined{\temaatratar}
+\checkvardefined{\titulodelinforme}
+\makeatletter
+	\g@addto@macro\autordeldocumento\xspace
+	\g@addto@macro\codigodelcurso\xspace
+	\g@addto@macro\departamentouniversidad\xspace
+	\g@addto@macro\localizacionuniversidad\xspace
+	\g@addto@macro\nombredelcurso\xspace
+	\g@addto@macro\nombrefacultad\xspace
+	\g@addto@macro\nombreuniversidad\xspace
+	\g@addto@macro\temaatratar\xspace
+	\g@addto@macro\titulodelinforme\xspace
+\makeatother
+\corecheckfontsize{\captionfontsize}
+\corecheckfontsize{\subcaptionfsize}
+\ifthenelse{\equal{\cfgpdfsecnumbookmarks}{true}}{
+	\bookmarksetup{numbered}}{
+}
+\ifthenelse{\equal{\cfgshowbookmarkmenu}{true}}{
+	\def\cfgpdfpagemode {UseOutlines}
+	}{
+	\def\cfgpdfpagemode {UseNone}
+}
+\ifthenelse{\equal{\usepdfmetadata}{true}}{
+	\def\pdfmetainfoautor {\autordeldocumento}
+	\def\pdfmetainfocodigodelcurso {\codigodelcurso}
+	\def\pdfmetainfonombredelcurso {\nombredelcurso}
+	\def\pdfmetainfoautor {\autordeldocumento}
+	\def\pdfmetainfotema {\temaatratar}
+	\def\pdfmetainfotitulo {\titulodelreporte}
+	\def\pdfmetainfounidepto {\departamentouniversidad}
+	\def\pdfmetainfouninombre {\departamentouniversidad}
+	\def\pdfmetainfouniubicacion {\departamentouniversidad}
+}{
+	\def\pdfmetainfoautor {}
+	\def\pdfmetainfocodigodelcurso {}
+	\def\pdfmetainfonombredelcurso {}
+	\def\pdfmetainfoautor {}
+	\def\pdfmetainfotema {}
+	\def\pdfmetainfotitulo {}
+	\def\pdfmetainfounidepto {}
+	\def\pdfmetainfouninombre {}
+	\def\pdfmetainfouniubicacion {}
+}
+\hypersetup{
+	bookmarksopen={\cfgpdfbookmarkopen},
+	bookmarksopenlevel={\cfgbookmarksopenlevel},
+	bookmarkstype={toc},
+	pdfauthor={\pdfmetainfoautor},
+	pdfcenterwindow={\cfgpdfcenterwindow},
+	pdfcopyright={\cfgpdfcopyright},
+	pdfcreator={LaTeX},
+	pdfdisplaydoctitle={\cfgpdfdisplaydoctitle},
+	pdfencoding={unicode},
+	pdffitwindow={\cfgpdffitwindow},
+	pdfinfo={
+		Curso.Codigo={\pdfmetainfocodigodelcurso},
+		Curso.Nombre={\pdfmetainfonombredelcurso},
+		Documento.Autor={\pdfmetainfoautor},
+		Documento.Tema={\pdfmetainfotema},
+		Documento.Titulo={\pdfmetainfotitulo},
+		Template.Autor.Alias={ppizarror},
+		Template.Autor.Email={pablo@ppizarror.com},
+		Template.Autor.Nombre={Pablo Pizarro R.},
+		Template.Autor.Web={https://ppizarror.com/},
+		Template.Codificacion={UTF-8},
+		Template.Fecha={16/05/2021},
+		Template.Latex.Compilador={pdflatex},
+		Template.Licencia.Tipo={MIT},
+		Template.Licencia.Web={https://opensource.org/licenses/MIT/},
+		Template.Nombre={Template-Presentacion},
+		Template.Tipo={Normal},
+		Template.Version.Dev={0.0.0-1-REPT},
+		Template.Version.Hash={04FD2A8813037580BEA7307DB3BD647B},
+		Template.Version.Release={0.0.0},
+		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion/},
+		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
+		Universidad.Departamento={\pdfmetainfounidepto},
+		Universidad.Nombre={\pdfmetainfouninombre},
+		Universidad.Ubicacion={\pdfmetainfouniubicacion}
+	},
+	pdfkeywords={\cfgpdfkeywords},
+	pdflang={\documentlang},
+	pdfmenubar={\cfgpdfmenubar},
+	pdfpagelayout={\cfgpdflayout},
+	pdfpagemode={\cfgpdfpagemode},
+	pdfproducer={Template-Presentacion v0.0.0 | (Pablo Pizarro R.) ppizarror.com},
+	pdfremotestartview={Fit},
+	pdfstartpage={1},
+	pdfstartview={\cfgpdfpageview},
+	pdfsubject={\pdfmetainfotema},
+	pdftitle={\pdfmetainfotitulo},
+	pdftoolbar={\cfgpdftoolbar}
+}
+\graphicspath{{./\defaultimagefolder}}
+\makeatletter
+\ifthenelse{\equal{\fpremovetopbottomcenter}{true}}{
+	\setlength{\@fptop}{0pt}
+	\setlength{\@fpbot}{0pt}
+}{}
+\makeatother
+\renewcommand{\baselinestretch}{\documentinterline}
+\setlength{\headheight}{64 pt}
+\setlength{\footnotemargin}{\marginfootnote pt}
+\setlength{\columnsep}{\columnsepwidth em}
+\ifthenelse{\equal{\showlinenumbers}{true}}{
+	\setlength{\linenumbersep}{0.50cm}
+	\renewcommand\linenumberfont{\normalfont\tiny\color{\linenumbercolor}}
+	}{
+}
+\floatplacement{figure}{\imagedefaultplacement}
+\floatplacement{table}{\tabledefaultplacement}
+\floatplacement{tikz}{\tikzdefaultplacement}
+\color{\maintextcolor}
+\arrayrulecolor{\tablelinecolor}
+\sethlcolor{\highlightcolor}
+\ifthenelse{\equal{\showborderonlinks}{true}}{
+	\hypersetup{
+		citebordercolor=\numcitecolor,
+		linkbordercolor=\linkcolor,
+		urlbordercolor=\urlcolor
+	}
+}{
+\hypersetup{
+		hidelinks,
+		colorlinks=true,
+		citecolor=\numcitecolor,
+		linkcolor=\linkcolor,
+		urlcolor=\urlcolor
+	}
+}
+\ifthenelse{\equal{\colorpage}{white}}{}{
+	\pagecolor{\colorpage}
+}
+\setcaptionmargincm{\captionlrmargin}
+\ifthenelse{\equal{\captiontextbold}{true}}{
+	\renewcommand{\captiontextbold}{bf}}{
+	\renewcommand{\captiontextbold}{}
+}
+\ifthenelse{\equal{\captiontextsubnumbold}{true}}{
+	\renewcommand{\captiontextsubnumbold}{bf}}{
+	\renewcommand{\captiontextsubnumbold}{}
+}
+\captionsetup{
+	font={\captionfontsize},
+	labelfont={color=\captioncolor, \captiontextbold},
+	labelformat={\captionlabelformat},
+	labelsep={\captionlabelsep},
+	textfont={color=\captiontextcolor},
+	singlelinecheck=on
+}
+\captionsetup*[subfigure]{
+	font={\subcaptionfsize},
+	labelfont={color=\captioncolor, \captiontextsubnumbold},
+	labelformat={\subcaptionlabelformat},
+	labelsep={\subcaptionlabelsep},
+	lofdepth=1,
+	textfont={color=\captiontextcolor},
+	singlelinecheck=on
+}
+\captionsetup*[subtable]{
+	font={\subcaptionfsize},
+	labelfont={color=\captioncolor, \captiontextsubnumbold},
+	labelformat={\subcaptionlabelformat},
+	labelsep={\subcaptionlabelsep},
+	lofdepth=1,
+	textfont={color=\captiontextcolor},
+	singlelinecheck=on
+}
+\makeatletter
+\renewcommand\p@subfigure{\thefigure\captionsubchar}
+\renewcommand\p@subtable{\thetable\captionsubchar}
+\makeatother
+\floatsetup[figure]{
+	captionskip=\captiontbmarginfigure pt
+}
+\floatsetup[table]{
+	captionskip=\captiontbmargintable pt
+}
+\ifthenelse{\equal{\figurecaptiontop}{true}}{
+	\floatsetup[figure]{position=above}}{
+}
+\ifthenelse{\equal{\tablecaptiontop}{true}}{
+	\floatsetup[table]{position=top}
+	}{
+	\floatsetup[table]{position=bottom}
+}
+\ifthenelse{\equal{\captionalignment}{justified}}{
+	\captionsetup{
+		format=plain,
+		justification=justified
+	}
+}{
+\ifthenelse{\equal{\captionalignment}{centered}}{
+	\captionsetup{
+		justification=centering
+	}
+}{
+\ifthenelse{\equal{\captionalignment}{left}}{
+	\captionsetup{
+		justification=raggedright,
+		singlelinecheck=false
+	}
+}{
+\ifthenelse{\equal{\captionalignment}{right}}{
+	\captionsetup{
+		justification=raggedleft,
+		singlelinecheck=false
+	}
+}{
+	\throwbadconfig{Posicion de leyendas desconocida}{\captionalignment}{justified,centered,left,right}}}}
+}
+\ifthenelse{\equal{\stylecitereferences}{natbib}}{
+	\def\twocolumnreferencesmargin{-0.35cm}
+	\bibliographystyle{\natbibrefstyle}
+	\setlength{\bibsep}{\natbibrefsep pt}
+	\newcommand{\shortcite}[1]{\citep{#1}}
+	\newcommand{\fullcite}[1]{\citet{#1}}
+}{
+\ifthenelse{\equal{\stylecitereferences}{apacite}}{
+	\def\twocolumnreferencesmargin{-0.39cm}
+	\bibliographystyle{\apacitestyle}
+	\setlength{\bibitemsep}{\apaciterefsep pt}
+	\newcommand{\citep}[1]{\fullcite{#1}}
+	\newcommand{\citet}[1]{\shortcite{#1}}
+}{
+\ifthenelse{\equal{\stylecitereferences}{bibtex}}{
+	\def\twocolumnreferencesmargin{-0.35cm}
+	\bibliographystyle{\bibtexstyle}
+	\newlength{\bibitemsep}
+	\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
+	\newlength{\bibparskip}\setlength{\bibparskip}{0pt}
+	\let\oldthebibliography\thebibliography
+	\renewcommand\thebibliography[1]{
+		\oldthebibliography{#1}
+		\setlength{\parskip}{\bibitemsep}
+		\setlength{\itemsep}{\bibparskip}
+	}
+	\setlength{\bibitemsep}{\bibtexrefsep pt}
+}{
+\ifthenelse{\equal{\stylecitereferences}{custom}}{
+	\coretemplatemessage{Usando estilo citas referencias custom, importar librerias y configuraciones posterior al llamado de template.tex en archivo principal}
+}{
+	\throwbadconfig{Estilo citas desconocido}{\stylecitereferences}{bibtex,apacite,natbib,custom}}}}
+}
+\makeatletter
+\ifthenelse{\equal{\stylecitereferences}{apacite}}{
+	\ifthenelse{\equal{\apaciterefnumber}{true}}{
+		\newcounter{apaciteNumberCounter}
+\renewcommand{\theapaciteNumberCounter}{\apaciterefnumberinit\arabic{apaciteNumberCounter}\apaciterefnumberfinal}
+		\patchcmd{\@lbibitem}{\item[}{\item[\stepcounter{apaciteNumberCounter}{\hss\llap{\theapaciteNumberCounter}\quad}}{}{}
+		\setlength{\bibleftmargin}{2.54em}
+		\setlength{\bibindent}{-0.54em}
+	}{}
+}{}
+\makeatother
+\ifthenelse{\equal{\stylecitereferences}{apacite}}{
+	\ifthenelse{\equal{\apaciteshowurl}{false}}{
+		\renewenvironment{APACrefURL}[1][]{}{}
+		\AtBeginEnvironment{APACrefURL}{\renewcommand{\url}[1]{}}
+		\renewcommand{\doiprefix}{doi:~\kern-1pt}
+	}{}
+}{}
+\makeatletter
+\ifthenelse{\equal{\twocolumnreferences}{true}}{
+	\renewenvironment{thebibliography}[1]
+	{\begin{multicols}{2}[\section*{\refname}\vspace{\twocolumnreferencesmargin}]
+		\@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}
+		\list{\@biblabel{\@arabic\c@enumiv}}
+		{\settowidth\labelwidth{\@biblabel{#1}}
+			\leftmargin\labelwidth
+			\advance\leftmargin\labelsep
+			\@openbib@code
+			\usecounter{enumiv}
+			\let\p@enumiv\@empty
+			\renewcommand\theenumiv{\@arabic\c@enumiv}}
+		\sloppy
+		\clubpenalty 4000
+		\@clubpenalty \clubpenalty
+		\widowpenalty 4000
+		\sfcode`\.\@m}
+		{\def\@noitemerr
+		{\@latex@warning{Ambiente `thebibliography' no definido}}
+		\endlist\end{multicols}}}{}
+\makeatother
+\patchcmd{\appendices}{\quad}{\sectionappendixlastchar\quad}{}{}
+\begingroup
+	\makeatletter
+	\let\newcounter\@gobble\let\setcounter\@gobbletwo
+	\globaldefs\@ne\let\c@loldepth\@ne
+	\newlistof{listings}{lol}{\lstlistlistingname}
+	\newlistentry{lstlisting}{lol}{0}
+	\makeatother
+\endgroup
+\newcommand{\listindexequationsname}{\nomlteqn}
+\newlistof{myindexequations}{equ}{\listindexequationsname}
+\newcommand{\myindexequations}[1]{
+	\addcontentsline{equ}{myindexequations}{\protect\numberline{\theequation}#1}
+}
+\setcounter{templateIndexEquations}{0}
+\DeclareTotalCounter{templateIndexEquations}
+\makeatletter
+	\def\ifGm@preamble#1{\@firstofone}
+	\appto\restoregeometry{
+		\pdfpagewidth=\paperwidth
+		\pdfpageheight=\paperheight}
+	\apptocmd\newgeometry{
+		\pdfpagewidth=\paperwidth
+		\pdfpageheight=\paperheight}{}{}
+\makeatother
+\hfuzz=200pt
+\vfuzz=200pt
+\hbadness=\maxdimen
+\vbadness=\maxdimen
+\makeatletter
+\def\Hv@scale{.95}
+\makeatother
+\makeatletter
+\preto\tabular{\global\rownum=\z@}
+\preto\tabularx{\global\rownum=\z@}
+\makeatother
+\strictpagecheck
+\titlespacing{\section}{0pt}{20pt}{10pt}
+\titlespacing{\subsection}{0pt}{15pt}{10pt}
+\ttfamily \hyphenchar\the\font=`\-
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\urlstyle{\fonturl}
+\ifthenelse{\equal{\compilertype}{pdf2latex}}{
+	\pdfcompresslevel=\pdfcompilecompression
+	\pdfdecimaldigits=2
+	\pdfinclusionerrorlevel=0
+	\pdfminorversion=\pdfcompileversion
+	\pdfobjcompresslevel=\pdfcompileobjcompression
+}{
+\ifthenelse{\equal{\compilertype}{xelatex}}{
+}{
+\ifthenelse{\equal{\compilertype}{lualatex}}{
+}{
+	\throwbadconfig{Compilador desconocido}{\compilertype}{pdf2latex,xelatex,lualatex}}}
+}
+\setcounter{secnumdepth}{4}
+\newcounter{subsubsubsection}[subsubsection]
+\ifthenelse{\equal{\showdotaftersnum}{true}}{
+	\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}.}
+	\renewcommand{\theparagraph}{\thesubsubsubsection.\arabic{paragraph}.}
+}{
+	\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}}
+	\renewcommand{\theparagraph}{\thesubsubsubsection.\arabic{paragraph}}
+}
+\makeatletter
+	\def\toclevel@subsubsubsection{4}
+	\def\toclevel@paragraph{5}
+	\def\toclevel@subparagraph{6}
+	\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}
+		{3.25ex \@plus 1ex \@minus .2ex}
+		{-1em}
+		{\normalfont\normalsize\bfseries}}
+	\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}
+		{3.25ex \@plus 1ex \@minus .2ex}
+		{-1em}
+		{\normalfont\normalsize\bfseries}}
+	\ifthenelse{\equal{\showdotaftersnum}{true}}{
+\def\l@subsubsubsection{\@dottedtocline{4}{7.83em}{4.15em}}
+		\def\l@paragraph{\@dottedtocline{5}{11.98em}{4.92em}}
+		\def\l@subparagraph{\@dottedtocline{6}{14.65em}{5.69em}}
+	}{
+		\def\l@subsubsubsection{\@dottedtocline{4}{6.97em}{4em}}
+		\def\l@paragraph{\@dottedtocline{5}{10.97em}{5em}}
+		\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+	}
+\makeatother
+\setcounter{tocdepth}{\indexdepth}
+\ifthenelse{\equal{\footnoterestart}{none}}{
+}{
+\ifthenelse{\equal{\footnoterestart}{sec}}{
+	\counterwithin*{footnote}{section}
+}{
+\ifthenelse{\equal{\footnoterestart}{ssec}}{
+	\counterwithin*{footnote}{subsection}
+}{
+\ifthenelse{\equal{\footnoterestart}{sssec}}{
+	\counterwithin*{footnote}{subsubsection}
+}{
+\ifthenelse{\equal{\footnoterestart}{ssssec}}{
+	\counterwithin*{footnote}{subsubsubsection}
+}{
+\ifthenelse{\equal{\footnoterestart}{page}}{
+	\counterwithin*{footnote}{page}
+}{
+\ifthenelse{\equal{\footnoterestart}{chap}}{
+	\counterwithin*{footnote}{chapter}
+}{
+	\throwbadconfig{Formato reinicio numero footnote desconocido}{\footnoterestart}{none,chap,page,sec,ssec,sssec,ssssec}}}}}}}
+}
+\ifthenelse{\equal{\equationrestart}{none}}{
+}{
+\ifthenelse{\equal{\equationrestart}{chap}}{
+}{
+\ifthenelse{\equal{\equationrestart}{sec}}{
+}{
+\ifthenelse{\equal{\equationrestart}{ssec}}{
+}{
+\ifthenelse{\equal{\equationrestart}{sssec}}{
+}{
+\ifthenelse{\equal{\equationrestart}{ssssec}}{
+}{
+	\throwbadconfig{Formato reinicio numero ecuacion desconocido}{\equationrestart}{none,chap,sec,ssec,sssec,ssssec}}}}}}
+}
+\newtheoremstyle{miestilo}{\baselineskip}{3pt}{\itshape}{}{\bfseries}{}{.5em}{}
+\newtheoremstyle{miobs}{\baselineskip}{3pt}{}{}{\bfseries}{}{.5em}{}
+\theoremstyle{miestilo}
+\ifthenelse{\equal{\showsectioncaptionmat}{none}}{
+	\newtheorem{defn}{\namemathdefn}
+	\newtheorem{teo}{\namemaththeorem}
+	\newtheorem{cor}{\namemathcol}
+	\newtheorem{lema}{\namemathlem}
+	\newtheorem{prop}{\namemathprp}
+}{
+\ifthenelse{\equal{\showsectioncaptionmat}{chap}}{
+	\newtheorem{defn}{\namemathdefn}[chapter]
+	\newtheorem{teo}{\namemaththeorem}[chapter]
+	\newtheorem{cor}{\namemathcol}[chapter]
+	\newtheorem{lema}{\namemathlem}[chapter]
+	\newtheorem{prop}{\namemathprp}[chapter]
+}{
+\ifthenelse{\equal{\showsectioncaptionmat}{sec}}{
+	\newtheorem{defn}{\namemathdefn}[section]
+	\newtheorem{teo}{\namemaththeorem}[section]
+	\newtheorem{cor}{\namemathcol}[section]
+	\newtheorem{lema}{\namemathlem}[section]
+	\newtheorem{prop}{\namemathprp}[section]
+}{
+\ifthenelse{\equal{\showsectioncaptionmat}{ssec}}{
+	\newtheorem{defn}{\namemathdefn}[subsection]
+	\newtheorem{teo}{\namemaththeorem}[subsection]
+	\newtheorem{cor}{\namemathcol}[subsection]
+	\newtheorem{lema}{\namemathlem}[subsection]
+	\newtheorem{prop}{\namemathprp}[subsection]
+}{
+\ifthenelse{\equal{\showsectioncaptionmat}{sssec}}{
+	\newtheorem{defn}{\namemathdefn}[subsubsection]
+	\newtheorem{teo}{\namemaththeorem}[subsubsection]
+	\newtheorem{cor}{\namemathcol}[subsubsection]
+	\newtheorem{lema}{\namemathlem}[subsubsection]
+	\newtheorem{prop}{\namemathprp}[subsubsection]
+}{
+\ifthenelse{\equal{\showsectioncaptionmat}{ssssec}}{
+	\newtheorem{defn}{\namemathdefn}[subsubsubsection]
+	\newtheorem{teo}{\namemaththeorem}[subsubsubsection]
+	\newtheorem{cor}{\namemathcol}[subsubsubsection]
+	\newtheorem{lema}{\namemathlem}[subsubsubsection]
+	\newtheorem{prop}{\namemathprp}[subsubsubsection]
+}{
+	\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptionmat}{none,chap,sec,ssec,sssec,ssssec}}}}}}
+}
+\theoremstyle{miobs}
+\newtheorem*{ej}{\namemathej}
+\newtheorem*{obs}{\namemathobs}
+\unaccentedoperators
+\AtEndDocument{
+	\addtocounter{equation}{\value{templateEquations}}
+	\addtocounter{figure}{\value{templateFigures}}
+	\addtocounter{lstlisting}{\value{templateListings}}
+	\addtocounter{table}{\value{templateTables}}
+}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\let\SOURCEcaptionlrmargin\captionlrmargin
+\BeforeBeginEnvironment{multicols}{\def\captionlrmargin{\captionlrmarginmc}\def\GLOBALenvmulticol{true}\setcaptionmargincm{\captionlrmargin}}
+\AfterEndEnvironment{multicols}{\def\captionlrmargin{\SOURCEcaptionlrmargin}\def\GLOBALenvmulticol{false}\setcaptionmargincm{\captionlrmargin}}

@@ -1,0 +1,283 @@
+% Template:     Template Presentación LaTeX
+% Documento:    Definición de entornos
+% Versión:      0.0.0 (16/05/2021)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        Facultad de Ciencias Físicas y Matemáticas
+%        Universidad de Chile
+%        pablo@ppizarror.com
+%
+% Sitio web:    [https://latex.ppizarror.com/presentacion]
+% Licencia MIT: [https://opensource.org/licenses/MIT]
+
+\newenvironment{references}{
+\ifthenelse{\equal{\stylecitereferences}{bibtex}}{
+	}{
+		\throwerror{\references}{Solo se puede usar entorno references con estilo citas \noexpand\stylecitereferences=bibtex}
+	}
+	\begingroup
+\ifthenelse{\equal{\bibtexenvrefsecnum}{true}}{
+		\section{\namereferences}
+	}{
+		\sectionanum{\namereferences}
+	}
+	\renewcommand{\section}[2]{}
+\begin{thebibliography}{}
+\ifthenelse{\equal{\bibtextextalign}{justify}}{
+		}{
+		\ifthenelse{\equal{\bibtextextalign}{left}}{
+			\raggedright
+		}{
+		\ifthenelse{\equal{\bibtextextalign}{right}}{
+			\raggedleft
+		}{
+		\ifthenelse{\equal{\bibtextextalign}{center}}{
+			\centering
+		}{
+			\throwbadconfig{Ajuste de linea referencias bibtex desconocido}{\bibtextextalign}{justified,left,right,center}}}}
+		}
+	}
+	{
+	\end{thebibliography}
+\endgroup
+}
+\newenvironment{anexo}{
+\begingroup
+	\phantomsection
+\changeheadertitle{\nomltappendixsection}
+\def\GLOBALsectionalph{true}
+	\bookmarksetup{
+		numbered={true},
+		openlevel={\thetemplateBookmarksLevelPrev}
+	}
+	\appendixtitleon
+	\appendixtitletocon
+	\bookmarksetupnext{level=part}
+\begin{appendices}
+		\ifthenelse{\equal{\showappendixsecindex}{true}}{}{
+\pdfbookmark{\nameappendixsection}{appendix}
+		}
+		\ifthenelse{\equal{\appendixindepobjnum}{true}}{
+			\counterwithin{equation}{section}
+			\counterwithin{figure}{section}
+			\counterwithin{lstlisting}{section}
+			\counterwithin{table}{section}}{
+		}
+	}{
+	\end{appendices}
+\def\GLOBALsectionalph{false}
+\bookmarksetupnext{level={\thetemplateBookmarksLevelPrev}}
+	\bookmarksetup{
+		numbered={\cfgpdfsecnumbookmarks},
+		openlevel={\cfgbookmarksopenlevel}
+	}
+	\endgroup
+}
+\newcommand{\coreinitsourcecodep}[4]{
+	\emptyvarerr{\coreinitsourcecodep}{#2}{Estilo de codigo no definido}
+	\checkvalidsourcecodestyle{#2}
+	\ifthenelse{\equal{\showlinenumbers}{true}}{
+		\rightlinenumbers}{
+	}
+	\lstset{
+		backgroundcolor=\color{\sourcecodebgcolor}
+	}
+	\ifthenelse{\equal{\codecaptiontop}{true}}{
+		\ifx\hfuzz#4\hfuzz
+			\ifx\hfuzz#3\hfuzz
+				\lstset{
+					escapeinside={(*@}{@*)},
+					style=#2
+				}
+			\else
+				\lstset{
+					escapeinside={(*@}{@*)},
+					style=#2,
+					#3
+				}
+			\fi
+		\else
+			\ifx\hfuzz#3\hfuzz
+				\lstset{
+					caption={#4 #1},
+					captionpos=t,
+					escapeinside={(*@}{@*)},
+					style=#2
+				}
+			\else
+				\lstset{
+					caption={#4 #1},
+					captionpos=t,
+					escapeinside={(*@}{@*)},
+					style=#2,
+					#3
+				}
+			\fi
+		\fi
+	}{
+		\ifx\hfuzz#4\hfuzz
+			\ifx\hfuzz#3\hfuzz
+				\lstset{
+					escapeinside={(*@}{@*)},
+					style=#2
+				}
+			\else
+				\lstset{
+					escapeinside={(*@}{@*)},
+					style=#2,
+					#3
+				}
+			\fi
+		\else
+			\ifx\hfuzz#3\hfuzz
+				\lstset{
+					caption={#4 #1},
+					captionpos=b,
+					style=#2
+				}
+			\else
+				\lstset{
+					caption={#4 #1},
+					captionpos=b,
+					escapeinside={(*@}{@*)},
+					style=#2,
+					#3
+				}
+			\fi
+		\fi	
+	}
+}
+\lstnewenvironment{sourcecodep}[4][]{
+	\coreinitsourcecodep{#1}{#2}{#3}{#4}
+}{
+	\ifthenelse{\equal{\showlinenumbers}{true}}{
+		\leftlinenumbers}{
+	}
+}
+\newcommand{\importsourcecodep}[5][]{
+	\coreinitsourcecodep{#1}{#2}{#3}{#5}
+	\inputlisting{#4}
+	\ifthenelse{\equal{\showlinenumbers}{true}}{
+		\leftlinenumbers}{
+	}
+}
+\newcommand{\coreinitsourcecode}[3]{
+	\emptyvarerr{\coreinitsourcecode}{#2}{Estilo de codigo no definido}
+	\checkvalidsourcecodestyle{#2}
+	\ifthenelse{\equal{\showlinenumbers}{true}}{
+		\rightlinenumbers}{
+	}
+	\lstset{
+		backgroundcolor=\color{\sourcecodebgcolor}
+	}
+	\ifthenelse{\equal{\codecaptiontop}{true}}{
+		\ifx\hfuzz#3\hfuzz
+			\lstset{
+				escapeinside={(*@}{@*)},
+				style=#2
+			}
+		\else
+			\lstset{
+				escapeinside={(*@}{@*)},
+				caption={#3 #1},
+				captionpos=t,
+				style=#2
+			}
+		\fi
+	}{
+		\ifx\hfuzz#3\hfuzz
+			\lstset{
+				escapeinside={(*@}{@*)},
+				style=#2
+			}
+		\else
+			\lstset{
+				escapeinside={(*@}{@*)},
+				caption={#3 #1},
+				captionpos=b,
+				style=#2
+			}
+		\fi
+	}
+}
+\lstnewenvironment{sourcecode}[3][]{
+	\coreinitsourcecode{#1}{#2}{#3}
+}{
+	\ifthenelse{\equal{\showlinenumbers}{true}}{
+		\leftlinenumbers}{
+	}
+}
+\newcommand{\importsourcecode}[4][]{
+	\coreinitsourcecode{#1}{#2}{#4}
+	\lstinputlisting{#3}
+	\ifthenelse{\equal{\showlinenumbers}{true}}{
+		\leftlinenumbers}{
+	}
+}
+\newenvironment{itemizebf}[1][]{
+	\begin{itemize}[font=\bfseries,#1]
+	}{
+	\end{itemize}
+}
+\newenvironment{enumeratebf}[1][]{
+	\begin{enumerate}[font=\bfseries,#1]
+	}{
+	\end{enumerate}
+}
+\newenvironment{resumen}{
+	\sectionfont{\color{\titlecolor} \fontsizetitle \styletitle \selectfont}
+	\sectionanumnoiheadless{\nameabstract}}{
+}
+\newenvironment{images}[2][]{
+	\def\envimageslabelvar {#1}
+	\def\envimagescaptionvar {#2}
+	\def\GLOBALenvimageinitialized {true}
+	\def\GLOBALenvimageadded {false}
+	\vspace{\marginimagetop cm}
+	\setcaptionmargincm{\captionmarginmultimg}
+\begin{figure}[H] \centering
+		\thisfloatpagestyle{fancy}%
+		\vspace{\marginimagemulttop cm}%
+		}{%
+		\setcaptionmargincm{\captionlrmargin}%
+\ifthenelse{\equal{\envimagescaptionvar}{}}{
+			\vspace{\captionlessmarginimage cm}%
+		}{%
+			\caption{\envimagescaptionvar\envimageslabelvar}%
+		}%
+	\end{figure}%
+	\setcaptionmargincm{\captionlrmargin}
+	\vspace{\marginimagebottom cm}
+	\def\GLOBALenvimageinitialized {false}
+}
+\newenvironment{imagesmc}[3][]{
+	\def\envimageslabelvar {#1}
+	\def\envimagesmcpos {#2}
+	\def\envimagescaptionvar {#3}
+	\def\GLOBALenvimageinitialized {true}
+	\def\GLOBALenvimageadded {false}
+	\checkinsidemulticol
+\setcaptionmargincm{\captionmarginmultimg}
+	\ifthenelse{\equal{#2}{bottom}}{%
+\begin{figure*}[hb] \centering
+	}{%
+	\ifthenelse{\equal{#2}{top}}{%
+\begin{figure*}[ht] \centering
+	}{%
+		\errmessage{LaTeX Warning: Posicion de imagen invalida, valores esperados: bottom,top}
+		\stop
+	}}%
+		\thisfloatpagestyle{fancy}%
+		\vspace{\marginimagemulttop cm}%
+	}{%
+		\setcaptionmargincm{\captionlrmargin}%
+\ifthenelse{\equal{\envimagescaptionvar}{}}{
+			\vspace{\captionlessmarginimage cm}%
+		}{%
+			\caption{\envimagescaptionvar\envimageslabelvar}%
+		}%
+	\end{figure*}%
+	\setcaptionmargincm{\captionlrmargin}
+	\def\GLOBALenvimageinitialized {false}
+}
