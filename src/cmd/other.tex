@@ -163,26 +163,6 @@
 	}
 	\settablerowcolorslast
 }
-\newcommand{\changepagesize}[3][]{
-	\emptyvarerr{\changepagesize}{#2}{Ancho de la pagina no definida}
-	\emptyvarerr{\changepagesize}{#3}{Altura de la pagina no definida}
-	\ifthenelse{\equal{\compilertype}{lualatex}}{
-		\throwwarning{Funcion no valida en compilador lualatex}
-	}{
-		\clearpage
-		\ifthenelse{\equal{#1}{}}{
-			\newgeometry{left=\pagemarginleft cm, top=\pagemargintop cm, right=\pagemarginright cm, bottom=\pagemarginbottom cm, paperwidth=#2 cm, paperheight=#3 cm}
-		}{
-		\ifthenelse{\equal{#1}{0}}{
-			\newgeometry{left=\pagemarginleft cm, top=\pagemargintop cm, right=\pagemarginright cm, bottom=\pagemarginbottom cm, paperwidth=#2 cm, paperheight=#3 cm}
-		}{
-		\ifthenelse{\equal{#1}{90}}{
-			\newgeometry{left=\pagemarginleft cm, top=\pagemargintop cm, right=\pagemarginright cm, bottom=\pagemarginbottom cm, paperwidth=#3 cm, paperheight=#2 cm}
-		}{
-			\throwbadconfig{Orientacion de pagina no valido}{\changepagesize}{0,90}}}
-		}
-	}
-}
 \newcommand{\changepagesizeformat}[2][]{%
 	\emptyvarerr{\changepagesizeformat}{#2}{Formato de pagina no definido}
 	\ifthenelse{\equal{#2}{4A0}}{

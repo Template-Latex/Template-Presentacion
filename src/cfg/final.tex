@@ -12,134 +12,6 @@
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
 \newcommand{\templateFinalcfg}{
-	\markboth{}{}
-	\clearpage
-	\ifthenelse{\equal{\disablehfrightmark}{false}}{
-\def\COREhfstyledefA {
-			\fancypagestyle{plain}{\fancyhead[L]{\nouppercase{\leftmark}}}
-			\fancyhead[L]{\nouppercase{\leftmark}}
-		}
-\def\COREhfstyledefB {
-			\fancypagestyle{plain}{
-				\ifthenelse{\equal{\hfwidthwrap}{true}}{
-					\fancyhead[R]{
-						\begin{minipage}[t]{\hfwidthtitle\linewidth}
-							\begin{flushright}
-								\nouppercase{\leftmark}
-							\end{flushright}
-						\end{minipage}
-					}
-				}{
-					\fancyhead[R]{\nouppercase{\leftmark}}
-				}
-			}
-			\ifthenelse{\equal{\hfwidthwrap}{true}}{
-				\fancyhead[R]{
-					\begin{minipage}[t]{\hfwidthtitle\linewidth}
-						\begin{flushright}
-							\nouppercase{\leftmark}
-						\end{flushright}
-					\end{minipage}
-				}
-			}{
-				\fancyhead[R]{\nouppercase{\leftmark}}
-			}
-		}
-\def\COREhfstyledefC {
-			\fancypagestyle{plain}{
-				\ifthenelse{\equal{\hfwidthwrap}{true}}{
-					\fancyhead[L]{
-						\begin{minipage}[t]{\hfwidthtitle\linewidth}
-							\begin{flushleft}
-								\nouppercase{\leftmark}
-							\end{flushleft}
-						\end{minipage}
-					}
-				}{
-					\fancyhead[L]{\nouppercase{\leftmark}}
-				}
-			}
-			\ifthenelse{\equal{\hfwidthwrap}{true}}{
-				\fancyhead[L]{
-					\begin{minipage}[t]{\hfwidthtitle\linewidth}
-						\begin{flushleft}
-							\nouppercase{\leftmark}
-						\end{flushleft}
-					\end{minipage}
-				}
-			}{
-				\fancyhead[L]{\nouppercase{\leftmark}}
-			}
-		}
-		\ifthenelse{\equal{\hfstyle}{style1}}{
-			\COREhfstyledefA
-		}{
-\ifthenelse{\equal{\hfstyle}{style1-i}}{
-			\fancypagestyle{plain}{\fancyhead[LE,RO]{\nouppercase{\leftmark}}}
-			\fancyhead[LE,RO]{\nouppercase{\leftmark}}
-		}{
-\ifthenelse{\equal{\hfstyle}{style1-d}}{
-			\fancypagestyle{plain}{\fancyhead[LO,RE]{\nouppercase{\leftmark}}}
-			\fancyhead[LO,RE]{\nouppercase{\leftmark}}
-		}{
-		\ifthenelse{\equal{\hfstyle}{style2}}{
-			\COREhfstyledefA
-		}{
-\ifthenelse{\equal{\hfstyle}{style2-i}}{
-			\fancypagestyle{plain}{\fancyhead[LE,RO]{\nouppercase{\leftmark}}}
-			\fancyhead[LE,RO]{\nouppercase{\leftmark}}
-		}{
-\ifthenelse{\equal{\hfstyle}{style2-d}}{
-			\fancypagestyle{plain}{\fancyhead[LO,RE]{\nouppercase{\leftmark}}}
-			\fancyhead[LO,RE]{\nouppercase{\leftmark}}
-		}{
-		\ifthenelse{\equal{\hfstyle}{style4}}{
-			\COREhfstyledefA
-		}{
-		\ifthenelse{\equal{\hfstyle}{style5}}{
-			\COREhfstyledefB
-		}{
-\ifthenelse{\equal{\hfstyle}{style5-d}}{
-			\COREhfstyledefB
-		}{
-\ifthenelse{\equal{\hfstyle}{style5-i}}{
-			\COREhfstyledefB
-		}{
-		\ifthenelse{\equal{\hfstyle}{style9}}{
-			\COREhfstyledefA
-		}{
-\ifthenelse{\equal{\hfstyle}{style9-d}}{
-			\COREhfstyledefA
-		}{
-\ifthenelse{\equal{\hfstyle}{style9-i}}{
-			\COREhfstyledefA
-		}{
-		\ifthenelse{\equal{\hfstyle}{style10}}{
-			\COREhfstyledefC
-		}{
-\ifthenelse{\equal{\hfstyle}{style10-d}}{
-			\COREhfstyledefC
-		}{
-\ifthenelse{\equal{\hfstyle}{style10-i}}{
-			\COREhfstyledefC
-		}{
-\ifthenelse{\equal{\hfstyle}{style11}}{
-			\COREhfstyledefA
-		}{
-\ifthenelse{\equal{\hfstyle}{style14}}{
-			\COREhfstyledefA
-		}{
-\ifthenelse{\equal{\hfstyle}{style15}}{
-			\COREhfstyledefA
-		}{
-		}}}}}}}}}}}}}}}}}}}
-	}{
-	}
-	\sectionfont{\color{\titlecolor} \fontsizetitle \styletitle \selectfont}
-	\subsectionfont{\color{\subtitlecolor} \fontsizesubtitle \stylesubtitle \selectfont}
-	\subsubsectionfont{\color{\subsubtitlecolor} \fontsizesubsubtitle \stylesubsubtitle \selectfont}
-	\titleformat{\subsubsubsection}{\color{\ssstitlecolor} \normalfont \fontsizessstitle \stylessstitle}{\thesubsubsubsection}{1em}{}
-	\titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 	\ifthenelse{\equal{\showsectioncaptioncode}{none}}{
 		\def\sectionobjectnumcode {}
 	}{
@@ -338,16 +210,9 @@
 	}{
 		\throwbadconfig{Tipo numero subtabla desconocido}{\captionnumsubtable}{arabic,alph,Alph,roman,Roman}}}}}
 	}
-	\ifthenelse{\equal{\predocpageromannumber}{true}}{
-		\renewcommand{\thepage}{\arabic{page}}}{
-	}
-	\ifthenelse{\equal{\predocresetpagenumber}{true}}{
-		\setcounter{page}{1}}{
-	}
 	\setcounter{section}{0}
 	\setcounter{footnote}{0}
 	\ifthenelse{\equal{\showlinenumbers}{true}}{
 		\linenumbers}{
 	}
 }
-\titleclass{\subsubsubsection}{straight}[\subsection]

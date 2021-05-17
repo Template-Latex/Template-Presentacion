@@ -29,7 +29,6 @@
 \ifthenelse{\equal{\useenglishbabel}{true}}{
 	\usepackage[english]{babel}}{}
 }
-\usepackage{sectsty}
 \ifthenelse{\equal{\compilertype}{pdf2latex}}{
 	\usepackage[utf8]{inputenc}}{
 }
@@ -93,7 +92,6 @@
 \usepackage{xspace}
 \usepackage[makeroom]{cancel}
 \usepackage[inline]{enumitem}
-\usepackage[subfigure,titles]{tocloft}
 \usepackage[figure,table,lstlisting]{totalcount}
 \usepackage[normalem]{ulem}
 \usepackage[nointegrals]{wasysym}
@@ -179,18 +177,11 @@
 }{
 	\usepackage{appendix}
 }
-\ifthenelse{\equal{\compilertype}{lualatex}}{
-	\usepackage[top=\pagemargintop cm,bottom=\pagemarginbottom cm,margin=\pagemarginleft cm]{geometry}
-}{
-	\usepackage{geometry}
-}
 \usepackage{bookmark}
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{hyperxmp}
 \usepackage{multirow}
-\usepackage{notoccite}
-\usepackage{titlesec}
 \ifthenelse{\equal{\fontdocument}{lmodern}}{
 	\usepackage{lmodern}
 }{

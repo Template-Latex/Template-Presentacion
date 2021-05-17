@@ -11,7 +11,8 @@
 % Sitio web:    [https://latex.ppizarror.com/presentacion]
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
-\def\titulodelinforme{\titulodelreporte}
+\def\titulodelinforme{\titulopresentacion}
+\def\temaatratar{}
 \checkvardefined{\autordeldocumento}
 \checkvardefined{\departamentouniversidad}
 \checkvardefined{\localizacionuniversidad}
@@ -91,7 +92,7 @@
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
 		Template.Version.Dev={0.0.0-1-REPT},
-		Template.Version.Hash={04FD2A8813037580BEA7307DB3BD647B},
+		Template.Version.Hash={918B51583F2F2DBCECE7AA21E87BACFB},
 		Template.Version.Release={0.0.0},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion/},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -304,21 +305,6 @@
 		\endlist\end{multicols}}}{}
 \makeatother
 \patchcmd{\appendices}{\quad}{\sectionappendixlastchar\quad}{}{}
-\begingroup
-	\makeatletter
-	\let\newcounter\@gobble\let\setcounter\@gobbletwo
-	\globaldefs\@ne\let\c@loldepth\@ne
-	\newlistof{listings}{lol}{\lstlistlistingname}
-	\newlistentry{lstlisting}{lol}{0}
-	\makeatother
-\endgroup
-\newcommand{\listindexequationsname}{\nomlteqn}
-\newlistof{myindexequations}{equ}{\listindexequationsname}
-\newcommand{\myindexequations}[1]{
-	\addcontentsline{equ}{myindexequations}{\protect\numberline{\theequation}#1}
-}
-\setcounter{templateIndexEquations}{0}
-\DeclareTotalCounter{templateIndexEquations}
 \makeatletter
 	\def\ifGm@preamble#1{\@firstofone}
 	\appto\restoregeometry{
@@ -340,8 +326,6 @@
 \preto\tabularx{\global\rownum=\z@}
 \makeatother
 \strictpagecheck
-\titlespacing{\section}{0pt}{20pt}{10pt}
-\titlespacing{\subsection}{0pt}{15pt}{10pt}
 \ttfamily \hyphenchar\the\font=`\-
 \makeatletter
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
@@ -351,7 +335,6 @@
 	\pdfcompresslevel=\pdfcompilecompression
 	\pdfdecimaldigits=2
 	\pdfinclusionerrorlevel=0
-	\pdfminorversion=\pdfcompileversion
 	\pdfobjcompresslevel=\pdfcompileobjcompression
 }{
 \ifthenelse{\equal{\compilertype}{xelatex}}{
@@ -369,28 +352,6 @@
 	\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}}
 	\renewcommand{\theparagraph}{\thesubsubsubsection.\arabic{paragraph}}
 }
-\makeatletter
-	\def\toclevel@subsubsubsection{4}
-	\def\toclevel@paragraph{5}
-	\def\toclevel@subparagraph{6}
-	\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}
-		{3.25ex \@plus 1ex \@minus .2ex}
-		{-1em}
-		{\normalfont\normalsize\bfseries}}
-	\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}
-		{3.25ex \@plus 1ex \@minus .2ex}
-		{-1em}
-		{\normalfont\normalsize\bfseries}}
-	\ifthenelse{\equal{\showdotaftersnum}{true}}{
-\def\l@subsubsubsection{\@dottedtocline{4}{7.83em}{4.15em}}
-		\def\l@paragraph{\@dottedtocline{5}{11.98em}{4.92em}}
-		\def\l@subparagraph{\@dottedtocline{6}{14.65em}{5.69em}}
-	}{
-		\def\l@subsubsubsection{\@dottedtocline{4}{6.97em}{4em}}
-		\def\l@paragraph{\@dottedtocline{5}{10.97em}{5em}}
-		\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
-	}
-\makeatother
 \setcounter{tocdepth}{\indexdepth}
 \ifthenelse{\equal{\footnoterestart}{none}}{
 }{

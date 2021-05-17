@@ -12,7 +12,6 @@
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
 % CONFIGURACIONES GENERALES
-\def\addemptypagetwosides {false}  % Añade pag. en blanco al imprimir a 2 caras
 \def\compilertype {pdf2latex}      % Compilador {pdf2latex,xelatex,lualatex}
 \def\documentfontsize {11}         % Tamaño de la fuente del documento [pt]
 \def\documentinterline {1.025}     % Interlineado del documento defecto [factor]
@@ -23,21 +22,10 @@
 \def\graphicxdraft {false}         % En true no carga las imágenes (modo draft)
 \def\importtikz {false}            % Utilizar la librería tikz
 \def\pointdecimal {true}           % N° decimales con punto en vez de coma
-\def\predocpageromannumber {true}  % Pág. con número romano previo a inicio doc.
-\def\predocpageromanupper {false}  % Páginas en número romano en mayúsculas
-\def\predocresetpagenumber {true}  % Resetea número de la pag. tras el índice
 \def\showlayoutlines {false}       % Muestra el layout de la página
 \def\showlinenumbers {false}       % Muestra los números de línea del documento
 \def\useenglishbabel {false}       % Inglés, desactivar para otros idiomas
 \def\usespanishbabel {true}        % Español, desactivar para otros idiomas
-
-% ESTILO PORTADA Y HEADER-FOOTER
-\def\disablehfrightmark {false}    % Desactiva el rightmark del header-footer
-\def\hfstyle {style1}              % Estilo header-footer (16 estilos)
-\def\hfwidthcourse {0.35}          % Tamaño máximo del curso en header-footer
-\def\hfwidthtitle {0.6}            % Tamaño máximo del título en header-footer
-\def\hfwidthwrap {false}           % Activa el tamaño máximo en header-footer
-\def\portraitstyle {style1}        % Estilo portada (21 estilos)
 
 % CONFIGURACIÓN DE LAS LEYENDAS - CAPTION
 \def\captionalignment {justified}  % Posición {centered,justified,left,right}
@@ -147,46 +135,23 @@
 
 % CONFIGURACIÓN DE LOS TÍTULOS
 \def\anumsecaddtocounter {false}   % Insertar títulos anum. aumenta n° de sec
-\def\fontsizessstitle{\normalsize} % Tamaño sub-sub-subtítulos
-\def\fontsizesubsubtitle {\large}  % Tamaño sub-subtítulos
-\def\fontsizesubtitle {\Large}     % Tamaño subtítulos
-\def\fontsizetitle {\LARGE}        % Tamaño títulos
-\def\fontsizetitlei {\LARGE}       % Tamaño títulos en el índice
 \def\showdotaftersnum {true}       % Punto al final de n° (s/ss/sss/ssss)ection
-\def\stylessstitle {\bfseries}     % Estilo sub-sub-subtítulos
-\def\stylesubsubtitle {\bfseries}  % Estilo sub-subtítulos
-\def\stylesubtitle {\bfseries}     % Estilo subtítulos
-\def\styletitle {\bfseries}        % Estilo títulos
-\def\styletitlei {\bfseries}       % Estilo títulos en el índice
 
 % CONFIGURACIÓN DE LOS COLORES DEL DOCUMENTO
 \def\captioncolor {black}          % Color nombre objeto (código,figura,tabla)
 \def\captiontextcolor {black}      % Color de la leyenda
 \def\colorpage {white}             % Color de la página
 \def\highlightcolor {yellow}       % Color del subrayado con \hl
-\def\indextitlecolor {black}       % Color de los títulos del índice
 \def\linenumbercolor {gray}        % Color del n° de línea (\showlinenumbers)
 \def\linkcolor {black}             % Color de los links del documento
 \def\maintextcolor {black}         % Color principal del texto
 \def\numcitecolor {black}          % Color del n° de las referencias o citas
-\def\portraittitlecolor {black}    % Color de los títulos de la portada
 \def\showborderonlinks {false}     % Color de un link por un recuadro de color
 \def\sourcecodebgcolor {lgray}     % Color de fondo del código fuente
-\def\ssstitlecolor {black}         % Color de los sub-sub-subtítulos
-\def\subsubtitlecolor {black}      % Color de los sub-subtítulos
-\def\subtitlecolor {black}         % Color de los subtítulos
 \def\tablelinecolor {black}        % Color de las líneas de las tablas
 \def\tablerowfirstcolor {none}     % Primer color de celda de las tablas
 \def\tablerowsecondcolor {gray!20} % Segundo color de celda de las tablas
-\def\titlecolor {black}            % Color de los títulos
 \def\urlcolor {magenta}            % Color de los enlaces web (\href,\url)
-
-% MÁRGENES DE PÁGINA
-\def\firstpagemargintop {3.8}      % Margen superior página portada [cm]
-\def\pagemarginbottom {2.7}        % Margen inferior página [cm]
-\def\pagemarginleft {2.54}         % Margen izquierdo página [cm]
-\def\pagemarginright {2.54}        % Margen derecho página [cm]
-\def\pagemargintop {3.0}           % Margen superior página [cm]
 
 % OPCIONES DEL PDF COMPILADO
 \def\cfgbookmarksopenlevel {1}     % Nivel marcadores en pdf (1:secciones)
@@ -202,6 +167,7 @@
 \def\cfgpdfsecnumbookmarks {true}  % Número de la sec. en marcadores del pdf
 \def\cfgpdftoolbar {true}          % Muestra barra de herramientas lector pdf
 \def\cfgshowbookmarkmenu {false}   % Muestra menú marcadores al abrir el pdf
+\def\indexdepth{4}                 % Profundidad de los marcadores
 \def\pdfcompilecompression {9}     % Factor de compresión del pdf (0-9)
 \def\pdfcompileobjcompression {2}  % Nivel compresión objetos del pdf (0-3)
 \def\pdfcompileversion {7}         % Versión mínima del pdf compilado
@@ -217,15 +183,9 @@
 \def\namemathobs {Observación}        % Nombre de las observaciones
 \def\namemathprp {Proposición}        % Nombre de las proposiciones
 \def\namemaththeorem {Teorema}        % Nombre de los teoremas
-\def\nameportraitpage {Cover}         % Etiqueta página de la portada
 \def\namereferences {Referencias}     % Nombre de la sección de referencias
 \def\nomchapter {Capítulo}            % Nombre de los capítulos
 \def\nomltappendixsection {Anexo}     % Etiqueta sección en anexo/apéndices
-\def\nomltcont {Índice de Contenidos} % Nombre del índice de contenidos
-\def\nomlteqn {Índice de Ecuaciones}  % Nombre de la lista de ecuaciones
-\def\nomltfigure {Índice de Figuras}  % Nombre de la lista de figuras
-\def\nomltsrc {Índice de Códigos}     % Nombre de la lista de código
-\def\nomlttable {Índice de Tablas}    % Nombre de la lista de tablas
 \def\nomltwfigure {Figura}            % Etiqueta leyenda de las figuras
 \def\nomltwsrc {Código}               % Etiqueta leyenda del código fuente
 \def\nomltwtable {Tabla}              % Etiqueta leyenda de las tablas
