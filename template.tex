@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      0.1.0 (17/05/2021)
+% Versión:      0.1.1 (17/05/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R. @ppizarror
@@ -12,7 +12,6 @@
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
 % CONFIGURACIONES
-
 % Definiciones de color
 \definecolor{beigegray}{RGB}{95,87,79}
 \definecolor{beige}{RGB}{210,194,149}
@@ -2475,190 +2474,6 @@
 	}{}
 }{}{}
 
-% Insertar un título sin número
-% 	#1	Título
-\newcommand{\sectionanum}[1]{
-	\emptyvarerr{\sectionanum}{#1}{Titulo no definido}
-	\phantomsection
-	\needspace{3\baselineskip}
-	\section*{#1}
-	\addcontentsline{toc}{section}{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{section}}{}
-	\changeheadertitle{#1}
-	\setcounter{subsection}{0}
-	\renewcommand{\thesubsection}{\arabic{subsection}}
-	\def\GLOBALsectionanumenabled{true}
-}
-
-% Insertar un título sin número y sin indexar
-% 	#1	Título
-\newcommand{\sectionanumnoi}[1]{
-	\emptyvarerr{\sectionanumnoi}{#1}{Titulo no definido}
-	\phantomsection
-	\needspace{3\baselineskip}
-	\section*{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{section}}{}
-	\changeheadertitle{#1}
-	\setcounter{subsection}{0}
-	\renewcommand{\thesubsection}{\arabic{subsection}}
-	\def\GLOBALsectionanumenabled{true}
-}
-
-% Insertar un título sin número sin cambiar el título del header
-% 	#1	Título
-\newcommand{\sectionanumheadless}[1]{
-	\emptyvarerr{\sectionanumnoheadless}{#1}{Titulo no definido}
-	\section*{#1}
-	\addcontentsline{toc}{section}{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{section}}{}
-	\setcounter{subsection}{0}
-	\renewcommand{\thesubsection}{\arabic{subsection}}
-	\def\GLOBALsectionanumenabled{true}
-}
-
-% Insertar un título sin número, sin indexar y sin cambiar el título del header
-% 	#1	Título
-\newcommand{\sectionanumnoiheadless}[1]{
-	\emptyvarerr{\sectionanumnoiheadless}{#1}{Titulo no definido}
-	\section*{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{section}}{}
-	\setcounter{subsection}{0}
-	\renewcommand{\thesubsection}{\arabic{subsection}}
-	\def\GLOBALsectionanumenabled{true}
-}
-
-% Insertar un subtítulo sin número
-% 	#1	Subtítulo
-\newcommand{\subsectionanum}[1]{
-	\emptyvarerr{\subsectionanum}{#1}{Subtitulo no definido}
-	\subsection*{#1}
-	\addcontentsline{toc}{subsection}{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{subsection}}{}
-	\setcounter{subsubsection}{0}
-	\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-	\def\GLOBALsubsectionanumenabled{true}
-}
-
-% Insertar un subtítulo sin número y sin indexar
-% 	#1	Subtítulo
-\newcommand{\subsectionanumnoi}[1]{
-	\emptyvarerr{\subsectionanumnoi}{#1}{Subtitulo no definido}
-	\subsection*{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{subsection}}{}
-	\setcounter{subsubsection}{0}
-	\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-	\def\GLOBALsubsectionanumenabled{true}
-}
-
-% Insertar un sub-subtítulo sin número
-% 	#1	Sub-subtítulo
-\newcommand{\subsubsectionanum}[1]{
-	\emptyvarerr{\subsubsectionanum}{#1}{Sub-subtitulo no definido}
-	\subsubsection*{#1}
-	\addcontentsline{toc}{subsubsection}{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{subsubsection}}{}
-	\setcounter{subsubsubsection}{0}
-	\ifthenelse{\equal{\showdotaftersnum}{true}}{
-		\renewcommand{\thesubsubsubsection}{\arabic{subsubsubsection}.}
-	}{
-		\renewcommand{\thesubsubsubsection}{\arabic{subsubsubsection}}
-	}
-}
-
-% Insertar un sub-subtítulo sin número y sin indexar
-% 	#1	Sub-subtítulo
-\newcommand{\subsubsectionanumnoi}[1]{
-	\emptyvarerr{\subsubsectionanumnoi}{#1}{Sub-subtitulo no definido}
-	\subsubsection*{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{subsubsection}}{}
-	\setcounter{subsubsubsection}{0}
-	\ifthenelse{\equal{\showdotaftersnum}{true}}{
-		\renewcommand{\thesubsubsubsection}{\arabic{subsubsubsection}.}
-	}{
-		\renewcommand{\thesubsubsubsection}{\arabic{subsubsubsection}}
-	}
-}
-
-% Insertar un sub-sub-subtítulo sin número
-% 	#1	Sub-sub-subtítulo
-\newcommand{\subsubsubsectionanum}[1]{
-	\emptyvarerr{\subsubsubsectionanum}{#1}{Sub-sub-subtitulo no definido}
-	\subsubsubsection*{#1}
-	\addcontentsline{toc}{subsubsubsection}{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{subsubsubsection}}{}
-}
-
-% Insertar un sub-sub-subtítulo sin número y sin indexar
-% 	#1	Sub-sub-subtítulo
-\newcommand{\subsubsubsectionanumnoi}[1]{
-	\emptyvarerr{\subsubsubsectionanumnoi}{#1}{Sub-sub-subtitulo no definido}
-	\subsubsection*{#1}
-	\ifthenelse{\equal{\anumsecaddtocounter}{true}}{\stepcounter{subsubsubsection}}{}
-}
-
-% Cambia el título del encabezado (header)
-%	#1	Título
-\newcommand{\changeheadertitle}[1]{
-	\emptyvarerr{\changeheadertitle}{#1}{Titulo no definido}
-	\markboth{#1}{}
-}
-
-% Elimina el título del encabezado (header)
-\newcommand{\clearheadertitle}{
-	\markboth{}{}
-}
-
-% Insertar un título en un índice, sin número de página
-%	#1	Margen superior en pt. (opcional)
-%	#2	Título
-\newcommand{\insertindextitle}[2][]{
-	\emptyvarerr{\insertindextitle}{#2}{Titulo no definido}
-	\ifx\hfuzz#1\hfuzz
-		\addtocontents{toc}{\protect\addvspace{\indextitlemargin pt}}
-	\else
-		\addtocontents{toc}{\protect\addvspace{#1 pt}}
-	\fi
-	\addtocontents{toc}{\noindent\hyperref[swpn]{\textbf{#2}}}
-}
-
-% Insertar un título en un índice, con número de página
-%	#1	Margen superior en pt. (opcional)
-%	#2	Título
-\newcommand{\insertindextitlepage}[2][]{
-	\emptyvarerr{\insertindextitlepage}{#2}{Titulo no definido}
-	\ifx\hfuzz#1\hfuzz
-		\addtocontents{toc}{\protect\addvspace{\indextitlemargin pt}}
-	\else
-		\addtocontents{toc}{\protect\addvspace{#1 pt}}
-	\fi
-	\addcontentsline{toc}{section}{#2}
-}
-
-% Crea una sección en el índice y en el header
-%	#1	Margen superior en pt. (opcional)
-%	#2	Título
-\newcommand{\createhiddensection}[2][]{
-	\changeheadertitle{#2}
-	\insertindextitlepage[#1]{#2}
-}
-
-% Crear un capítulo como una sección
-%	#1	Título
-\newcommand{\newchapter}[1]{
-	\emptyvarerr{\newchapter}{#1}{Titulo no definido}
-	\clearpage
-	\stepcounter{section}
-	\phantomsection
-	\needspace{3\baselineskip}
-	\vspace* {3cm}
-	\noindent {\huge{\textbf{\nomchapter\ \thesection}}} \\
-	\vspace* {0.5cm} \\
-	\noindent {\Huge{\textbf{#1}}} \\
-	\vspace {0.5cm} \\
-	\addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}
-	\markboth{#1}{}
-}
-
 % Insertar párrafo
 \newcommand{\newp}{%
 	\hbadness=10000 \vspace{\baselineskip} \par%
@@ -2892,91 +2707,6 @@
 		\def\GLOBALtablerowcolorswitch{false}
 	}
 	\settablerowcolorslast
-}
-
-% Ofrece diferentes formatos de pagina
-% https://www.prepressure.com/library/paper-size
-%	#1	Indica la rotación, puede ser 0 o 90
-%	#2	Formato de la pagina
-\newcommand{\changepagesizeformat}[2][]{%
-	\emptyvarerr{\changepagesizeformat}{#2}{Formato de pagina no definido}
-	\ifthenelse{\equal{#2}{4A0}}{
-		\changepagesize[#1]{168.2}{237.8}
-	}{
-	\ifthenelse{\equal{#2}{2A0}}{
-		\changepagesize[#1]{118.9}{168.2}
-	}{
-	\ifthenelse{\equal{#2}{A0}}{
-		\changepagesize[#1]{84.1}{118.9}
-	}{
-	\ifthenelse{\equal{#2}{A1}}{
-		\changepagesize[#1]{59.4}{84.1}
-	}{
-	\ifthenelse{\equal{#2}{A2}}{
-		\changepagesize[#1]{42.0}{84.1}
-	}{
-	\ifthenelse{\equal{#2}{A3}}{
-		\changepagesize[#1]{29.7}{42.0}
-	}{
-	\ifthenelse{\equal{#2}{A4}}{
-		\changepagesize[#1]{21.0}{29.7}
-	}{
-	\ifthenelse{\equal{#2}{A5}}{
-		\changepagesize[#1]{14.8}{21.0}
-	}{
-	\ifthenelse{\equal{#2}{A6}}{
-		\changepagesize[#1]{10.5}{14.8}
-	}{
-	\ifthenelse{\equal{#2}{letter}}{
-		\changepagesize[#1]{21.59}{27.94}
-	}{
-	\ifthenelse{\equal{#2}{legal}}{
-		\changepagesize[#1]{21.59}{35.6}
-	}{
-	\ifthenelse{\equal{#2}{foolscap}}{
-		\changepagesize[#1]{20.3}{33.0}
-	}{
-	\ifthenelse{\equal{#2}{executive}}{
-		\changepagesize[#1]{18.41}{26.67}
-	}{
-	\ifthenelse{\equal{#2}{ledger}}{
-		\changepagesize[#1]{27.94}{43.18}
-	}{
-	\ifthenelse{\equal{#2}{tabloid}}{
-		\changepagesize[#1]{43.18}{27.94}
-	}{
-	\ifthenelse{\equal{#2}{ANSIC}}{
-		\changepagesize[#1]{55.9}{43.2}
-	}{
-	\ifthenelse{\equal{#2}{ANSID}}{
-		\changepagesize[#1]{86.4}{55.9}
-	}{
-	\ifthenelse{\equal{#2}{ANSIE}}{
-		\changepagesize[#1]{111.8}{86.4}
-	}{
-	\ifthenelse{\equal{#2}{B0}}{
-		\changepagesize[#1]{100}{141.4}
-	}{
-	\ifthenelse{\equal{#2}{B1}}{
-		\changepagesize[#1]{70.7}{100}
-	}{
-	\ifthenelse{\equal{#2}{B2}}{
-		\changepagesize[#1]{50}{70.7}
-	}{
-	\ifthenelse{\equal{#2}{B3}}{
-		\changepagesize[#1]{35.3}{50}
-	}{
-	\ifthenelse{\equal{#2}{B4}}{
-		\changepagesize[#1]{25}{35.3}
-	}{
-	\ifthenelse{\equal{#2}{B5}}{
-		\changepagesize[#1]{17.6}{25}
-	}{
-	\ifthenelse{\equal{#2}{B6}}{
-		\changepagesize[#1]{12.5}{17.6}
-	}{
-		\throwbadconfig{Estilo de pagina no valido}{\changepagesizeformat}{4A0,2A0,A0,A1,A2,A3,A4,A5,A6,letter,legal,foolscap,executive,ledger,tabloid,ANSIC,ANSID,ANSIE,B0,B1,B2,B3,B4,B5,B6}}}}}}}}}}}}}}}}}}}}}}}}}
-	}
 }
 
 % Inicia código fuente con parámetros
@@ -4311,9 +4041,9 @@
 		Template.Licencia.Web={https://opensource.org/licenses/MIT/},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={0.1.0-PRES},
-		Template.Version.Hash={6AF2B0D3A969C00FBE37B7F1208BB3B4},
-		Template.Version.Release={0.1.0},
+		Template.Version.Dev={0.1.1-PRES},
+		Template.Version.Hash={F2F30E6FF1B106821B1C19E82E4572A0},
+		Template.Version.Release={0.1.1},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion/},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -4325,7 +4055,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v0.1.0 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v0.1.1 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -4392,9 +4122,6 @@
 		linkcolor=\linkcolor,
 		urlcolor=\urlcolor
 	}
-}
-\ifthenelse{\equal{\colorpage}{white}}{}{
-	\pagecolor{\colorpage}
 }
 
 % -----------------------------------------------------------------------------
@@ -4582,7 +4309,6 @@
 % Configuración anexo
 % -----------------------------------------------------------------------------
 \patchcmd{\appendices}{\quad}{\sectionappendixlastchar\quad}{}{}
-
 
 % -----------------------------------------------------------------------------
 % Reconfiguración de tamaño de páginas
@@ -4824,10 +4550,10 @@
 \newcommand{\templatePagecfg}{
 
 	% -------------------------------------------------------------------------
-% Numeración de páginas
-% -------------------------------------------------------------------------
-\setcounter{page}{1}
-\setcounter{footnote}{0}
+    % Numeración de páginas
+    % -------------------------------------------------------------------------
+    \setcounter{page}{1}
+    \setcounter{footnote}{0}
 
 	% -------------------------------------------------------------------------
 	% Márgenes de páginas y tablas
@@ -4843,19 +4569,19 @@
 	}
 
 	% -------------------------------------------------------------------------
-% Definición de nombres de objetos
-% -------------------------------------------------------------------------
-\renewcommand{\appendixname}{\nomltappendixsection} % Nombre del anexo (título)
-\renewcommand{\figurename}{\nomltwfigure} % Nombre de la leyenda de las fig.
-\renewcommand{\lstlistingname}{\nomltwsrc} % Nombre leyenda del código fuente
-\renewcommand{\refname}{\namereferences} % Nombre de las referencias (bibtex)
-\renewcommand{\bibname}{\namereferences} % Nombre de las referencias (natbib)
-\renewcommand{\tablename}{\nomltwtable} % Nombre de la leyenda de tablas
+    % Definición de nombres de objetos
+    % -------------------------------------------------------------------------
+    \renewcommand{\appendixname}{\nomltappendixsection} % Nombre del anexo (título)
+    \renewcommand{\figurename}{\nomltwfigure} % Nombre de la leyenda de las fig.
+    \renewcommand{\lstlistingname}{\nomltwsrc} % Nombre leyenda del código fuente
+    \renewcommand{\refname}{\namereferences} % Nombre de las referencias (bibtex)
+    \renewcommand{\bibname}{\namereferences} % Nombre de las referencias (natbib)
+    \renewcommand{\tablename}{\nomltwtable} % Nombre de la leyenda de tablas
 
 	% -------------------------------------------------------------------------
-% Estilo de títulos
-% -------------------------------------------------------------------------
-\def\bibfont{\fontsizerefbibl} % Tamaño de fuente de las referencias
+    % Estilo de títulos
+    % -------------------------------------------------------------------------
+    \def\bibfont{\fontsizerefbibl} % Tamaño de fuente de las referencias
 
 	% -------------------------------------------------------------------------
 	% Estilo citas
@@ -4863,8 +4589,6 @@
 	\ifthenelse{\equal{\stylecitereferences}{apacite}}{
 		\renewcommand{\BOthers}[1]{\apacitebothers\hbox{}}
 	}{}
-
-	% -------------------------------------------------------------------------
 
 	% -------------------------------------------------------------------------
 	% Muestra los números de línea
@@ -5117,6 +4841,7 @@
 
 	% -------------------------------------------------------------------------
 	% Se reestablecen números de página y secciones
+	% -------------------------------------------------------------------------
 	
 	\setcounter{section}{0}
 	\setcounter{footnote}{0}
