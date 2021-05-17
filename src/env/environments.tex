@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Definición de entornos
-% Versión:      0.0.0 (16/05/2021)
+% Versión:      0.1.0 (17/05/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -11,69 +11,6 @@
 % Sitio web:    [https://latex.ppizarror.com/presentacion]
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
-\newenvironment{references}{
-\ifthenelse{\equal{\stylecitereferences}{bibtex}}{
-	}{
-		\throwerror{\references}{Solo se puede usar entorno references con estilo citas \noexpand\stylecitereferences=bibtex}
-	}
-	\begingroup
-\ifthenelse{\equal{\bibtexenvrefsecnum}{true}}{
-		\section{\namereferences}
-	}{
-		\sectionanum{\namereferences}
-	}
-	\renewcommand{\section}[2]{}
-\begin{thebibliography}{}
-\ifthenelse{\equal{\bibtextextalign}{justify}}{
-		}{
-		\ifthenelse{\equal{\bibtextextalign}{left}}{
-			\raggedright
-		}{
-		\ifthenelse{\equal{\bibtextextalign}{right}}{
-			\raggedleft
-		}{
-		\ifthenelse{\equal{\bibtextextalign}{center}}{
-			\centering
-		}{
-			\throwbadconfig{Ajuste de linea referencias bibtex desconocido}{\bibtextextalign}{justified,left,right,center}}}}
-		}
-	}
-	{
-	\end{thebibliography}
-\endgroup
-}
-\newenvironment{anexo}{
-\begingroup
-	\phantomsection
-\changeheadertitle{\nomltappendixsection}
-\def\GLOBALsectionalph{true}
-	\bookmarksetup{
-		numbered={true},
-		openlevel={\thetemplateBookmarksLevelPrev}
-	}
-	\appendixtitleon
-	\appendixtitletocon
-	\bookmarksetupnext{level=part}
-\begin{appendices}
-		\ifthenelse{\equal{\showappendixsecindex}{true}}{}{
-\pdfbookmark{\nameappendixsection}{appendix}
-		}
-		\ifthenelse{\equal{\appendixindepobjnum}{true}}{
-			\counterwithin{equation}{section}
-			\counterwithin{figure}{section}
-			\counterwithin{lstlisting}{section}
-			\counterwithin{table}{section}}{
-		}
-	}{
-	\end{appendices}
-\def\GLOBALsectionalph{false}
-\bookmarksetupnext{level={\thetemplateBookmarksLevelPrev}}
-	\bookmarksetup{
-		numbered={\cfgpdfsecnumbookmarks},
-		openlevel={\cfgbookmarksopenlevel}
-	}
-	\endgroup
-}
 \newcommand{\coreinitsourcecodep}[4]{
 	\emptyvarerr{\coreinitsourcecodep}{#2}{Estilo de codigo no definido}
 	\checkvalidsourcecodestyle{#2}

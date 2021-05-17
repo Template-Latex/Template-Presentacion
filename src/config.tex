@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Configuraciones del template
-% Versión:      0.0.0 (16/05/2021)
+% Versión:      0.1.0 (17/05/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -13,17 +13,15 @@
 
 % CONFIGURACIONES GENERALES
 \def\compilertype {pdf2latex}      % Compilador {pdf2latex,xelatex,lualatex}
-\def\documentfontsize {11}         % Tamaño de la fuente del documento [pt]
+\def\documentfontsize {10}         % Tamaño de la fuente del documento [pt]
 \def\documentinterline {1.025}     % Interlineado del documento defecto [factor]
 \def\documentlang {es-CL}          % Define el idioma del documento
 \def\fontdocument {lmodern}        % Tipografía base, ver soportadas en manual
 \def\fonttypewriter {tmodern}      % Tipografía de \texttt, ver manual
 \def\fonturl {same}                % Tipo de fuente url {tt,sf,rm,same}
 \def\graphicxdraft {false}         % En true no carga las imágenes (modo draft)
-\def\importtikz {false}            % Utilizar la librería tikz
 \def\pointdecimal {true}           % N° decimales con punto en vez de coma
 \def\showlayoutlines {false}       % Muestra el layout de la página
-\def\showlinenumbers {false}       % Muestra los números de línea del documento
 \def\useenglishbabel {false}       % Inglés, desactivar para otros idiomas
 \def\usespanishbabel {true}        % Español, desactivar para otros idiomas
 
@@ -69,11 +67,8 @@
 \def\apaciteshowurl {false}        % Muestra las url en las referencias
 \def\apacitestyle {apacite}        % Formato de ref. apacite {apa,ieeetr,etc..}
 \def\appendixindepobjnum {true}    % Anexo usa n° objetos independientes
-\def\bibtexenvrefsecnum {false}    % Entorno references es una sección numerada
-\def\bibtexindexbibliography{true} % Función \bibliography se inserta en el índice
 \def\bibtexrefsep {6}              % Separación entre refs. {bibtex} [pt]
 \def\bibtexstyle {ieeetr}          % Formato de ref. bibtex {apa,ieeetr,etc...}
-\def\bibtextextalign {justify}     % Alineación bibtex {justify,left,right,center}
 \def\fontsizerefbibl {\normalsize} % Tamaño de fuentes al usar \bibliography{file}
 \def\natbibnumbers {true}          % Forza el uso de números en la bibliografía
 \def\natbibrefsep {6}              % Separación entre referencia {natbib} [pt]
@@ -163,14 +158,13 @@
 \def\cfgpdfkeywords {}             % Palabras clave del pdf
 \def\cfgpdflayout {OneColumn}      % Modo de página {OneColumn,SinglePage}
 \def\cfgpdfmenubar {true}          % Muestra el menú del lector
-\def\cfgpdfpageview {FitH}         % {Fit,FitH,FitV,FitR,FitB,FitBH,FitBV}
+\def\cfgpdfpageview {FitBV}        % {Fit,FitH,FitV,FitR,FitB,FitBH,FitBV}
 \def\cfgpdfsecnumbookmarks {true}  % Número de la sec. en marcadores del pdf
 \def\cfgpdftoolbar {true}          % Muestra barra de herramientas lector pdf
 \def\cfgshowbookmarkmenu {false}   % Muestra menú marcadores al abrir el pdf
 \def\indexdepth{4}                 % Profundidad de los marcadores
 \def\pdfcompilecompression {9}     % Factor de compresión del pdf (0-9)
 \def\pdfcompileobjcompression {2}  % Nivel compresión objetos del pdf (0-3)
-\def\pdfcompileversion {7}         % Versión mínima del pdf compilado
 \def\usepdfmetadata {true}         % Añade metadatos al pdf compilado
 
 % NOMBRE DE OBJETOS
@@ -190,3 +184,102 @@
 \def\nomltwsrc {Código}               % Etiqueta leyenda del código fuente
 \def\nomltwtable {Tabla}              % Etiqueta leyenda de las tablas
 \def\nomnpageof { de }                % Etiqueta página # de #
+
+% CONFIGURA BEAMER
+% http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
+\mode<presentation> {
+	
+	% LISTA DE TEMAS GLOBALES, DESCONFIGURAR PARA APLICAR
+	% https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_theme.html
+
+	% \usetheme{AnnArbor}
+	% \usetheme{Antibes}
+	% \usetheme{Bergen}
+	% \usetheme{Berkeley}
+	% \usetheme{Berlin}
+	% \usetheme{Boadilla}
+	% \usetheme{boxes}
+	% \usetheme{CambridgeUS}
+	% \usetheme{Copenhagen}
+	% \usetheme{Darmstadt}
+	% \usetheme{default}
+	% \usetheme{Dresden}
+	% \usetheme{Frankfurt}
+	% \usetheme{Goettingen}
+	% \usetheme{Hannover}
+	% \usetheme{Ilmenau}
+	% \usetheme{JuanLesPins}
+	% \usetheme{Luebeck}
+	% \usetheme{Madrid}
+	% \usetheme{Malmoe}
+	% \usetheme{Marburg}
+	% \usetheme{Montpellier}
+	% \usetheme{PaloAlto}
+	% \usetheme{Pittsburgh}
+	% \usetheme{Rochester}
+	% \usetheme{Singapore}
+	% \usetheme{Szeged}
+	% \usetheme{Warsaw}
+	
+	% TEMAS TIPO -INNER-, USAR SÓLO SI NO SE APLICA EL GLOBAL
+	% http://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf
+	
+	% \useinnertheme{default}
+	% \useinnertheme{circles}
+	\useinnertheme{rectangles}
+	% \useinnertheme{rounded}
+	% \useinnertheme{inmargin}
+	
+	% TEMAS TIPO -OUTER-, USAR SÓLO SI NO SE APLICA EL GLOBAL
+	
+	% \useoutertheme{default}
+	\useoutertheme{infolines}
+	% \useoutertheme{miniframes}
+	% \useoutertheme{smoothbars}
+	% \useoutertheme{sidebar}
+	% \useoutertheme{split}
+	% \useoutertheme{shadow}
+	% \useoutertheme{tree}
+	% \useoutertheme{smoothtree}
+	
+	% COLORES DE LA SLIDE, DESCOMENTAR PARA APLICAR
+	% https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_color.html
+	
+	%\usecolortheme{default}
+	\usecolortheme[named=cardinalred]{structure}
+	%\usecolortheme{sidebartab}
+
+	% \usecolortheme{albatross}
+	% \usecolortheme{beaver}
+	% \usecolortheme{beetle}
+	% \usecolortheme{crane}
+	% \usecolortheme{dolphin}
+	% \usecolortheme{dove}
+	% \usecolortheme{fly}
+	% \usecolortheme{lily}
+	% \usecolortheme{monarca}
+	\usecolortheme{orchid}
+	% \usecolortheme{rose}
+	% \usecolortheme{seagull}
+	% \usecolortheme{seahorse}
+	% \usecolortheme{spruce}
+	\usecolortheme{whale}
+	% \usecolortheme{wolverine}
+
+	% IDIOMA
+	\uselanguage{spanish}
+	\languagepath{spanish}
+
+	% PARA REESTABLECER EL HEADLINE, COMENTAR
+	\setbeamertemplate{headline}{}
+	
+	% PARA ELIMINAR EL FOOTER, DESCOMENTAR
+	% \setbeamertemplate{footline}{}
+	
+	% REEMPLAZAR EL FOOTER POR EL N° DE PÁGINA
+	% \setbeamertemplate{footline}[page number]
+	
+	% PARA ELIMINAR LOS SÍMBOLOS DE NAVEGACIÓN, DESCOMENTAR
+	% \setbeamertemplate{navigation symbols}{}
+    
+}

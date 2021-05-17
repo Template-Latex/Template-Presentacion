@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Importación de librerías
-% Versión:      0.0.0 (16/05/2021)
+% Versión:      0.1.0 (17/05/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -71,7 +71,6 @@
 \usepackage{floatrow}
 \usepackage{framed}
 \usepackage{gensymb}
-\usepackage{graphicx}
 \usepackage{lipsum}
 \usepackage{listings}
 \usepackage{longtable}
@@ -548,6 +547,7 @@
 \ifthenelse{\equal{\showlayoutlines}{true}}{
 	\usepackage{showframe}}{
 }
+\def\showlinenumbers {true}
 \ifthenelse{\equal{\showlinenumbers}{true}}{
 	\usepackage[switch,columnwise,running]{lineno}}{
 }
@@ -555,4 +555,5 @@
 \ifthenelse{\equal{\compilertype}{pdf2latex}}{
 	\inputencoding{utf8}}{
 }
+\usefonttheme{professionalfonts}
 

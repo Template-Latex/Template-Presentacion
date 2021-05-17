@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Configuración de página
-% Versión:      0.0.0 (16/05/2021)
+% Versión:      0.1.0 (17/05/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -19,6 +19,12 @@
 	\ifthenelse{\equal{\pointdecimal}{true}}{
 		\decimalpoint}{
 	}
+\renewcommand{\appendixname}{\nomltappendixsection}
+\renewcommand{\figurename}{\nomltwfigure}
+\renewcommand{\lstlistingname}{\nomltwsrc}
+\renewcommand{\refname}{\namereferences}
+\renewcommand{\bibname}{\namereferences}
+\renewcommand{\tablename}{\nomltwtable}
 \def\bibfont{\fontsizerefbibl}
 	\ifthenelse{\equal{\stylecitereferences}{apacite}}{
 		\renewcommand{\BOthers}[1]{\apacitebothers\hbox{}}
