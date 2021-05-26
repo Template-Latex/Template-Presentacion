@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      1.0.1 (25/05/2021)
+% Versión:      1.0.1 (26/05/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -12,14 +12,12 @@
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
 \def\titulodelinforme{\titulopresentacion}
-\def\temaatratar{}
 \checkvardefined{\autordeldocumento}
 \checkvardefined{\departamentouniversidad}
 \checkvardefined{\localizacionuniversidad}
 \checkvardefined{\nombredelcurso}
 \checkvardefined{\nombrefacultad}
 \checkvardefined{\nombreuniversidad}
-\checkvardefined{\temaatratar}
 \checkvardefined{\titulodelinforme}
 \makeatletter
 	\g@addto@macro\autordeldocumento\xspace
@@ -29,7 +27,6 @@
 	\g@addto@macro\nombredelcurso\xspace
 	\g@addto@macro\nombrefacultad\xspace
 	\g@addto@macro\nombreuniversidad\xspace
-	\g@addto@macro\temaatratar\xspace
 	\g@addto@macro\titulodelinforme\xspace
 \makeatother
 \corecheckfontsize{\captionfontsize}
@@ -47,7 +44,6 @@
 	\def\pdfmetainfocodigodelcurso {\codigodelcurso}
 	\def\pdfmetainfonombredelcurso {\nombredelcurso}
 	\def\pdfmetainfoautor {\autordeldocumento}
-	\def\pdfmetainfotema {\temaatratar}
 	\def\pdfmetainfotitulo {\titulopresentacion}
 	\def\pdfmetainfounidepto {\departamentouniversidad}
 	\def\pdfmetainfounifacultad {\nombrefacultad}
@@ -58,7 +54,6 @@
 	\def\pdfmetainfocodigodelcurso {}
 	\def\pdfmetainfonombredelcurso {}
 	\def\pdfmetainfoautor {}
-	\def\pdfmetainfotema {}
 	\def\pdfmetainfotitulo {}
 	\def\pdfmetainfounidepto {}
 	\def\pdfmetainfounifacultad {}
@@ -80,21 +75,20 @@
 		Curso.Codigo={\pdfmetainfocodigodelcurso},
 		Curso.Nombre={\pdfmetainfonombredelcurso},
 		Documento.Autor={\pdfmetainfoautor},
-		Documento.Tema={\pdfmetainfotema},
 		Documento.Titulo={\pdfmetainfotitulo},
 		Template.Autor.Alias={ppizarror},
 		Template.Autor.Email={pablo@ppizarror.com},
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={25/05/2021},
+		Template.Fecha={26/05/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.0.1-PRES},
-		Template.Version.Hash={7E83316087CABD93FAC401A8DC79C5A2},
+		Template.Version.Dev={1.0.1-1-PRES},
+		Template.Version.Hash={B46C1CE20BBCC8FE1E35F5C411B7D5B2},
 		Template.Version.Release={1.0.1},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
