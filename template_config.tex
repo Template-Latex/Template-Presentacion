@@ -26,12 +26,12 @@
 
 % CONFIGURACIÓN DE LAS LEYENDAS - CAPTION
 \def\captionalignment {justified}  % Posición {centered,justified,left,right}
-\def\captionfontsize {small}       % Tamaño de fuente de los caption
+\def\captionfontsize{footnotesize} % Tamaño de fuente de los caption
 \def\captionlabelformat {simple}   % Formato leyenda {empty,simple,parens}
 \def\captionlabelsep {colon}       % Sep. {none,colon,period,space,quad,newline}
 \def\captionlessmarginimage {0.1}  % Margen sup/inf de fig. si no hay ley. [cm]
-\def\captionlrmargin {2.0}         % Márgenes izq/der de la leyenda [cm]
-\def\captionlrmarginmc {1.0}       % Mar. izq/der leyenda dentro de columnas [cm]
+\def\captionlrmargin {0.5}         % Márgenes izq/der de la leyenda [cm]
+\def\captionlrmarginmc {0.5}       % Mar. izq/der leyenda dentro de columnas [cm]
 \def\captionmarginmultimg {0.0}    % Margen izq/der leyendas múltiple img [cm]
 \def\captionnumcode {arabic}       % N° código {arabic,alph,Alph,roman,Roman}
 \def\captionnumequation {arabic}   % N° ecuaciones {arabic,alph,Alph,roman,Roman}
@@ -42,8 +42,8 @@
 \def\captionsubchar {.}            % Carácter entre N° objeto y N° subfigura/tabla
 \def\captiontbmarginfigure {9.35}  % Margen sup/inf de la leyenda en fig. [pt]
 \def\captiontbmargintable {7.0}    % Margen sup/inf de la leyenda en tab. [pt]
-\def\captiontextbold {false}       % Etiqueta (código,figura,tabla) en negrita
-\def\captiontextsubnumbold {false} % N° subfigura/subtabla en negrita
+\def\captiontextbold {true}        % Etiqueta (código,figura,tabla) en negrita
+\def\captiontextsubnumbold {true}  % N° subfigura/subtabla en negrita
 \def\codecaptiontop {true}         % Leyenda arriba del código fuente
 \def\figurecaptiontop {false}      % Leyenda arriba de las imágenes
 \def\sectioncaptiondelimiter {.}   % Carácter delimitador n° objeto y sección
@@ -70,7 +70,6 @@
 \def\footnotepagetoprule {false}   % Footnote en pag. tienen separador superior
 \def\footnoterestart {none}        % N° footnote {none,chap,page,(s/ss/sss/ssss)ec}
 \def\fpremovetopbottomcenter{true} % Elimina espacio vertical al centrar con b!,t!
-\def\hfpdashcharstyle {--}         % Estilo del guión en portadas,header-footer,etc
 \def\imagedefaultplacement {H}     % Posición por defecto de las imágenes
 \def\marginalignbottom {-0.30}     % Margen inferior entorno align [cm]
 \def\marginaligncaptbottom {0.05}  % Margen inferior entorno align caption[cm]
@@ -144,24 +143,22 @@
 \def\cfgpdftoolbar {true}          % Muestra barra de herramientas lector pdf
 \def\cfgshowbookmarkmenu {false}   % Muestra menú marcadores al abrir el pdf
 \def\indexdepth {4}                % Profundidad de los marcadores
-\def\pdfcompilecompression {9}     % Factor de compresión del pdf (0-9)
-\def\pdfcompileobjcompression {2}  % Nivel compresión objetos del pdf (0-3)
 \def\usepdfmetadata {true}         % Añade metadatos al pdf compilado
 
 % NOMBRE DE OBJETOS
-\def\nameabstract {Resumen}           % Nombre del resumen-abstract
-\def\namemathcol {Corolario}          % Nombre de los colorarios
-\def\namemathdefn {Definición}        % Nombre de las definiciones
-\def\namemathej {Ejemplo}             % Nombre de los ejemplos
-\def\namemathlem {Lema}               % Nombre de los lemas
-\def\namemathobs {Observación}        % Nombre de las observaciones
-\def\namemathprp {Proposición}        % Nombre de las proposiciones
-\def\namemaththeorem {Teorema}        % Nombre de los teoremas
-\def\namereferences {Referencias}     % Nombre de la sección de referencias
-\def\nomltappendixsection {Anexo}     % Etiqueta sección en anexo/apéndices
-\def\nomltwfigure {Figura}            % Etiqueta leyenda de las figuras
-\def\nomltwsrc {Código}               % Etiqueta leyenda del código fuente
-\def\nomltwtable {Tabla}              % Etiqueta leyenda de las tablas
+\def\nameabstract {Resumen}        % Nombre del resumen-abstract
+\def\namemathcol {Corolario}       % Nombre de los colorarios
+\def\namemathdefn {Definición}     % Nombre de las definiciones
+\def\namemathej {Ejemplo}          % Nombre de los ejemplos
+\def\namemathlem {Lema}            % Nombre de los lemas
+\def\namemathobs {Observación}     % Nombre de las observaciones
+\def\namemathprp {Proposición}     % Nombre de las proposiciones
+\def\namemaththeorem {Teorema}     % Nombre de los teoremas
+\def\namereferences {Referencias}  % Nombre de la sección de referencias
+\def\nomltappendixsection {Anexo}  % Etiqueta sección en anexo/apéndices
+\def\nomltwfigure {Figura}         % Etiqueta leyenda de las figuras
+\def\nomltwsrc {Código}            % Etiqueta leyenda del código fuente
+\def\nomltwtable {Tabla}           % Etiqueta leyenda de las tablas
 
 % CONFIGURA BEAMER
 % http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
