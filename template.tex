@@ -3953,8 +3953,8 @@
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.0-4-PRES},
-		Template.Version.Hash={D798CE91D4B3709896957F12B45032E9},
+		Template.Version.Dev={1.1.0-5-PRES},
+		Template.Version.Hash={B13114C17068077356913681BA57EDC1},
 		Template.Version.Release={1.1.0},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -4155,6 +4155,91 @@
 	\coretemplatemessage{Usando estilo citas referencias custom, importar librerias y configuraciones posterior al llamado de template.tex en archivo principal}
 }{
 	\throwbadconfig{Estilo citas desconocido}{\stylecitereferences}{bibtex,custom}}
+}
+
+% -----------------------------------------------------------------------------
+% Configuración anexo
+% -----------------------------------------------------------------------------
+\patchcmd{\appendices}{\quad}{\sectionappendixlastchar\quad}{}{}
+
+% -----------------------------------------------------------------------------
+% Reconfiguración de tamaño de páginas
+% -----------------------------------------------------------------------------
+\makeatletter
+	\def\ifGm@preamble#1{\@firstofone}
+	\appto\restoregeometry{
+		\pdfpagewidth=\paperwidth
+		\pdfpageheight=\paperheight}
+	\apptocmd\newgeometry{
+		\pdfpagewidth=\paperwidth
+		\pdfpageheight=\paperheight}{}{}
+\makeatother
+
+% -----------------------------------------------------------------------------
+% Configuración de hbox y vbox
+% -----------------------------------------------------------------------------
+\hfuzz=200pt
+\vfuzz=200pt
+\hbadness=\maxdimen
+\vbadness=\maxdimen
+
+% -----------------------------------------------------------------------------
+% Configura las fuentes
+% -----------------------------------------------------------------------------
+\makeatletter
+\def\Hv@scale{.95}
+\makeatother
+
+% -----------------------------------------------------------------------------
+% Configuraciones de las tablas
+% -----------------------------------------------------------------------------
+
+% Reinicia el número de cada fila en todas las tablas
+\makeatletter
+\preto\tabular{\global\rownum=\z@}
+\preto\tabularx{\global\rownum=\z@}
+\makeatother
+
+% -----------------------------------------------------------------------------
+% Se activa el modo estricto de revisión de números de página
+% -----------------------------------------------------------------------------
+\strictpagecheck
+
+% -----------------------------------------------------------------------------
+% Se activa el word-wrap para textos con \texttt{}
+% -----------------------------------------------------------------------------
+\ttfamily \hyphenchar\the\font=`\-
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds} % Word-wrap para las \url
+\makeatother
+
+% -----------------------------------------------------------------------------
+% Se define el tipo de texto de los url
+% -----------------------------------------------------------------------------
+\urlstyle{\fonturl}
+
+% -----------------------------------------------------------------------------
+% Configuraciones del motor de compilación
+% -----------------------------------------------------------------------------
+\ifthenelse{\equal{\compilertype}{pdf2latex}}{
+	% Nivel de compresión
+	\pdfcompresslevel=\pdfcompilecompression
+	
+	% El óptimo es 2, según
+	% http://texdoc.net/texmf-dist/doc/pdftex/manual/pdftex-a.pdf p.20
+	\pdfdecimaldigits=2
+	
+	% Inclusión de PDF
+	\pdfinclusionerrorlevel=0
+	
+	% Compresión de objetos
+	\pdfobjcompresslevel=\pdfcompileobjcompression
+}{
+\ifthenelse{\equal{\compilertype}{xelatex}}{
+}{
+\ifthenelse{\equal{\compilertype}{lualatex}}{
+}{
+	\throwbadconfig{Compilador desconocido}{\compilertype}{pdf2latex,xelatex,lualatex}}}
 }
 
 % -----------------------------------------------------------------------------
