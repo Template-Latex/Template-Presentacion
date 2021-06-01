@@ -135,7 +135,6 @@
 \usepackage{pdflscape}     % Modo página horizontal de página
 \usepackage{pdfpages}      % Permite administrar páginas en pdf
 \usepackage{physics}       % Paquete de matemáticas
-% \usepackage{ragged2e}    % Redefine centering
 \usepackage{rotating}      % Permite rotación de objetos
 \usepackage{selinput}      % Compatibilidad con acentos
 \usepackage{setspace}      % Cambia el espacio entre líneas
@@ -145,20 +144,6 @@
 \usepackage{url}           % Permite añadir enlaces
 \usepackage{wrapfig}       % Posición de imágenes
 \usepackage{xspace}        % Adminsitra espacios en párrafos y líneas
-
-% En v6.3.7 se desactiva cellspace
-% \usepackage{cellspace}   % Tamaños en celdas de tablas
-
-% El paquete colortbl queda obsoleto con array+xcolor si la versión es inferior
-% a v1.0c, se recomienda actualizar o ocurren errores asociados a @parbox
-
-% Se prefiere no utilizar matlab-prettifier ya que es muy pesada para lo que
-% la librería ofrece
-% \usepackage{matlab-prettifier}
-
-% Tampoco se recomienda el uso de subfigure, posee errores de compatibilidad y
-% está obsoleto
-% \usepackage{subfigure}
 
 % -----------------------------------------------------------------------------
 % LIBRERÍAS CON PARÁMETROS
@@ -225,7 +210,7 @@
 % TIPOGRAFÍA DEL DOCUMENTO
 % -----------------------------------------------------------------------------
 % Tipografías clásicas
-\ifthenelse{\equal{\fontdocument}{lmodern}}{ % Default
+\ifthenelse{\equal{\fontdocument}{lmodern}}{
 	\usepackage{lmodern}
 }{
 \ifthenelse{\equal{\fontdocument}{arial}}{
@@ -371,7 +356,7 @@
 	\usepackage[defaultsans]{droidsans}
 	\renewcommand*\familydefault{\sfdefault}
 }{
-\ifthenelse{\equal{\fontdocument}{fetamont}}{ % Falta implementar aún
+\ifthenelse{\equal{\fontdocument}{fetamont}}{
 	\usepackage{fetamont}
 	\renewcommand*\familydefault{\sfdefault}
 }{
@@ -532,7 +517,7 @@
 % -----------------------------------------------------------------------------
 % TIPOGRAFÍA TYPEWRITER
 % -----------------------------------------------------------------------------
-\ifthenelse{\equal{\fonttypewriter}{tmodern}}{ % Default
+\ifthenelse{\equal{\fonttypewriter}{tmodern}}{
 	\renewcommand*\ttdefault{lmvtt}
 }{
 \ifthenelse{\equal{\fonttypewriter}{anonymouspro}}{
@@ -3977,8 +3962,8 @@
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.0-PRES},
-		Template.Version.Hash={26AD55D2C2ABAE04CDA59354B08D111B},
+		Template.Version.Dev={1.1.0-1-PRES},
+		Template.Version.Hash={E9D983291DE013F2C695811D561ECC96},
 		Template.Version.Release={1.1.0},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -4366,16 +4351,6 @@
     \renewcommand{\refname}{\namereferences} % Nombre de las referencias (bibtex)
     \renewcommand{\bibname}{\namereferences} % Nombre de las referencias (natbib)
     \renewcommand{\tablename}{\nomltwtable} % Nombre de la leyenda de tablas
-
-	% -------------------------------------------------------------------------
-	% Configura el nombre del abstract
-	% -------------------------------------------------------------------------
-	\ifthenelse{\isundefined{\abstractname}}{
-		\newcommand{\abstractname}{\nameabstract}
-		\throwwarning{La variable \noexpand\abstractname no existe, lo que indica que la libreria babel no se ha cargado. Si ha desactivado la configuracion \noexpand\usespanishbabel debe cargar manualmente la libreria babel con algun otro idioma, como por ejemplo \noexpand\usepackage[english]{babel}, o bien define en true la configuracion \noexpand\useenglishbabel}
-	}{
-		\renewcommand{\abstractname}{\nameabstract}
-	}
 
 }
 
