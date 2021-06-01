@@ -1600,7 +1600,7 @@
 	\fi
 }
 
-% Añade una imagen a un env 'image' con borde
+% Añade una imagen a un env "image" con borde
 % 	#1	Label (opcional)
 %	#2	Dirección de la imagen
 %	#3	Parámetros de la imagen
@@ -1609,7 +1609,7 @@
 	\addimageboxed[#1]{#2}{#3}{0}{#4}%
 }
 
-% Añade una imagen a un env 'image' con borde
+% Añade una imagen a un env "image" con borde
 % 	#1	Label (opcional)
 %	#2	Dirección de la imagen
 %	#3	Parámetros de la imagen
@@ -1619,14 +1619,14 @@
 	\checkonlyonenvimage\begingroup\setlength{\fboxsep}{0 pt}\setlength{\fboxrule}{#4 pt}\ifthenelse{\equal{\GLOBALenvimageadded}{true}}{\hspace{\marginimagemultright cm}\hspace{-0.125cm}}{}\subfloat[#5]{\fbox{\includegraphics[#3]{#2}}#1}\endgroup\ifthenelse{\equal{\GLOBALenvimageadded}{true}}{}{\def\GLOBALenvimageadded {true}}%
 }
 
-% Añade una imagen a un env 'image' con borde sin leyenda
+% Añade una imagen a un env "image" con borde sin leyenda
 %	#1	Dirección de la imagen
 %	#2	Parámetros de la imagen
 \newcommand{\addimageanum}[2]{%
 	\addimageboxedanum{#1}{#2}{0}%
 }
 
-% Añade una imagen a un env 'image' con borde sin leyenda
+% Añade una imagen a un env "image" con borde sin leyenda
 %	#1	Dirección de la imagen
 %	#2	Parámetros de la imagen
 %	#3	Ancho de la línea (en pt)
@@ -2426,9 +2426,6 @@
 	\newcolumn\newcolumn\clearpage%
 }
 
-% Inserta un lipsum corregido
-% \newcommand{\slipsum}[1][]{~\lipsum[#1]}
-
 % Redimensiona un ítem
 % 	#1	Tamaño del nuevo objeto (En linewidth)
 %	#2	Objeto a redimensionar
@@ -2501,12 +2498,6 @@
 \newcommand{\hreftext}[1]{%
 	\ifthenelse{\equal{\fonturl}{same}}{#1}{\ifthenelse{\equal{\fonturl}{tt}}{\texttt{#1}}{\ifthenelse{\equal{\fonturl}{rm}}{\textrm{#1}}{\ifthenelse{\equal{\fonturl}{sf}}{\textsf{#1}}{}}}}%
 }
-
-% Parcha href para incluir el estilo
-% \let\oldhref=\href
-% \renewcommand{\href}[2]{
-% 	\oldhref{#1}{\insertHREFtext{#2}}
-% }
 
 % Inserta un email con un link cliqueable
 %	#1 	Dirección email
@@ -3962,8 +3953,8 @@
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.0-1-PRES},
-		Template.Version.Hash={CE8D37A226527A1731EF9053413F97D5},
+		Template.Version.Dev={1.1.0-2-PRES},
+		Template.Version.Hash={E0B1B212791E0812FF0976DD095DA9BC},
 		Template.Version.Release={1.1.0},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
