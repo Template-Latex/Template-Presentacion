@@ -117,60 +117,6 @@
 	\sectiondot{subsubsection}}{
 }
 \usepackage[pdfencoding=auto,psdextra]{hyperref}
-\ifthenelse{\equal{\stylecitereferences}{natbib}}{
-	\usepackage[nottoc,notlof,notlot]{tocbibind}
-	\ifthenelse{\equal{\natbibrefstyle}{apa}}{
-		\ifthenelse{\equal{\natbibsquare}{true}}{
-			\usepackage[square]{natbib}
-		}{
-			\usepackage[round]{natbib}
-		}
-	}{
-	\ifthenelse{\equal{\natbibrefstyle}{ieeetr}}{
-		\ifthenelse{\equal{\natbibsquare}{true}}{
-			\usepackage[square,numbers]{natbib}
-		}{
-			\usepackage[round,numbers]{natbib}
-		}
-	}{
-	\ifthenelse{\equal{\natbibrefstyle}{unsrt}}{
-		\ifthenelse{\equal{\natbibsquare}{true}}{
-			\usepackage[square,numbers]{natbib}
-		}{
-			\usepackage[round,numbers]{natbib}
-		}
-	}{
-	\ifthenelse{\equal{\natbibrefstyle}{abbrvnat}}{
-		\ifthenelse{\equal{\natbibsquare}{true}}{
-			\usepackage[square,numbers]{natbib}
-		}{
-			\usepackage[round,numbers]{natbib}
-		}
-	}{
-		\ifthenelse{\equal{\natbibnumbers}{true}}{
-			\ifthenelse{\equal{\natbibsquare}{true}}{
-				\usepackage[square,numbers]{natbib}
-			}{
-				\usepackage[round,numbers]{natbib}
-			}
-		}{
-			\ifthenelse{\equal{\natbibsquare}{true}}{
-				\usepackage[square]{natbib}
-			}{
-				\usepackage[round]{natbib}
-			}
-		}
-	}}}}
-}{
-\ifthenelse{\equal{\stylecitereferences}{apacite}}{
-	\usepackage[nottoc,notlof,notlot]{tocbibind}
-	\usepackage{apacite}
-}{
-\ifthenelse{\equal{\stylecitereferences}{bibtex}}{
-}{
-\ifthenelse{\equal{\stylecitereferences}{custom}}{
-}{}}}
-}
 \def\showappendixsecindex{false}
 \ifthenelse{\equal{\showappendixsecindex}{true}}{
 }{

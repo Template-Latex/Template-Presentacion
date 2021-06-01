@@ -59,7 +59,6 @@
 % -----------------------------------------------------------------------------
 % LIBRERÍAS DEL NÚCLEO
 % -----------------------------------------------------------------------------
-
 % Manejo de condicionales
 \usepackage{ifthen}
 
@@ -174,7 +173,6 @@
 % -----------------------------------------------------------------------------
 % LIBRERÍAS CONDICIONALES
 % -----------------------------------------------------------------------------
-
 % Imágenes en modo draft
 \ifthenelse{\equal{\graphicxdraft}{true}}{
 	\usepackage[
@@ -205,64 +203,7 @@
 }
 
 % Referencias
-% Desde v6.2.8 se debe cargar al final para evitar errores:
-% 	- name has been referenced but does not exist, replaced by a fixed one
-% Desde v6.5.6 se carga después de las referencias (apacite, natbib, bibtex)
-\usepackage[pdfencoding=auto,psdextra]{hyperref} % Enlaces, referencias
-\ifthenelse{\equal{\stylecitereferences}{natbib}}{ % Formato citas natbib
-	\usepackage[nottoc,notlof,notlot]{tocbibind}
-	\ifthenelse{\equal{\natbibrefstyle}{apa}}{
-		\ifthenelse{\equal{\natbibsquare}{true}}{
-			\usepackage[square]{natbib}
-		}{
-			\usepackage[round]{natbib}
-		}
-	}{
-	\ifthenelse{\equal{\natbibrefstyle}{ieeetr}}{
-		\ifthenelse{\equal{\natbibsquare}{true}}{
-			\usepackage[square,numbers]{natbib}
-		}{
-			\usepackage[round,numbers]{natbib}
-		}
-	}{
-	\ifthenelse{\equal{\natbibrefstyle}{unsrt}}{
-		\ifthenelse{\equal{\natbibsquare}{true}}{
-			\usepackage[square,numbers]{natbib}
-		}{
-			\usepackage[round,numbers]{natbib}
-		}
-	}{
-	\ifthenelse{\equal{\natbibrefstyle}{abbrvnat}}{
-		\ifthenelse{\equal{\natbibsquare}{true}}{
-			\usepackage[square,numbers]{natbib}
-		}{
-			\usepackage[round,numbers]{natbib}
-		}
-	}{
-		\ifthenelse{\equal{\natbibnumbers}{true}}{
-			\ifthenelse{\equal{\natbibsquare}{true}}{
-				\usepackage[square,numbers]{natbib}
-			}{
-				\usepackage[round,numbers]{natbib}
-			}
-		}{
-			\ifthenelse{\equal{\natbibsquare}{true}}{
-				\usepackage[square]{natbib}
-			}{
-				\usepackage[round]{natbib}
-			}
-		}
-	}}}}
-}{
-\ifthenelse{\equal{\stylecitereferences}{apacite}}{ % Formato citas apacite
-	\usepackage[nottoc,notlof,notlot]{tocbibind}
-	\usepackage{apacite}
-}{
-\ifthenelse{\equal{\stylecitereferences}{bibtex}}{ % Formato citas bibtex
-}{
-\ifthenelse{\equal{\stylecitereferences}{custom}}{ % Formato citas custom
-}{}}}
-}
+\usepackage[pdfencoding=auto,psdextra]{hyperref}
 
 % Anexos/Apéndices
 \def\showappendixsecindex{false}
@@ -283,7 +224,6 @@
 % -----------------------------------------------------------------------------
 % TIPOGRAFÍA DEL DOCUMENTO
 % -----------------------------------------------------------------------------
-
 % Tipografías clásicas
 \ifthenelse{\equal{\fontdocument}{lmodern}}{ % Default
 	\usepackage{lmodern}
@@ -4038,7 +3978,7 @@
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
 		Template.Version.Dev={1.0.2-PRES},
-		Template.Version.Hash={60E6D13791A9D261C9D81DAE40C2D6A2},
+		Template.Version.Hash={97D748A03992B8393944CE17B0E09EC9},
 		Template.Version.Release={1.0.2},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -4048,7 +3988,6 @@
 		Universidad.Ubicacion={\pdfmetainfouniubicacion}
 	},
 	pdfkeywords={\cfgpdfkeywords},
-	pdflang={\documentlang},
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
@@ -4224,22 +4163,7 @@
 % -----------------------------------------------------------------------------
 % Configuración de referencias y citas
 % -----------------------------------------------------------------------------
-\ifthenelse{\equal{\stylecitereferences}{natbib}}{
-	\def\twocolumnreferencesmargin{-0.35cm}
-	\bibliographystyle{\natbibrefstyle}
-	\setlength{\bibsep}{\natbibrefsep pt}
-	\newcommand{\shortcite}[1]{\citep{#1}}
-	\newcommand{\fullcite}[1]{\citet{#1}}
-}{
-\ifthenelse{\equal{\stylecitereferences}{apacite}}{
-	\def\twocolumnreferencesmargin{-0.39cm}
-	\bibliographystyle{\apacitestyle}
-	\setlength{\bibitemsep}{\apaciterefsep pt}
-	\newcommand{\citep}[1]{\fullcite{#1}}
-	\newcommand{\citet}[1]{\shortcite{#1}}
-}{
 \ifthenelse{\equal{\stylecitereferences}{bibtex}}{
-	\def\twocolumnreferencesmargin{-0.35cm}
 	\bibliographystyle{\bibtexstyle}
 	\newlength{\bibitemsep}
 	\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
@@ -4255,136 +4179,7 @@
 \ifthenelse{\equal{\stylecitereferences}{custom}}{
 	\coretemplatemessage{Usando estilo citas referencias custom, importar librerias y configuraciones posterior al llamado de template.tex en archivo principal}
 }{
-	\throwbadconfig{Estilo citas desconocido}{\stylecitereferences}{bibtex,apacite,natbib,custom}}}}
-}
-% Crea referencias enumeradas en apacite
-\makeatletter
-\ifthenelse{\equal{\stylecitereferences}{apacite}}{
-	\ifthenelse{\equal{\apaciterefnumber}{true}}{
-		\newcounter{apaciteNumberCounter}
-		\renewcommand{\theapaciteNumberCounter}{\apaciterefnumberinit\arabic{apaciteNumberCounter}\apaciterefnumberfinal} % Formato de número
-		\patchcmd{\@lbibitem}{\item[}{\item[\stepcounter{apaciteNumberCounter}{\hss\llap{\theapaciteNumberCounter}\quad}}{}{}
-		\setlength{\bibleftmargin}{2.54em}
-		\setlength{\bibindent}{-0.54em}
-	}{}
-}{}
-\makeatother
-% Desactiva la URL de apacite
-\ifthenelse{\equal{\stylecitereferences}{apacite}}{
-	\ifthenelse{\equal{\apaciteshowurl}{false}}{
-		\renewenvironment{APACrefURL}[1][]{}{}
-		\AtBeginEnvironment{APACrefURL}{\renewcommand{\url}[1]{}}
-		\renewcommand{\doiprefix}{doi:~\kern-1pt}
-	}{}
-}{}
-% Referencias en 2 columnas
-\makeatletter
-\ifthenelse{\equal{\twocolumnreferences}{true}}{
-	\renewenvironment{thebibliography}[1]
-	{\begin{multicols}{2}[\section*{\refname}\vspace{\twocolumnreferencesmargin}]
-		\@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}
-		\list{\@biblabel{\@arabic\c@enumiv}}
-		{\settowidth\labelwidth{\@biblabel{#1}}
-			\leftmargin\labelwidth
-			\advance\leftmargin\labelsep
-			\@openbib@code
-			\usecounter{enumiv}
-			\let\p@enumiv\@empty
-			\renewcommand\theenumiv{\@arabic\c@enumiv}}
-		\sloppy
-		\clubpenalty 4000
-		\@clubpenalty \clubpenalty
-		\widowpenalty 4000
-		\sfcode`\.\@m}
-		{\def\@noitemerr
-		{\@latex@warning{Ambiente `thebibliography' no definido}}
-		\endlist\end{multicols}}}{}
-\makeatother
-
-% -----------------------------------------------------------------------------
-% Configuración anexo
-% -----------------------------------------------------------------------------
-\patchcmd{\appendices}{\quad}{\sectionappendixlastchar\quad}{}{}
-
-% -----------------------------------------------------------------------------
-% Reconfiguración de tamaño de páginas
-% -----------------------------------------------------------------------------
-\makeatletter
-	\def\ifGm@preamble#1{\@firstofone}
-	\appto\restoregeometry{
-		\pdfpagewidth=\paperwidth
-		\pdfpageheight=\paperheight}
-	\apptocmd\newgeometry{
-		\pdfpagewidth=\paperwidth
-		\pdfpageheight=\paperheight}{}{}
-\makeatother
-
-% -----------------------------------------------------------------------------
-% Configuración de hbox y vbox
-% -----------------------------------------------------------------------------
-\hfuzz=200pt
-\vfuzz=200pt
-\hbadness=\maxdimen
-\vbadness=\maxdimen
-% \sloppy Sloppy arruina portadas al exigir "justify", desde 6.4.2 se desactiva
-
-% -----------------------------------------------------------------------------
-% Configura las fuentes
-% -----------------------------------------------------------------------------
-\makeatletter
-\def\Hv@scale{.95}
-\makeatother
-
-% -----------------------------------------------------------------------------
-% Configuraciones de las tablas
-% -----------------------------------------------------------------------------
-
-% Reinicia el número de cada fila en todas las tablas
-\makeatletter
-\preto\tabular{\global\rownum=\z@}
-\preto\tabularx{\global\rownum=\z@}
-\makeatother
-
-% -----------------------------------------------------------------------------
-% Se activa el modo estricto de revisión de números de página
-% -----------------------------------------------------------------------------
-\strictpagecheck
-
-% -----------------------------------------------------------------------------
-% Se activa el word-wrap para textos con \texttt{}
-% -----------------------------------------------------------------------------
-\ttfamily \hyphenchar\the\font=`\-
-\makeatletter
-\g@addto@macro{\UrlBreaks}{\UrlOrds} % Word-wrap para las \url
-\makeatother
-
-% -----------------------------------------------------------------------------
-% Se define el tipo de texto de los url
-% -----------------------------------------------------------------------------
-\urlstyle{\fonturl}
-
-% -----------------------------------------------------------------------------
-% Configuraciones del motor de compilación
-% -----------------------------------------------------------------------------
-\ifthenelse{\equal{\compilertype}{pdf2latex}}{
-	% Nivel de compresión
-	\pdfcompresslevel=\pdfcompilecompression
-	
-	% El óptimo es 2, según
-	% http://texdoc.net/texmf-dist/doc/pdftex/manual/pdftex-a.pdf p.20
-	\pdfdecimaldigits=2
-	
-	% Inclusión de PDF
-	\pdfinclusionerrorlevel=0
-	
-	% Compresión de objetos
-	\pdfobjcompresslevel=\pdfcompileobjcompression
-}{
-\ifthenelse{\equal{\compilertype}{xelatex}}{
-}{
-\ifthenelse{\equal{\compilertype}{lualatex}}{
-}{
-	\throwbadconfig{Compilador desconocido}{\compilertype}{pdf2latex,xelatex,lualatex}}}
+	\throwbadconfig{Estilo citas desconocido}{\stylecitereferences}{bibtex,custom}}
 }
 
 % -----------------------------------------------------------------------------
@@ -4578,20 +4373,6 @@
     % Estilo de títulos
     % -------------------------------------------------------------------------
     \def\bibfont{\fontsizerefbibl} % Tamaño de fuente de las referencias
-
-	% -------------------------------------------------------------------------
-	% Estilo citas
-	% -------------------------------------------------------------------------
-	\ifthenelse{\equal{\stylecitereferences}{apacite}}{
-		\renewcommand{\BOthers}[1]{\apacitebothers\hbox{}}
-	}{}
-
-	% -------------------------------------------------------------------------
-	% Muestra los números de línea
-	% -------------------------------------------------------------------------
-	\ifthenelse{\equal{\showlinenumbers}{true}}{
-		\linenumbers}{
-	}
 
 	% -------------------------------------------------------------------------
 	% Configura el nombre del abstract

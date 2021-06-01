@@ -88,7 +88,7 @@
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
 		Template.Version.Dev={1.0.2-PRES},
-		Template.Version.Hash={60E6D13791A9D261C9D81DAE40C2D6A2},
+		Template.Version.Hash={97D748A03992B8393944CE17B0E09EC9},
 		Template.Version.Release={1.0.2},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -98,7 +98,6 @@
 		Universidad.Ubicacion={\pdfmetainfouniubicacion}
 	},
 	pdfkeywords={\cfgpdfkeywords},
-	pdflang={\documentlang},
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
@@ -224,22 +223,7 @@
 }{
 	\throwbadconfig{Posicion de leyendas desconocida}{\captionalignment}{justified,centered,left,right}}}}
 }
-\ifthenelse{\equal{\stylecitereferences}{natbib}}{
-	\def\twocolumnreferencesmargin{-0.35cm}
-	\bibliographystyle{\natbibrefstyle}
-	\setlength{\bibsep}{\natbibrefsep pt}
-	\newcommand{\shortcite}[1]{\citep{#1}}
-	\newcommand{\fullcite}[1]{\citet{#1}}
-}{
-\ifthenelse{\equal{\stylecitereferences}{apacite}}{
-	\def\twocolumnreferencesmargin{-0.39cm}
-	\bibliographystyle{\apacitestyle}
-	\setlength{\bibitemsep}{\apaciterefsep pt}
-	\newcommand{\citep}[1]{\fullcite{#1}}
-	\newcommand{\citet}[1]{\shortcite{#1}}
-}{
 \ifthenelse{\equal{\stylecitereferences}{bibtex}}{
-	\def\twocolumnreferencesmargin{-0.35cm}
 	\bibliographystyle{\bibtexstyle}
 	\newlength{\bibitemsep}
 	\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
@@ -255,86 +239,7 @@
 \ifthenelse{\equal{\stylecitereferences}{custom}}{
 	\coretemplatemessage{Usando estilo citas referencias custom, importar librerias y configuraciones posterior al llamado de template.tex en archivo principal}
 }{
-	\throwbadconfig{Estilo citas desconocido}{\stylecitereferences}{bibtex,apacite,natbib,custom}}}}
-}
-\makeatletter
-\ifthenelse{\equal{\stylecitereferences}{apacite}}{
-	\ifthenelse{\equal{\apaciterefnumber}{true}}{
-		\newcounter{apaciteNumberCounter}
-\renewcommand{\theapaciteNumberCounter}{\apaciterefnumberinit\arabic{apaciteNumberCounter}\apaciterefnumberfinal}
-		\patchcmd{\@lbibitem}{\item[}{\item[\stepcounter{apaciteNumberCounter}{\hss\llap{\theapaciteNumberCounter}\quad}}{}{}
-		\setlength{\bibleftmargin}{2.54em}
-		\setlength{\bibindent}{-0.54em}
-	}{}
-}{}
-\makeatother
-\ifthenelse{\equal{\stylecitereferences}{apacite}}{
-	\ifthenelse{\equal{\apaciteshowurl}{false}}{
-		\renewenvironment{APACrefURL}[1][]{}{}
-		\AtBeginEnvironment{APACrefURL}{\renewcommand{\url}[1]{}}
-		\renewcommand{\doiprefix}{doi:~\kern-1pt}
-	}{}
-}{}
-\makeatletter
-\ifthenelse{\equal{\twocolumnreferences}{true}}{
-	\renewenvironment{thebibliography}[1]
-	{\begin{multicols}{2}[\section*{\refname}\vspace{\twocolumnreferencesmargin}]
-		\@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}
-		\list{\@biblabel{\@arabic\c@enumiv}}
-		{\settowidth\labelwidth{\@biblabel{#1}}
-			\leftmargin\labelwidth
-			\advance\leftmargin\labelsep
-			\@openbib@code
-			\usecounter{enumiv}
-			\let\p@enumiv\@empty
-			\renewcommand\theenumiv{\@arabic\c@enumiv}}
-		\sloppy
-		\clubpenalty 4000
-		\@clubpenalty \clubpenalty
-		\widowpenalty 4000
-		\sfcode`\.\@m}
-		{\def\@noitemerr
-		{\@latex@warning{Ambiente `thebibliography' no definido}}
-		\endlist\end{multicols}}}{}
-\makeatother
-\patchcmd{\appendices}{\quad}{\sectionappendixlastchar\quad}{}{}
-\makeatletter
-	\def\ifGm@preamble#1{\@firstofone}
-	\appto\restoregeometry{
-		\pdfpagewidth=\paperwidth
-		\pdfpageheight=\paperheight}
-	\apptocmd\newgeometry{
-		\pdfpagewidth=\paperwidth
-		\pdfpageheight=\paperheight}{}{}
-\makeatother
-\hfuzz=200pt
-\vfuzz=200pt
-\hbadness=\maxdimen
-\vbadness=\maxdimen
-\makeatletter
-\def\Hv@scale{.95}
-\makeatother
-\makeatletter
-\preto\tabular{\global\rownum=\z@}
-\preto\tabularx{\global\rownum=\z@}
-\makeatother
-\strictpagecheck
-\ttfamily \hyphenchar\the\font=`\-
-\makeatletter
-\g@addto@macro{\UrlBreaks}{\UrlOrds}
-\makeatother
-\urlstyle{\fonturl}
-\ifthenelse{\equal{\compilertype}{pdf2latex}}{
-	\pdfcompresslevel=\pdfcompilecompression
-	\pdfdecimaldigits=2
-	\pdfinclusionerrorlevel=0
-	\pdfobjcompresslevel=\pdfcompileobjcompression
-}{
-\ifthenelse{\equal{\compilertype}{xelatex}}{
-}{
-\ifthenelse{\equal{\compilertype}{lualatex}}{
-}{
-	\throwbadconfig{Compilador desconocido}{\compilertype}{pdf2latex,xelatex,lualatex}}}
+	\throwbadconfig{Estilo citas desconocido}{\stylecitereferences}{bibtex,custom}}
 }
 \setcounter{secnumdepth}{4}
 \newcounter{subsubsubsection}[subsubsection]
