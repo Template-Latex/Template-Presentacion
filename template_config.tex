@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Configuraciones del template
-% Versión:      1.1.0 (01/06/2021)
+% Versión:      1.1.1 (15/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -110,9 +110,6 @@
 \def\tablepaddingv {1.05}          % Espaciado vertical de celda de las tablas
 \def\tikzdefaultplacement {H}      % Posición por defecto de las figuras tikz
 
-% CONFIGURACIÓN DE LOS TÍTULOS
-\def\showdotaftersnum {true}       % Punto al final de n° (s/ss/sss/ssss)ection
-
 % CONFIGURACIÓN DE LOS COLORES DEL DOCUMENTO
 \def\captioncolor {black}          % Color nombre objeto (código,figura,tabla)
 \def\captiontextcolor {black}      % Color de la leyenda
@@ -186,7 +183,7 @@
 	% \usetheme{Ilmenau}
 	% \usetheme{JuanLesPins}
 	% \usetheme{Luebeck}
-	% \usetheme{Madrid}
+	\usetheme{Madrid}
 	% \usetheme{Malmoe}
 	% \usetheme{Marburg}
 	% \usetheme{Montpellier}
@@ -197,19 +194,19 @@
 	% \usetheme{Szeged}
 	% \usetheme{Warsaw}
 	
-	% TEMAS TIPO -INNER-, USAR SÓLO SI NO SE APLICA EL GLOBAL
+	% TEMAS TIPO <INNER>, USAR SÓLO SI NO SE APLICA EL GLOBAL
 	% http://www.cpt.univ-mrs.fr/~masson/latex/Beamer-appearance-cheat-sheet.pdf
 	
 	% \useinnertheme{default}
 	% \useinnertheme{circles}
-	\useinnertheme{rectangles}
+	%\useinnertheme{rectangles}
 	% \useinnertheme{rounded}
 	% \useinnertheme{inmargin}
 	
-	% TEMAS TIPO -OUTER-, USAR SÓLO SI NO SE APLICA EL GLOBAL
+	% TEMAS TIPO <OUTER>, USAR SÓLO SI NO SE APLICA EL GLOBAL
 	
 	% \useoutertheme{default}
-	\useoutertheme{infolines}
+	%\useoutertheme{infolines}
 	% \useoutertheme{miniframes}
 	% \useoutertheme{smoothbars}
 	% \useoutertheme{sidebar}
@@ -218,12 +215,12 @@
 	% \useoutertheme{tree}
 	% \useoutertheme{smoothtree}
 	
-	% COLORES DE LA SLIDE, DESCOMENTAR PARA APLICAR
+	% COLORES DE LA SLIDE, USAR SÓLO SI NO SE APLICA EL GLOBAL
 	% https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_color.html
 	
-	%\usecolortheme{default}
-	\usecolortheme[named=cardinalred]{structure}
-	%\usecolortheme{sidebartab}
+	% \usecolortheme{default}
+	%\usecolortheme[named=cardinalred]{structure}
+	% \usecolortheme{sidebartab}
 
 	% \usecolortheme{albatross}
 	% \usecolortheme{beaver}
@@ -234,12 +231,12 @@
 	% \usecolortheme{fly}
 	% \usecolortheme{lily}
 	% \usecolortheme{monarca}
-	\usecolortheme{orchid}
+	%\usecolortheme{orchid}
 	% \usecolortheme{rose}
 	% \usecolortheme{seagull}
 	% \usecolortheme{seahorse}
 	% \usecolortheme{spruce}
-	\usecolortheme{whale}
+	%\usecolortheme{whale}
 	% \usecolortheme{wolverine}
 
 	% IDIOMA
