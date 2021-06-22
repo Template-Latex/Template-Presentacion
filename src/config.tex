@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Configuraciones del template
-% Versión:      1.1.3 (21/06/2021)
+% Versión:      1.1.4 (22/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -243,9 +243,16 @@
 	% IDIOMA
 	\uselanguage{spanish}
 	\languagepath{spanish}
+	
+	% OPACIDAD DEL ENTORNO \tabularframe
+	\def\opacitytabularframe {0.4}
 
 	% PARA REESTABLECER EL HEADLINE, COMENTAR
 	\setbeamertemplate{headline}{}
+	
+	% ELEMENTOS CON \pause o \onslide ESTÁN OCULTOS
+	\setbeamercovered{invisible}
+	% \setbeamercovered{transparent}
 	
 	% PARA ELIMINAR EL FOOTER, DESCOMENTAR
 	% \setbeamertemplate{footline}{}

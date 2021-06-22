@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Funciones para insertar imágenes
-% Versión:      1.1.3 (21/06/2021)
+% Versión:      1.1.4 (22/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -15,16 +15,40 @@
 	\addimageboxed[#1]{#2}{#3}{0}{#4}%
 }
 \newcommand{\addimageboxed}[5][]{%
-	\checkonlyonenvimage\begingroup\setlength{\fboxsep}{0 pt}\setlength{\fboxrule}{#4 pt}\ifthenelse{\equal{\GLOBALenvimageadded}{true}}{\hspace{\marginimagemultright cm}\hspace{-0.125cm}}{}\subfloat[#5]{\fbox{\includegraphics[#3]{#2}}#1}\endgroup\ifthenelse{\equal{\GLOBALenvimageadded}{true}}{}{\def\GLOBALenvimageadded {true}}%
+\checkonlyonenvimage
+\begingroup
+	\setlength{\fboxsep}{0 pt}%
+	\setlength{\fboxrule}{#4 pt}%
+	\ifthenelse{\equal{\GLOBALenvimageadded}{true}}{%
+		\hspace{\marginimagemultright cm}%
+		\hspace{-2cm}%
+	}{}%
+	\subfloat[#5]{%
+		\fbox{\includegraphics[#3]{#2}}#1}%
+\endgroup
+	\def\GLOBALenvimageadded {true}%
 }
 \newcommand{\addimageanum}[2]{%
 	\addimageboxedanum{#1}{#2}{0}%
 }
 \newcommand{\addimageboxedanum}[3]{%
-	\checkonlyonenvimage\begingroup\setlength{\fboxsep}{0 pt}\setlength{\fboxrule}{#3 pt}\ifthenelse{\equal{\GLOBALenvimageadded}{true}}{\hspace{\marginimagemultright cm}\hspace{-0.125cm}}{}\fbox{\includegraphics[#2]{#1}}\endgroup\ifthenelse{\equal{\GLOBALenvimageadded}{true}}{}{\def\GLOBALenvimageadded {true}}%
+\checkonlyonenvimage
+\begingroup
+	\setlength{\fboxsep}{0 pt}%
+	\setlength{\fboxrule}{#3 pt}%
+	\ifthenelse{\equal{\GLOBALenvimageadded}{true}}{%
+		\hspace{\marginimagemultright cm}%
+		\hspace{-0.125cm}%
+	}{}%
+	\fbox{\includegraphics[#2]{#1}}%
+\endgroup
+	\def\GLOBALenvimageadded {true}%
 }
 \newcommand{\imagesnewline}{%
-\checkonlyonenvimage\def\GLOBALenvimageadded {false}\vspace{\marginimagemultbottom cm}\linebreak\noindent
+\checkonlyonenvimage
+	\def\GLOBALenvimageadded {false}%
+	\vspace{\marginimagemultbottom cm}%
+\linebreak\noindent
 }
 \newcommand{\imageshspace}[1]{%
 	\checkonlyonenvimage\def\GLOBALenvimageadded {false}\hspace{#1}%
@@ -42,11 +66,11 @@
 	\checkoutsideenvimage
 	\vspace{\marginimagetop cm}
 \begin{figure}[H]
-		\thisfloatpagestyle{fancy}
-		\begingroup
-			\setlength{\fboxsep}{0 pt}
-			\setlength{\fboxrule}{#4 pt}
-			\centering
+		\thisfloatpagestyle{fancy}%
+\begingroup
+			\setlength{\fboxsep}{0 pt}%
+			\setlength{\fboxrule}{#4 pt}%
+\centering
 			\fbox{\includegraphics[#3]{#2}}%
 		\endgroup
 		\ifx\hfuzz#5\hfuzz
