@@ -87,7 +87,7 @@
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
 		Template.Version.Dev={1.1.4-7-PRES},
-		Template.Version.Hash={8CCEB50D3A055E4915B51706D66CA4C9},
+		Template.Version.Hash={27D24C70CD6AAAA634BA7C218209F167},
 		Template.Version.Release={1.1.4},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -395,3 +395,6 @@
 }{
 }
 \newcommand{\justifytext}[1]{\parbox{\linewidth}{#1}}
+\makeatletter
+\let\@cite@ofmt\@firstofone
+\makeatother
