@@ -11,6 +11,7 @@
 % Sitio web:    [https://latex.ppizarror.com/presentacion]
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
+% Crea variables para guardar configuraciones del tabularframe
 \global\def\GLOBALtabularframebarfontsize {\normalsize}
 \global\def\GLOBALtabularframebarheight {0.05}
 \global\def\GLOBALtabularframebartextcentered {true}
@@ -20,10 +21,26 @@
 \global\def\GLOBALtabularframecontentwidthleft {0.4}
 \global\def\GLOBALtabularframecontentwidthright {0.6}
 \global\def\GLOBALtabularframetfcontentlist {}
+
 \def\GLOBALtabularframecolumnselected {1}
 \def\GLOBALtabularinit {false}
+
+% Librerías especiales
+% \usepackage{pgffor}
+% \usepackage{xstring}
+
+% Define contadores
 \newcounter{tabularcolnumber}
 \setcounter{tabularcolnumber}{0}
+
+% Obtiene el enésimo elemento de una lista
+%	#1	La lista de elementos
+%	#2	El número de elemento a recoger
+% \newcommand*\coregetelementlist[2]{\StrBetween[#2,\number\numexpr#2+1]{,#1,},,}
+
+% Función que configra el texto de la barra superior del tabularframe
+% 	#1 Tamaño de letra
+%	#2 Texto centrado
 \newcommand{\tabularframebartextcfg}[2]{
 	\emptyvarerr{\tabularframebartextcfg}{#1}{Tamano fuente no definida}
 	\emptyvarerr{\tabularframebartextcfg}{#2}{Texto centrado no definido}
@@ -31,6 +48,12 @@
 	\global\def\GLOBALtabularframebarfontsize {#1}
 	\global\def\GLOBALtabularframebartextcentered {#2}
 }
+
+% Función que configura el entorno tabular frames
+%	#1	Altura de head en porcentaje (0-1)
+%	#2	Altura de content en porcentaje (0-1)
+%	#3	Ancho de la barra izquierda de contenidos (coloreada)
+%	#4	Ancho de la barra derecha de contenidos
 \newcommand{\tabularframecfg}[4]{
 	\emptyvarerr{\tabularframecfg}{#1}{Altura de head no definido}
 	\emptyvarerr{\tabularframecfg}{#2}{Altura de content no definido}
@@ -41,6 +64,10 @@
 	\global\def\GLOBALtabularframecontentwidthleft {#3}
 	\global\def\GLOBALtabularframecontentwidthright {#4}
 }
+
+% Función que configura la alineación del entorno tabular frames
+%	#1	Columna izquierda contenidos centrada (true/false)
+%	#2	Columna derecha contenidos centrada (true/false)
 \newcommand{\tabularframecfgalign}[2]{
 	\emptyvarerr{\tabularframecfgalign}{#1}{Centrado columna izquierda no definido}
 	\emptyvarerr{\tabularframecfgalign}{#2}{Centrado columna derecha no definido}
@@ -49,23 +76,39 @@
 	\global\def\GLOBALtabularframecontentleftcentered {#1}
 	\global\def\GLOBALtabularframecontentrightcentered {#2}
 }
+
+% Entorno que configura el entorno tabular frames
+%	#1	Número de la columna destacada (desde 1)
 \newenvironment{tabularframehead}[1]{%
 	\emptyvarerr{\tabularframehead}{#1}{Numero de columna destacada no definido}
 	\def\GLOBALtabularframecolumnselected {#1}
 	\def\GLOBALtabularinit {true}
+	% \global\def\GLOBALtabularframetfcontentlist {}
 	\setcounter{tabularcolnumber}{0}%
 	\vspace{\dimexpr-\GLOBALtabularframebarheight\textheight-0.5\footheight}
-\begin{columns}[t,onlytextwidth]
+	\begin{columns}[t,onlytextwidth]%
 	}{
 	\end{columns}
 	\setcounter{tabularcolnumber}{-1}
 }
+
+% Función que repite el último entorno tabular frames
+%	#1	Número de la columna destacada (desde 1)
+% \newcommand{\tabularframeheadrepeatlast}[1]{
+% 	\emptyvarerr{\tabularframeheadrepeatlast}{#1}{Numero de columna destacada no definido}
+% 	\edef\GLOBALtabularframetfcontentlistlast {\GLOBALtabularframetfcontentlist}
 % 	\begin{tabularframehead}{#1}%
 % 		\foreach \x in \GLOBALtabularframetfcontentlistlast {%
 % 			\ifthenelse{\equal{\x}{}}{}{%
+% 				\addtfheadcolumn{\coregetelementlist{\x}{1}}{\coregetelementlist{\x}{2}}
 % 			}%
 % 		}%
 % 	\end{tabularframehead}%
+% }
+
+% Agrega una columna al tabular head
+%	#1	Tamaño de la columna
+%	#2	Texto
 \newcommand{\addtfheadcolumn}[2]{%
 	\ifthenelse{\equal{\GLOBALtabularinit}{true}}{}{%
 		\throwwarning{Funcion \noexpand\addtfheadcolumn no puede usarse fuera del entorno \noexpand\tabularframehead}\stop}%
@@ -91,17 +134,21 @@
 		}%
 	\end{minipage}}%
 }
+
+% Inicia el contenido de un tabular frame
+%	#1	Panel izquierdo
+%	#2	Panel derecho
 \newcommand{\tabularframecontent}[2]{%
 	\ifthenelse{\equal{\thetabularcolnumber}{-1}}{}{%
 		\throwwarning{Funcion \noexpand\addtfheadcolumn no puede usarse fuera del entorno \noexpand\tabularframehead}\stop}%
 	\emptyvarerr{\tabularframecontent}{#1}{Columna izquierda no definida}%
 	\emptyvarerr{\tabularframecontent}{#2}{Columna derecha no definida}%
 	\vspace{-2.5\fboxrule}
-\begin{columns}[t,onlytextwidth]
+	\begin{columns}[t,onlytextwidth]%
 		\column{\GLOBALtabularframecontentwidthleft\linewidth}%
 		\usebeamercolor[fg]{block body}\colorbox{bg}{\begin{minipage}[t][\GLOBALtabularframecontentheight \textheight][t]{\dimexpr\textwidth-15\fboxrule}%
 			\ifthenelse{\equal{\GLOBALtabularframecontentleftcentered}{false}}{%
-#1
+				#1%
 			}{%
 				\verticallycentertext{#1}%
 			}
@@ -111,7 +158,7 @@
 		{\begin{minipage}[t][\GLOBALtabularframecontentheight \textheight][t]{\dimexpr\textwidth-10\fboxrule}%
 			\ifthenelse{\equal{\GLOBALtabularframecontentrightcentered}{false}}{%
 				\vspace{-10\fboxrule}%
-#2
+				#2%
 			}{%
 				\vspace{-0.5\baselineskip}
 				\verticallycentertext{#2}%

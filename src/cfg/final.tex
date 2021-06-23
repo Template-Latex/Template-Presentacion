@@ -12,6 +12,11 @@
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
 \newcommand{\templateFinalcfg}{
+	
+	% -------------------------------------------------------------------------
+	% Crea funciones para numerar objetos
+	% -------------------------------------------------------------------------
+	% Numeración de la sección en los objetos CÓDIGO FUENTE
 	\ifthenelse{\equal{\showsectioncaptioncode}{none}}{
 		\def\sectionobjectnumcode {}
 	}{
@@ -36,6 +41,8 @@
 	}{
 		\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptioncode}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 	}
+
+	% Numeración de la sección en los objetos ECUACIONES
 	\ifthenelse{\equal{\showsectioncaptioneqn}{none}}{
 		\def\sectionobjectnumeqn {}
 	}{
@@ -60,6 +67,8 @@
 	}{
 		\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptioneqn}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 	}
+
+	% Numeración de la sección en los objetos FIGURAS
 	\ifthenelse{\equal{\showsectioncaptionfig}{none}}{
 		\def\sectionobjectnumfig {}
 	}{
@@ -84,6 +93,8 @@
 	}{
 		\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptionfig}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 	}
+
+	% Numeración de la sección en los objetos TABLAS
 	\ifthenelse{\equal{\showsectioncaptiontab}{none}}{
 		\def\sectionobjectnumtab {}
 	}{
@@ -108,6 +119,11 @@
 	}{
 		\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaptiontab}{none,chap,sec,ssec,sssec,ssssec}}}}}}
 	}
+
+	% -------------------------------------------------------------------------
+	% Modifica numeración de objetos
+	% -------------------------------------------------------------------------
+	% Código fuente, INCLUIR SECCIÓN
 	\ifthenelse{\equal{\captionnumcode}{arabic}}{
 		\renewcommand{\thelstlisting}{\sectionobjectnumcode\arabic{lstlisting}}
 	}{
@@ -125,6 +141,8 @@
 	}{
 		\throwbadconfig{Tipo numero codigo fuente desconocido}{\captionnumcode}{arabic,alph,Alph,roman,Roman}}}}}
 	}
+
+	% Ecuaciones, INCLUIR SECCIÓN
 	\ifthenelse{\equal{\captionnumequation}{arabic}}{
 		\renewcommand{\theequation}{\sectionobjectnumeqn\arabic{equation}}
 	}{
@@ -142,6 +160,8 @@
 	}{
 		\throwbadconfig{Tipo numero ecuacion desconocido}{\captionnumequation}{arabic,alph,Alph,roman,Roman}}}}}
 	}
+
+	% Figuras, INCLUIR SECCIÓN
 	\ifthenelse{\equal{\captionnumfigure}{arabic}}{
 		\renewcommand{\thefigure}{\sectionobjectnumfig\arabic{figure}}
 	}{
@@ -159,6 +179,8 @@
 	}{
 		\throwbadconfig{Tipo numero figura desconocido}{\captionnumfigure}{arabic,alph,Alph,roman,Roman}}}}}
 	}
+
+	% Subfiguras, NO USAR SECCIONES YA QUE SON HIJAS DE FIGURA
 	\ifthenelse{\equal{\captionnumsubfigure}{arabic}}{
 		\renewcommand{\thesubfigure}{\arabic{subfigure}}
 	}{
@@ -176,6 +198,8 @@
 	}{
 		\throwbadconfig{Tipo numero subfigura desconocido}{\captionnumsubfigure}{arabic,alph,Alph,roman,Roman}}}}}
 	}
+
+	% Tablas, INCLUIR SECCIÓN
 	\ifthenelse{\equal{\captionnumtable}{arabic}}{
 		\renewcommand{\thetable}{\sectionobjectnumtab\arabic{table}}
 	}{
@@ -193,6 +217,8 @@
 	}{
 		\throwbadconfig{Tipo numero tabla desconocido}{\captionnumtable}{arabic,alph,Alph,roman,Roman}}}}}
 	}
+
+	% Subtablas, NO INCLUIR SECCIÓN YA QUE SON HIJAS DE LAS TABLAS
 	\ifthenelse{\equal{\captionnumsubtable}{arabic}}{
 		\renewcommand{\thesubtable}{\arabic{subtable}}
 	}{
@@ -210,6 +236,11 @@
 	}{
 		\throwbadconfig{Tipo numero subtabla desconocido}{\captionnumsubtable}{arabic,alph,Alph,roman,Roman}}}}}
 	}
+
+	% -------------------------------------------------------------------------
+	% Se reestablecen números de página y secciones
+	% -------------------------------------------------------------------------
 	\setcounter{section}{0}
 	\setcounter{footnote}{0}
+
 }

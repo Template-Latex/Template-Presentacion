@@ -12,17 +12,34 @@
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
 \newcommand{\templatePagecfg}{
+
+	% -------------------------------------------------------------------------
+    % Numeración de páginas
+    % -------------------------------------------------------------------------
     \setcounter{page}{1}
     \setcounter{footnote}{0}
-\def\arraystretch {\tablepaddingv}
-\setlength{\tabcolsep}{\tablepaddingh em}
+
+	% -------------------------------------------------------------------------
+	% Márgenes de páginas y tablas
+	% -------------------------------------------------------------------------
+	\def\arraystretch {\tablepaddingv} % Se ajusta el padding vertical de las tablas
+	\setlength{\tabcolsep}{\tablepaddingh em} % Se ajusta el padding horizontal de las tablas
+
+	% -------------------------------------------------------------------------
+	% Se define el punto decimal
+	% -------------------------------------------------------------------------
 	\ifthenelse{\equal{\pointdecimal}{true}}{
 		\decimalpoint}{
 	}
-\renewcommand{\appendixname}{\nomltappendixsection}
-\renewcommand{\figurename}{\nomltwfigure}
-\renewcommand{\lstlistingname}{\nomltwsrc}
-\renewcommand{\refname}{\namereferences}
-\renewcommand{\bibname}{\namereferences}
-\renewcommand{\tablename}{\nomltwtable}
+
+	% -------------------------------------------------------------------------
+    % Definición de nombres de objetos
+    % -------------------------------------------------------------------------
+    \renewcommand{\appendixname}{\nomltappendixsection} % Nombre del anexo (título)
+    \renewcommand{\figurename}{\nomltwfigure} % Nombre de la leyenda de las fig.
+    \renewcommand{\lstlistingname}{\nomltwsrc} % Nombre leyenda del código fuente
+    \renewcommand{\refname}{\namereferences} % Nombre de las referencias (bibtex)
+    \renewcommand{\bibname}{\namereferences} % Nombre de las referencias (natbib)
+    \renewcommand{\tablename}{\nomltwtable} % Nombre de la leyenda de tablas
+
 }
