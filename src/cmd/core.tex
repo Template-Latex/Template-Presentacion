@@ -70,8 +70,8 @@
 \newcommand{\setcaptionmargincm}[1]{
 	\captionsetup{margin=#1cm}
 }
-\newcommand{\setindexcaption}[1]{\def\GLOBALcaptiondefn{#1}}
-\newcommand{\resetindexcaption}{\def\GLOBALcaptiondefn{EMPTY-VAR}}
+\newcommand{\setindexcaption}[1]{\def\GLOBALcaptiondefn {#1}}
+\newcommand{\resetindexcaption}{\def\GLOBALcaptiondefn {EMPTY-VAR}}
 \newcommand{\checkonlyonenvimage}{%
 	\ifthenelse{\equal{\GLOBALenvimageinitialized}{true}}{}{%
 \throwwarning{Funciones \noexpand\addimage o \noexpand\addimageboxed no pueden usarse fuera del entorno \noexpand\images}\stop

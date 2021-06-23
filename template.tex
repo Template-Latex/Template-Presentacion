@@ -48,12 +48,13 @@
 \let\underline\relax
 
 % Si se desactiva el idioma
-\def\unaccentedoperators{}
-\def\decimalpoint{}
-\def\bibname{}
+\def\unaccentedoperators {}
+\def\decimalpoint {}
+\def\bibname {}
 
 \makeatletter
-\def\underline#1{\relax\ifmmode\@@underline{#1}\else $\@@underline{\hbox{#1}}\m@th$\relax\fi}\def\underbar#1{\underline{\sbox\tw@{#1}\dp\tw@\z@\box\tw@}}
+\def\underline#1{\relax\ifmmode\@@underline{#1}\else $\@@underline{\hbox{#1}}\m@th$\relax\fi}
+\def\underbar#1{\underline{\sbox\tw@{#1}\dp\tw@\z@\box\tw@}}
 \makeatother
 
 % -----------------------------------------------------------------------------
@@ -181,7 +182,7 @@
 }
 
 % Agrega punto a títulos/subtítulos
-\def\showdotaftersnum{true}
+\def\showdotaftersnum {true}
 \ifthenelse{\equal{\showdotaftersnum}{true}}{
 	\usepackage{secdot}
 	\sectiondot{subsection}
@@ -192,7 +193,7 @@
 \usepackage[pdfencoding=auto,psdextra]{hyperref}
 
 % Anexos/Apéndices
-\def\showappendixsecindex{false}
+\def\showappendixsecindex {false}
 \ifthenelse{\equal{\showappendixsecindex}{true}}{
 }{
 	\usepackage{appendix}
@@ -703,14 +704,14 @@
 
 % Define el caption del índice
 % 	#1	Título del caption
-\newcommand{\setindexcaption}[1]{\def\GLOBALcaptiondefn{#1}}
-%\newcommand{\setindexcaptionimages}[1]{\def\GLOBALcaptiondefnimages{#1}}
-%\newcommand{\setindexcaptionsourcecode}[1]{\def\GLOBALcaptiondefnsrc{#1}}
+\newcommand{\setindexcaption}[1]{\def\GLOBALcaptiondefn {#1}}
+%\newcommand{\setindexcaptionimages}[1]{\def\GLOBALcaptiondefnimages {#1}}
+%\newcommand{\setindexcaptionsourcecode}[1]{\def\GLOBALcaptiondefnsrc {#1}}
 
 % Resetea los caption
-\newcommand{\resetindexcaption}{\def\GLOBALcaptiondefn{EMPTY-VAR}}
-%\newcommand{\resetindexcaptionimages}{\def\GLOBALcaptiondefnimages{EMPTY-VAR}}
-%\newcommand{\resetindexcaptionsourcecode}{\def\GLOBALcaptiondefnsrc{EMPTY-VAR}}
+\newcommand{\resetindexcaption}{\def\GLOBALcaptiondefn {EMPTY-VAR}}
+%\newcommand{\resetindexcaptionimages}{\def\GLOBALcaptiondefnimages {EMPTY-VAR}}
+%\newcommand{\resetindexcaptionsourcecode}{\def\GLOBALcaptiondefnsrc {EMPTY-VAR}}
 
 % Chequea que las funciones sólo puedan usarse en el entorno images
 \newcommand{\checkonlyonenvimage}{%
@@ -1031,11 +1032,15 @@
 % Función \tilde{} pero que encierra todo el texto
 %	#1 	Elemento
 \makeatletter
-\def\longtilde#1{\mathop{\vbox{\m@th\ialign{##\crcr\noalign{\kern3\p@}%
-				\sortoftildefill\crcr\noalign{\kern3\p@\nointerlineskip}%
-				$\hfil\displaystyle{#1}\hfil$\crcr}}}\limits}
-\def\sortoftildefill{$\m@th \setbox\z@\hbox{$\braceld$}%
-	\braceld\leaders\vrule \@height\ht\z@ \@depth\z@\hfill\braceru$}
+\def\longtilde#1{%
+	\mathop{\vbox{\m@th\ialign{##\crcr\noalign{\kern3\p@}%
+	\sortoftildefill\crcr\noalign{\kern3\p@\nointerlineskip}%
+	$\hfil\displaystyle{#1}\hfil$\crcr}}}\limits%
+}
+\def\sortoftildefill {%
+	$\m@th \setbox\z@\hbox{$\braceld$}%
+	\braceld\leaders\vrule \@height\ht\z@ \@depth\z@\hfill\braceru$%
+}
 \makeatother
 
 % Definición de letras
@@ -2334,7 +2339,7 @@
 		\addtocounter{templateTables}{\value{table}}
 		\setcounter{table}{0}
 	}{}
-	\def\GLOBALchapternumenabled{true}
+	\def\GLOBALchapternumenabled {true}
 	\coreintializetitlenumbering
 }{}{}
 
@@ -2361,8 +2366,8 @@
 		\addtocounter{templateTables}{\value{table}}
 		\setcounter{table}{0}
 	}{}
-	\def\GLOBALsectionanumenabled{false}
-	\def\GLOBALsubsectionanumenabled{false}
+	\def\GLOBALsectionanumenabled {false}
+	\def\GLOBALsubsectionanumenabled {false}
 	\coreintializetitlenumbering
 }{}{}
 
@@ -2389,7 +2394,7 @@
 		\addtocounter{templateTables}{\value{table}}
 		\setcounter{table}{0}
 	}{}
-	\def\GLOBALsubsectionanumenabled{false}
+	\def\GLOBALsubsectionanumenabled {false}
 	\coreintializetitlenumbering
 }{}{}
 
@@ -2609,7 +2614,7 @@
 	}
 
 	% Actualiza el índice previo
-	\def\GLOBALtablerowcolorindex{#1}
+	\def\GLOBALtablerowcolorindex {#1}
 }
 
 % Alterna los colores de las tablas a la última ejecución
@@ -2663,9 +2668,9 @@
 % Alterna los colores de las filas de las tablas
 \newcommand{\switchtablerowcolors}{
 	\ifthenelse{\equal{\GLOBALtablerowcolorswitch}{false}}{
-		\def\GLOBALtablerowcolorswitch{true}
+		\def\GLOBALtablerowcolorswitch {true}
 	}{
-		\def\GLOBALtablerowcolorswitch{false}
+		\def\GLOBALtablerowcolorswitch {false}
 	}
 	\settablerowcolorslast
 }
@@ -4065,7 +4070,7 @@
 % -----------------------------------------------------------------------------
 % Se revisa si las variables no han sido borradas
 % -----------------------------------------------------------------------------
-\def\titulodelinforme{\titulopresentacion}
+\def\titulodelinforme {\titulopresentacion}
 \checkvardefined{\autordeldocumento}
 \checkvardefined{\departamentouniversidad}
 \checkvardefined{\localizacionuniversidad}
@@ -4157,7 +4162,7 @@
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
 		Template.Version.Dev={1.1.5-PRES},
-		Template.Version.Hash={D2478805F6215265E17ACE75AC7FF54F},
+		Template.Version.Hash={6F635902DA173039D51933E5A91C08B5},
 		Template.Version.Release={1.1.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -4390,7 +4395,7 @@
 % Configura las fuentes
 % -----------------------------------------------------------------------------
 \makeatletter
-\def\Hv@scale{.95}
+\def\Hv@scale {.95}
 \makeatother
 
 % -----------------------------------------------------------------------------
@@ -4594,8 +4599,16 @@
 % Parcha el entorno multicols
 % -----------------------------------------------------------------------------
 \let\SOURCEcaptionlrmargin\captionlrmargin
-\BeforeBeginEnvironment{multicols}{\def\captionlrmargin{\captionlrmarginmc}\def\GLOBALenvmulticol{true}\setcaptionmargincm{\captionlrmargin}}
-\AfterEndEnvironment{multicols}{\def\captionlrmargin{\SOURCEcaptionlrmargin}\def\GLOBALenvmulticol{false}\setcaptionmargincm{\captionlrmargin}}
+\BeforeBeginEnvironment{multicols}{%
+	\def\captionlrmargin {\captionlrmarginmc}%
+	\def\GLOBALenvmulticol {true}%
+	\setcaptionmargincm{\captionlrmargin}%
+}
+\AfterEndEnvironment{multicols}{%
+	\def\captionlrmargin {\SOURCEcaptionlrmargin}%
+	\def\GLOBALenvmulticol {false}%
+	\setcaptionmargincm{\captionlrmargin}%
+}
 
 % -----------------------------------------------------------------------------
 % Justificación de textos

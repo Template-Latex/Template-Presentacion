@@ -114,7 +114,7 @@
 			}
 		}
 	}
-	\def\GLOBALtablerowcolorindex{#1}
+	\def\GLOBALtablerowcolorindex {#1}
 }
 \newcommand{\settablerowcolorslast}{
 	\ifthenelse{\equal{\GLOBALtablerowcolorswitch}{false}}{
@@ -157,9 +157,9 @@
 \newcommand{\disabletablerowcolor}{\rowcolors{2}{}{}}
 \newcommand{\switchtablerowcolors}{
 	\ifthenelse{\equal{\GLOBALtablerowcolorswitch}{false}}{
-		\def\GLOBALtablerowcolorswitch{true}
+		\def\GLOBALtablerowcolorswitch {true}
 	}{
-		\def\GLOBALtablerowcolorswitch{false}
+		\def\GLOBALtablerowcolorswitch {false}
 	}
 	\settablerowcolorslast
 }

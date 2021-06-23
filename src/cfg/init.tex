@@ -11,7 +11,7 @@
 % Sitio web:    [https://latex.ppizarror.com/presentacion]
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
-\def\titulodelinforme{\titulopresentacion}
+\def\titulodelinforme {\titulopresentacion}
 \checkvardefined{\autordeldocumento}
 \checkvardefined{\departamentouniversidad}
 \checkvardefined{\localizacionuniversidad}
@@ -87,7 +87,7 @@
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
 		Template.Version.Dev={1.1.5-PRES},
-		Template.Version.Hash={D2478805F6215265E17ACE75AC7FF54F},
+		Template.Version.Hash={6F635902DA173039D51933E5A91C08B5},
 		Template.Version.Release={1.1.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -255,7 +255,7 @@
 \hbadness=\maxdimen
 \vbadness=\maxdimen
 \makeatletter
-\def\Hv@scale{.95}
+\def\Hv@scale {.95}
 \makeatother
 \makeatletter
 \preto\tabular{\global\rownum=\z@}
@@ -387,8 +387,16 @@
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \let\SOURCEcaptionlrmargin\captionlrmargin
-\BeforeBeginEnvironment{multicols}{\def\captionlrmargin{\captionlrmarginmc}\def\GLOBALenvmulticol{true}\setcaptionmargincm{\captionlrmargin}}
-\AfterEndEnvironment{multicols}{\def\captionlrmargin{\SOURCEcaptionlrmargin}\def\GLOBALenvmulticol{false}\setcaptionmargincm{\captionlrmargin}}
+\BeforeBeginEnvironment{multicols}{%
+	\def\captionlrmargin {\captionlrmarginmc}%
+	\def\GLOBALenvmulticol {true}%
+	\setcaptionmargincm{\captionlrmargin}%
+}
+\AfterEndEnvironment{multicols}{%
+	\def\captionlrmargin {\SOURCEcaptionlrmargin}%
+	\def\GLOBALenvmulticol {false}%
+	\setcaptionmargincm{\captionlrmargin}%
+}
 \ifthenelse{\equal{\frametextjustified}{true}}{
 	\usepackage{ragged2e}
 	\apptocmd{\frame}{}{\justifying}{}
