@@ -11,15 +11,16 @@
 % Sitio web:    [https://latex.ppizarror.com/presentacion]
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
-\def\GLOBALtabularframebarfontsize {\normalsize}
-\def\GLOBALtabularframebarheight {0.05}
-\def\GLOBALtabularframebartextcentered {true}
+\global\def\GLOBALtabularframebarfontsize {\normalsize}
+\global\def\GLOBALtabularframebarheight {0.05}
+\global\def\GLOBALtabularframebartextcentered {true}
+\global\def\GLOBALtabularframecontentheight {0.65}
+\global\def\GLOBALtabularframecontentleftcentered {false}
+\global\def\GLOBALtabularframecontentrightcentered {false}
+\global\def\GLOBALtabularframecontentwidthleft {0.4}
+\global\def\GLOBALtabularframecontentwidthright {0.6}
+\global\def\GLOBALtabularframetfcontentlist {}
 \def\GLOBALtabularframecolumnselected {1}
-\def\GLOBALtabularframecontentheight {0.65}
-\def\GLOBALtabularframecontentleftcentered {false}
-\def\GLOBALtabularframecontentrightcentered {false}
-\def\GLOBALtabularframecontentwidthleft {0.4}
-\def\GLOBALtabularframecontentwidthright {0.6}
 \def\GLOBALtabularinit {false}
 \newcounter{tabularcolnumber}
 \setcounter{tabularcolnumber}{0}
@@ -27,26 +28,26 @@
 	\emptyvarerr{\tabularframebartextcfg}{#1}{Tamano fuente no definida}
 	\emptyvarerr{\tabularframebartextcfg}{#2}{Texto centrado no definido}
 	\corecheckbooleanvar{#2}
-	\def\GLOBALtabularframebarfontsize {#1}
-	\def\GLOBALtabularframebartextcentered {#2}
+	\global\def\GLOBALtabularframebarfontsize {#1}
+	\global\def\GLOBALtabularframebartextcentered {#2}
 }
 \newcommand{\tabularframecfg}[4]{
 	\emptyvarerr{\tabularframecfg}{#1}{Altura de head no definido}
 	\emptyvarerr{\tabularframecfg}{#2}{Altura de content no definido}
 	\emptyvarerr{\tabularframecfg}{#3}{Ancho de la barra izquierda de contenidos}
 	\emptyvarerr{\tabularframecfg}{#4}{Ancho de la barra derecha de contenidos}
-	\def\GLOBALtabularframebarheight {#1}
-	\def\GLOBALtabularframecontentheight {#2}
-	\def\GLOBALtabularframecontentwidthleft {#3}
-	\def\GLOBALtabularframecontentwidthright {#4}
+	\global\def\GLOBALtabularframebarheight {#1}
+	\global\def\GLOBALtabularframecontentheight {#2}
+	\global\def\GLOBALtabularframecontentwidthleft {#3}
+	\global\def\GLOBALtabularframecontentwidthright {#4}
 }
 \newcommand{\tabularframecfgalign}[2]{
 	\emptyvarerr{\tabularframecfgalign}{#1}{Centrado columna izquierda no definido}
 	\emptyvarerr{\tabularframecfgalign}{#2}{Centrado columna derecha no definido}
 	\corecheckbooleanvar{#1}
 	\corecheckbooleanvar{#2}
-	\def\GLOBALtabularframecontentleftcentered {#1}
-	\def\GLOBALtabularframecontentrightcentered {#2}
+	\global\def\GLOBALtabularframecontentleftcentered {#1}
+	\global\def\GLOBALtabularframecontentrightcentered {#2}
 }
 \newenvironment{tabularframehead}[1]{%
 	\emptyvarerr{\tabularframehead}{#1}{Numero de columna destacada no definido}
@@ -59,12 +60,19 @@
 	\end{columns}
 	\setcounter{tabularcolnumber}{-1}
 }
+% 	\begin{tabularframehead}{#1}%
+% 		\foreach \x in \GLOBALtabularframetfcontentlistlast {%
+% 			\ifthenelse{\equal{\x}{}}{}{%
+% 			}%
+% 		}%
+% 	\end{tabularframehead}%
 \newcommand{\addtfheadcolumn}[2]{%
 	\ifthenelse{\equal{\GLOBALtabularinit}{true}}{}{%
 		\throwwarning{Funcion \noexpand\addtfheadcolumn no puede usarse fuera del entorno \noexpand\tabularframehead}\stop}%
 	\emptyvarerr{\addtfheadcolumn}{#1}{Tamano de la columna no definido}%
 	\emptyvarerr{\addtfheadcolumn}{#2}{Texto de la columna no definido}%
 	\stepcounter{tabularcolnumber}%
+	% \global\edef\GLOBALtabularframetfcontentlist {{#1,#2}, \GLOBALtabularframetfcontentlist}%
 	\column{\dimexpr#1\linewidth}%
 	\ifthenelse{\equal{\thetabularcolnumber}{\GLOBALtabularframecolumnselected}}{%
 		\transparent{1.0}%

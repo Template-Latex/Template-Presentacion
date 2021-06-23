@@ -249,11 +249,7 @@ def incmatrix(genl1, genl2):
 	}
 \end{frame}
 
-\def\epic {a}
-\newcommand{\aaaa}{a}
-\begin{frame}[fragile]
-	\edef\epic {b}
-	\renewcommand{\aaaa}{b}
+\begin{frame}
 	\frametitle{Entorno tabular (3/3)}
 	\begin{tabularframehead}{3}
 		\addtfheadcolumn{0.4}{Primer titular}%
@@ -266,7 +262,7 @@ def incmatrix(genl1, genl2):
 		\enabletablerowcolor[2] % Activa el color de celda
 		\begin{table}
 			\centering
-			\caption{Tabla de cálculo \aaaa.}
+			\caption{Tabla de cálculo.}
 			\begin{tabular}{ccc}
 				\hline
 				\textbf{Elemento} & $\epsilon_i$ & \boldmath{}\textbf{Valor}\unboldmath{} \bigstrut\\
@@ -317,5 +313,3 @@ def incmatrix(genl1, genl2):
 \begin{frame}
 	\Huge{\centerline{Gracias por su atención}}
 \end{frame}
-
-\aaaa
