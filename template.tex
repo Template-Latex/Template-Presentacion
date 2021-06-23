@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      1.1.4 (22/06/2021)
+% Versión:      1.1.5 (23/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -616,11 +616,11 @@
 
 % Contador global de objetos
 \newcounter{templateEquations}      % Ecuaciones
-\newcounter{templateIndexEquations} % Ecuaciones en el índice
 \newcounter{templateFigures}        % Figuras
+\newcounter{templateIndexEquations} % Ecuaciones en el índice
+\newcounter{templateListings}       % Códigos fuente
 \newcounter{templatePageCounter}    % Administra números de páginas
 \newcounter{templateTables}         % Tablas
-\newcounter{templateListings}       % Códigos fuente
 
 % Contador nivel de bookmarks marcadores
 \newcounter{templateBookmarksLevelPrev}
@@ -701,19 +701,6 @@
 	\captionsetup{margin=#1cm}
 }
 
-% Cambia márgenes de las páginas [cm]
-% 	#1	Margen izquierdo
-%	#2	Margen superior
-%	#3	Margen derecho
-%	#4	Margen inferior
-\newcommand{\setpagemargincm}[4]{
-	\ifthenelse{\equal{\compilertype}{lualatex}}{
-		% Geometry no válido en lualatex
-	}{
-		\newgeometry{left=#1cm, top=#2cm, right=#3cm, bottom=#4cm}
-	}
-}
-
 % Define el caption del índice
 % 	#1	Título del caption
 \newcommand{\setindexcaption}[1]{\def\GLOBALcaptiondefn{#1}}
@@ -725,19 +712,12 @@
 %\newcommand{\resetindexcaptionimages}{\def\GLOBALcaptiondefnimages{EMPTY-VAR}}
 %\newcommand{\resetindexcaptionsourcecode}{\def\GLOBALcaptiondefnsrc{EMPTY-VAR}}
 
-% Cambia los márgenes del documento
-%	#1	Margen izquierdo
-%	#2	Margen derecho
-\newcommand{\changemargin}[2]{
-	\emptyvarerr{\changemargin}{#1}{Margen izquierdo no definido}
-	\emptyvarerr{\changemargin}{#2}{Margen derecho no definido}
-	\list{}{\rightmargin#2\leftmargin#1}\item[]
-}
-\let\endchangemargin=\endlist
-
-% Imagen de prueba tikz
 % Chequea que las funciones sólo puedan usarse en el entorno images
-\newcommand{\checkonlyonenvimage}{\ifthenelse{\equal{\GLOBALenvimageinitialized}{true}}{}{\throwwarning{Funciones \noexpand\addimage o \noexpand\addimageboxed no pueden usarse fuera del entorno \noexpand\images}\stop}}
+\newcommand{\checkonlyonenvimage}{%
+	\ifthenelse{\equal{\GLOBALenvimageinitialized}{true}}{}{%
+		\throwwarning{Funciones \noexpand\addimage o \noexpand\addimageboxed no pueden usarse fuera del entorno \noexpand\images}\stop%
+	}%
+}
 
 % Chequea que las funciones sólo puedan usarse fuera del entorno images
 \newcommand{\checkoutsideenvimage}{%
@@ -748,16 +728,16 @@
 }
 
 % Chequea que las funciones puedan usarse solo en el entorno multicol
-\newcommand{\checkinsidemulticol}{
-	\ifthenelse{\equal{\GLOBALenvmulticol}{false}}{
-		\throwwarning{Esta funcion solo puede usarse dentro de multicols}
-		\stop}{
+\newcommand{\checkinsidemulticol}{%
+	\ifthenelse{\equal{\GLOBALenvmulticol}{false}}{%
+		\throwwarning{Esta funcion solo puede usarse dentro de multicols}%
+		\stop}{%
 	}
 }
 
 % Verifica que una variable sea del estilo "true" o "false"
 \newcommand{\corecheckbooleanvar}[1]{%
-	\emptyvarerr{\corecheckbooleanvar}{#1}{Variable no definida}
+	\emptyvarerr{\corecheckbooleanvar}{#1}{Variable no definida}%
 	\ifthenelse{\equal{#1}{true}}{}{%
 		\ifthenelse{\equal{#1}{false}}{}{%
 			\throwwarning{Variable debe ser true o false}\stop}%
@@ -1139,47 +1119,47 @@
 
 % Definición de teoremas y lemas
 \makeatletter
-	\renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\scshape\footnotesize#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+	\renewenvironment{proof}[1][\proofname]{\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\scshape\footnotesize#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
 \makeatother
 
 % Redimensiona una ecuación en linewidth
 % 	#1	Tamaño del nuevo objeto (En linewidth)
 %	#2	Ecuación a redimensionar
-\newcommand{\equationresize}[2]{
-	\emptyvarerr{\equationresize}{#1}{Dimension no definida}
-	\emptyvarerr{\equationresize}{#2}{Ecuacion a redimensionar no definida}
-	\resizebox{#1\linewidth}{!}{$#2$}
+\newcommand{\equationresize}[2]{%
+	\emptyvarerr{\equationresize}{#1}{Dimension no definida}%
+	\emptyvarerr{\equationresize}{#2}{Ecuacion a redimensionar no definida}%
+	\resizebox{#1\linewidth}{!}{$#2$}%
 }
 
 % Insertar una ecuación
 % 	#1	Label (opcional)
 %	#2	Ecuación
-\newcommand{\insertequation}[2][]{
-	\emptyvarerr{\insertequation}{#2}{Ecuacion no definida}
-	\ifthenelse{\equal{\numberedequation}{true}}{
-		\vspace{\marginequationtop cm}
-		\begin{equation}
-			\text{#1} #2
-		\end{equation}
-		\vspace{\marginequationbottom cm}
-	}{
-		\ifx\hfuzz#1\hfuzz
-		\else
-			\throwwarning{Label invalido en ecuacion sin numero}
-		\fi
-		\insertequationanum{#2}
-	}
+\newcommand{\insertequation}[2][]{%
+	\emptyvarerr{\insertequation}{#2}{Ecuacion no definida}%
+	\ifthenelse{\equal{\numberedequation}{true}}{%
+		\vspace{\marginequationtop cm}%
+		\begin{equation}%
+			\text{#1} #2%
+		\end{equation}%
+		\vspace{\marginequationbottom cm}%
+	}{%
+		\ifx\hfuzz#1\hfuzz%
+		\else%
+			\throwwarning{Label invalido en ecuacion sin numero}%
+		\fi%
+		\insertequationanum{#2}%
+	}%
 }
 
 % Insertar una ecuación sin número
 %	#1	Ecuación
-\newcommand{\insertequationanum}[1]{
-	\emptyvarerr{\insertequationanum}{#1}{Ecuacion no definida}
-	\vspace{\marginequationtop cm}
-	\begin{equation*}
-		\ensuremath{#1}
-	\end{equation*}
-	\vspace{\marginequationbottom cm}
+\newcommand{\insertequationanum}[1]{%
+	\emptyvarerr{\insertequationanum}{#1}{Ecuacion no definida}%
+	\vspace{\marginequationtop cm}%
+	\begin{equation*}%
+		\ensuremath{#1}%
+	\end{equation*}%
+	\vspace{\marginequationbottom cm}%
 }
 
 % Insertar una ecuación alineada a la izquierda
@@ -1643,7 +1623,7 @@
 	\setlength{\fboxrule}{#4 pt}%
 	\ifthenelse{\equal{\GLOBALenvimageadded}{true}}{%
 		\hspace{\marginimagemultright cm}%
-		\hspace{-2cm}%
+		\hspace{-0.125cm}%
 	}{}%
 	\subfloat[#5]{%
 		\fbox{\includegraphics[#3]{#2}}#1}%
@@ -1712,11 +1692,11 @@
 %	#4	Ancho de la línea (en pt)
 %	#5	Leyenda de la imagen (opcional)
 \newcommand{\insertimageboxed}[5][]{%
-	\emptyvarerr{\insertimageboxed}{#2}{Direccion de la imagen no definida}
-	\emptyvarerr{\insertimageboxed}{#3}{Parametros de la imagen no definidos}
-	\emptyvarerr{\insertimageboxed}{#4}{Ancho de la linea no definido}
-	\checkoutsideenvimage
-	\vspace{\marginimagetop cm}
+	\emptyvarerr{\insertimageboxed}{#2}{Direccion de la imagen no definida}%
+	\emptyvarerr{\insertimageboxed}{#3}{Parametros de la imagen no definidos}%
+	\emptyvarerr{\insertimageboxed}{#4}{Ancho de la linea no definido}%
+	\checkoutsideenvimage%
+	\vspace{\marginimagetop cm}%
 	\begin{figure}[H]%
 		\thisfloatpagestyle{fancy}%
 		\begingroup%
@@ -1724,13 +1704,13 @@
 			\setlength{\fboxrule}{#4 pt}%
 			\centering%
 			\fbox{\includegraphics[#3]{#2}}%
-		\endgroup
-		\ifx\hfuzz#5\hfuzz
+		\endgroup%
+		\ifx\hfuzz#5\hfuzz%
 			\vspace{\captionlessmarginimage cm}
-		\else
-			\hspace{0cm}
+		\else%
+			\hspace{0cm}%
 			\ifthenelse{\equal{\captionmarginimage}{0}}{}{\vspace{\captionmarginimage cm}}%
-			\ifthenelse{\equal{\GLOBALcaptiondefn}{EMPTY-VAR}}{\caption{#5 #1}}{\caption[\GLOBALcaptiondefn]{#5 #1}}
+			\ifthenelse{\equal{\GLOBALcaptiondefn}{EMPTY-VAR}}{\caption{#5 #1}}{\caption[\GLOBALcaptiondefn]{#5 #1}}%
 		\fi
 	\end{figure}
 	\vspace{\marginimagebottom cm}
@@ -2495,9 +2475,9 @@
 % 	#1	Tamaño del nuevo objeto (En linewidth)
 %	#2	Objeto a redimensionar
 \newcommand{\itemresize}[2]{%
-	\emptyvarerr{\itemresize}{#1}{Tamano del nuevo objeto no definido}
-	\emptyvarerr{\itemresize}{#2}{Objeto a redimensionar no definido}
-	\resizebox{#1\linewidth}{!}{#2}
+	\emptyvarerr{\itemresize}{#1}{Tamano del nuevo objeto no definido}%
+	\emptyvarerr{\itemresize}{#2}{Objeto a redimensionar no definido}%
+	\resizebox{#1\linewidth}{!}{#2}%
 }
 
 % Crea una página vacía sin header o footer
@@ -2523,14 +2503,14 @@
 %	#1	Parámetros (opcional)
 %	#2	Nombre del archivo pdf
 \newcommand{\includehfpdf}[2][]{%
-	\includepdf[pagecommand={\pagestyle{fancy}},#1]{#2}
+	\includepdf[pagecommand={\pagestyle{fancy}},#1]{#2}%
 }
 
 % Añade un archivo pdf con el header
 %	#1	Parámetros (opcional)
 %	#2	Nombre del archivo pdf
 \newcommand{\includefullhfpdf}[2][]{%
-	\includepdf[pages=-,pagecommand={\pagestyle{fancy}},#1]{#2}
+	\includepdf[pages=-,pagecommand={\pagestyle{fancy}},#1]{#2}%
 }
 
 % Inserta un texto entre comillas
@@ -2693,13 +2673,14 @@
 % Crea variables para guardar configuraciones del tabularframe
 \def\GLOBALtabularframebarfontsize {\normalsize}
 \def\GLOBALtabularframebarheight {0.05}
-\def\GLOBALtabularframebartextcentered {false}
+\def\GLOBALtabularframebartextcentered {true}
 \def\GLOBALtabularframecolumnselected {1}
 \def\GLOBALtabularframecontentheight {0.65}
 \def\GLOBALtabularframecontentleftcentered {false}
 \def\GLOBALtabularframecontentrightcentered {false}
 \def\GLOBALtabularframecontentwidthleft {0.4}
 \def\GLOBALtabularframecontentwidthright {0.6}
+\global\def\GLOBALtabularframetfcontentlist {}
 \def\GLOBALtabularinit {false}
 
 % Define contadores
@@ -2751,6 +2732,7 @@
 	\emptyvarerr{\tabularframehead}{#1}{Numero de columna destacada no definido}
 	\def\GLOBALtabularframecolumnselected {#1}
 	\def\GLOBALtabularinit {true}
+	\global\def\GLOBALtabularframetfcontentlist {}%
 	\setcounter{tabularcolnumber}{0}%
 	\vspace{\dimexpr-\GLOBALtabularframebarheight\textheight-0.5\footheight}
 	\begin{columns}[t,onlytextwidth]%
@@ -2813,13 +2795,14 @@
 				\vspace{-10\fboxrule}%
 				#2%
 			}{%
-				\vspace{-\baselineskip}
+				\vspace{-0.5\baselineskip}
 				\verticallycentertext{#2}%
 			}
 		\end{minipage}}%
 	\end{columns}%
 	\def\GLOBALtabularinit {false}%
 }
+
 % Inicia código fuente con parámetros
 %	#1	Label (opcional)
 %	#2	Estilo de código
@@ -3994,61 +3977,61 @@
 \makeatletter
 \def\greek#1{\expandafter\@greek\csname c@#1\endcsname}
 \def\Greek#1{\expandafter\@Greek\csname c@#1\endcsname}
-\def\@greek#1{
-	\ifcase#1
-		\or $\alpha$
-		\or $\beta$
-		\or $\gamma$
-		\or $\delta$
-		\or $\epsilon$
-		\or $\zeta$
-		\or $\eta$
-		\or $\theta$
-		\or $\iota$
-		\or $\kappa$
-		\or $\lambda$
-		\or $\mu$
-		\or $\nu$
-		\or $\xi$
-		\or $o$
-		\or $\pi$
-		\or $\rho$
-		\or $\sigma$
-		\or $\tau$
-		\or $\upsilon$
-		\or $\phi$
-		\or $\chi$
-		\or $\psi$
-		\or $\omega$
-	\fi
+\def\@greek#1{%
+	\ifcase#1%
+		\or $\alpha$%
+		\or $\beta$%
+		\or $\gamma$%
+		\or $\delta$%
+		\or $\epsilon$%
+		\or $\zeta$%
+		\or $\eta$%
+		\or $\theta$%
+		\or $\iota$%
+		\or $\kappa$%
+		\or $\lambda$%
+		\or $\mu$%
+		\or $\nu$%
+		\or $\xi$%
+		\or $o$%
+		\or $\pi$%
+		\or $\rho$%
+		\or $\sigma$%
+		\or $\tau$%
+		\or $\upsilon$%
+		\or $\phi$%
+		\or $\chi$%
+		\or $\psi$%
+		\or $\omega$%
+	\fi%
 }
-\def\@Greek#1{
-	\ifcase#1
-		\or $\mathrm{A}$
-		\or $\mathrm{B}$
-		\or $\Gamma$
-		\or $\Delta$
-		\or $\mathrm{E}$
-		\or $\mathrm{Z}$
-		\or $\mathrm{H}$
-		\or $\Theta$
-		\or $\mathrm{I}$
-		\or $\mathrm{K}$
-		\or $\Lambda$
-		\or $\mathrm{M}$
-		\or $\mathrm{N}$
-		\or $\Xi$
-		\or $\mathrm{O}$
-		\or $\Pi$
-		\or $\mathrm{P}$
-		\or $\Sigma$
-		\or $\mathrm{T}$
-		\or $\mathrm{Y}$
-		\or $\Phi$
-		\or $\mathrm{X}$
-		\or $\Psi$
-		\or $\Omega$
-	\fi
+\def\@Greek#1{%
+	\ifcase#1%
+		\or $\mathrm{A}$%
+		\or $\mathrm{B}$%
+		\or $\Gamma$%
+		\or $\Delta$%
+		\or $\mathrm{E}$%
+		\or $\mathrm{Z}$%
+		\or $\mathrm{H}$%
+		\or $\Theta$%
+		\or $\mathrm{I}$%
+		\or $\mathrm{K}$%
+		\or $\Lambda$%
+		\or $\mathrm{M}$%
+		\or $\mathrm{N}$%
+		\or $\Xi$%
+		\or $\mathrm{O}$%
+		\or $\Pi$%
+		\or $\mathrm{P}$%
+		\or $\Sigma$%
+		\or $\mathrm{T}$%
+		\or $\mathrm{Y}$%
+		\or $\Phi$%
+		\or $\mathrm{X}$%
+		\or $\Psi$%
+		\or $\Omega$%
+	\fi%
 }
 \makeatother
 \AddEnumerateCounter{\greek}{\@greek}{24}
@@ -4143,15 +4126,15 @@
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={22/06/2021},
+		Template.Fecha={23/06/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.4-7-PRES},
-		Template.Version.Hash={27D24C70CD6AAAA634BA7C218209F167},
-		Template.Version.Release={1.1.4},
+		Template.Version.Dev={1.1.5-PRES},
+		Template.Version.Hash={F7C4FE7D1E20885ECE6DF453F050A784},
+		Template.Version.Release={1.1.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -4163,7 +4146,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.1.4 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.1.5 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -4389,9 +4372,7 @@
 % -----------------------------------------------------------------------------
 % Configuraciones de las tablas
 % -----------------------------------------------------------------------------
-
-% Reinicia el número de cada fila en todas las tablas
-\makeatletter
+\makeatletter % Reinicia el número de cada fila en todas las tablas
 \preto\tabular{\global\rownum=\z@}
 \preto\tabularx{\global\rownum=\z@}
 \makeatother
@@ -4422,7 +4403,7 @@
 	\pdfcompresslevel=\pdfcompilecompression
 	
 	% El óptimo es 2, según
-	% http://texdoc.net/texmf-dist/doc/pdftex/manual/pdftex-a.pdf p.20
+	% https://texdoc.org/serve/pdftex-a.pdf/0 p.20
 	\pdfdecimaldigits=2
 	
 	% Inclusión de PDF

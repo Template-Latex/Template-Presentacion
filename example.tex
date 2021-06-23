@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Archivo de ejemplo
-% Versión:      1.1.4 (22/06/2021)
+% Versión:      1.1.5 (23/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -214,7 +214,7 @@ def incmatrix(genl1, genl2):
 % Configura el tabularframe
 \tabularframecfg{0.05}{0.65}{0.4}{0.6} % Tamaño header, contenido, col. izq., col. der.
 \tabularframecfgalign{false}{true} % Centrado columna izquierda, derecha
-\tabularframebartextcfg{\normalsize}{false} % Tamaño, centrado
+\tabularframebartextcfg{\normalsize}{true} % Tamaño, centrado
 
 \begin{frame}
 	\frametitle{Entorno tabular (1/3)}
@@ -224,7 +224,7 @@ def incmatrix(genl1, genl2):
 		\addtfheadcolumn{0.3}{Tercer titular}%
 	\end{tabularframehead}
 	\tabularframecontent{
-		\begin{itemize}
+		\begin{itemize}[leftmargin=*]
 			\item A
 			\item B
 			\item C
@@ -249,7 +249,11 @@ def incmatrix(genl1, genl2):
 	}
 \end{frame}
 
-\begin{frame}
+\def\epic {a}
+\newcommand{\aaaa}{a}
+\begin{frame}[fragile]
+	\edef\epic {b}
+	\renewcommand{\aaaa}{b}
 	\frametitle{Entorno tabular (3/3)}
 	\begin{tabularframehead}{3}
 		\addtfheadcolumn{0.4}{Primer titular}%
@@ -262,7 +266,7 @@ def incmatrix(genl1, genl2):
 		\enabletablerowcolor[2] % Activa el color de celda
 		\begin{table}
 			\centering
-			\caption{Tabla de cálculo.}
+			\caption{Tabla de cálculo \aaaa.}
 			\begin{tabular}{ccc}
 				\hline
 				\textbf{Elemento} & $\epsilon_i$ & \boldmath{}\textbf{Valor}\unboldmath{} \bigstrut\\
@@ -313,3 +317,5 @@ def incmatrix(genl1, genl2):
 \begin{frame}
 	\Huge{\centerline{Gracias por su atención}}
 \end{frame}
+
+\aaaa

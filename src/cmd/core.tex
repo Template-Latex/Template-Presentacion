@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Funciones del núcleo del template
-% Versión:      1.1.4 (22/06/2021)
+% Versión:      1.1.5 (23/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -22,11 +22,11 @@
 \def\GLOBALtablerowcolorindex {2}
 \def\GLOBALtablerowcolorswitch {false}
 \newcounter{templateEquations}
-\newcounter{templateIndexEquations}
 \newcounter{templateFigures}
+\newcounter{templateIndexEquations}
+\newcounter{templateListings}
 \newcounter{templatePageCounter}
 \newcounter{templateTables}
-\newcounter{templateListings}
 \newcounter{templateBookmarksLevelPrev}
 \setcounter{templateBookmarksLevelPrev}{\cfgbookmarksopenlevel}
 \addtocounter{templateBookmarksLevelPrev}{-1}
@@ -70,35 +70,27 @@
 \newcommand{\setcaptionmargincm}[1]{
 	\captionsetup{margin=#1cm}
 }
-\newcommand{\setpagemargincm}[4]{
-	\ifthenelse{\equal{\compilertype}{lualatex}}{
-	}{
-		\newgeometry{left=#1cm, top=#2cm, right=#3cm, bottom=#4cm}
-	}
-}
 \newcommand{\setindexcaption}[1]{\def\GLOBALcaptiondefn{#1}}
 \newcommand{\resetindexcaption}{\def\GLOBALcaptiondefn{EMPTY-VAR}}
-\newcommand{\changemargin}[2]{
-	\emptyvarerr{\changemargin}{#1}{Margen izquierdo no definido}
-	\emptyvarerr{\changemargin}{#2}{Margen derecho no definido}
-	\list{}{\rightmargin#2\leftmargin#1}\item[]
+\newcommand{\checkonlyonenvimage}{%
+	\ifthenelse{\equal{\GLOBALenvimageinitialized}{true}}{}{%
+\throwwarning{Funciones \noexpand\addimage o \noexpand\addimageboxed no pueden usarse fuera del entorno \noexpand\images}\stop
+	}%
 }
-\let\endchangemargin=\endlist
-\newcommand{\checkonlyonenvimage}{\ifthenelse{\equal{\GLOBALenvimageinitialized}{true}}{}{\throwwarning{Funciones \noexpand\addimage o \noexpand\addimageboxed no pueden usarse fuera del entorno \noexpand\images}\stop}}
 \newcommand{\checkoutsideenvimage}{%
 	\ifthenelse{\equal{\GLOBALenvimageinitialized}{true}}{%
 		\throwwarning{Esta funcion solo puede usarse fuera del entorno \noexpand\images}%
 		\stop}{%
 	}%
 }
-\newcommand{\checkinsidemulticol}{
-	\ifthenelse{\equal{\GLOBALenvmulticol}{false}}{
-		\throwwarning{Esta funcion solo puede usarse dentro de multicols}
-		\stop}{
+\newcommand{\checkinsidemulticol}{%
+	\ifthenelse{\equal{\GLOBALenvmulticol}{false}}{%
+		\throwwarning{Esta funcion solo puede usarse dentro de multicols}%
+		\stop}{%
 	}
 }
 \newcommand{\corecheckbooleanvar}[1]{%
-	\emptyvarerr{\corecheckbooleanvar}{#1}{Variable no definida}
+	\emptyvarerr{\corecheckbooleanvar}{#1}{Variable no definida}%
 	\ifthenelse{\equal{#1}{true}}{}{%
 		\ifthenelse{\equal{#1}{false}}{}{%
 			\throwwarning{Variable debe ser true o false}\stop}%
