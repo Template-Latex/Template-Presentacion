@@ -713,6 +713,16 @@
 %\newcommand{\resetindexcaptionimages}{\def\GLOBALcaptiondefnimages {EMPTY-VAR}}
 %\newcommand{\resetindexcaptionsourcecode}{\def\GLOBALcaptiondefnsrc {EMPTY-VAR}}
 
+% Cambia los márgenes del documento
+%	#1	Margen izquierdo
+%	#2	Margen derecho
+\newcommand{\changemargin}[2]{%
+	\emptyvarerr{\changemargin}{#1}{Margen izquierdo no definido}%
+	\emptyvarerr{\changemargin}{#2}{Margen derecho no definido}%
+	\list{}{\rightmargin#2\leftmargin#1}\item[]%
+}
+\let\endchangemargin=\endlist
+
 % Chequea que las funciones sólo puedan usarse en el entorno images
 \newcommand{\checkonlyonenvimage}{%
 	\ifthenelse{\equal{\GLOBALenvimageinitialized}{true}}{}{%
@@ -2687,7 +2697,8 @@
 \global\def\GLOBALtabularframetfcontentlist {}
 
 \def\GLOBALtabularframecolumnselected {1}
-\def\GLOBALtabularinit {false}
+\def\GLOBALtabularframeinit {false}
+\def\GLOBALtabularframestorevar {true}
 
 % Librerías especiales
 % \usepackage{pgffor}
@@ -2746,40 +2757,62 @@
 \newenvironment{tabularframehead}[1]{%
 	\emptyvarerr{\tabularframehead}{#1}{Numero de columna destacada no definido}
 	\def\GLOBALtabularframecolumnselected {#1}
-	\def\GLOBALtabularinit {true}
-	% \global\def\GLOBALtabularframetfcontentlist {}
+	\def\GLOBALtabularframeinit {true}%
 	\setcounter{tabularcolnumber}{0}%
-	\vspace{\dimexpr-\GLOBALtabularframebarheight\textheight-0.5\footheight}
+	\ifthenelse{\equal{\GLOBALtabularframestorevar}{true}}{%
+		\global\def\GLOBALtabularframetfcontentlist {}%
+		\immediate\openout\tempfile=\jobname.tmp%
+	}{}%
+	\vspace{\dimexpr-\GLOBALtabularframebarheight\textheight-0.5\footheight}%
 	\begin{columns}[t,onlytextwidth]%
 	}{
 	\end{columns}
 	\setcounter{tabularcolnumber}{-1}
+	\immediate\closeout\tempfile
 }
 
 % Función que repite el último entorno tabular frames
 %	#1	Número de la columna destacada (desde 1)
-% \newcommand{\tabularframeheadrepeatlast}[1]{
-% 	\emptyvarerr{\tabularframeheadrepeatlast}{#1}{Numero de columna destacada no definido}
-% 	\edef\GLOBALtabularframetfcontentlistlast {\GLOBALtabularframetfcontentlist}
-% 	\begin{tabularframehead}{#1}%
-% 		\foreach \x in \GLOBALtabularframetfcontentlistlast {%
-% 			\ifthenelse{\equal{\x}{}}{}{%
-% 				\addtfheadcolumn{\coregetelementlist{\x}{1}}{\coregetelementlist{\x}{2}}
-% 			}%
-% 		}%
-% 	\end{tabularframehead}%
-% }
+\newcommand{\tabularframeheadrepeatlast}[1]{
+	\emptyvarerr{\tabularframeheadrepeatlast}{#1}{Numero de columna destacada no definido}
+	\global\def\jjjjjj{\expandafter\csname}
+	\global\def\kkkkkk{\expandafter\endcsname}
+	\def\GLOBALtabularframestorevar {false}
+	\begin{tabularframehead}{#1}%
+		\input{\jobname.tmp}%
+	\end{tabularframehead}%
+	\def\GLOBALtabularframestorevar {true}
+	\global\def\jjjjjj{}
+	\global\def\kkkkkk{}
+}
+
+\def\corereplacestring#1#2#3{%
+	\def\tmp##1#2{##1#3\tmp}%
+	\tmp#1\corestopreplacestring#2\corestopreplacestring}
+\def\corestopreplacestring#1\corestopreplacestring{}
+\usepackage{xstring}
+
+\newcommand{\addtfheadcolumnf}[2]{%
+	\expandafter\stepcounter{tabularcolnumber}%
+	\expandafter\column{\expandafter\dimexpr#1\expandafter\linewidth}
+}
+\newwrite\tempfile
+
+\def\percentchar#1{}
+\edef\percentchar{\expandafter\percentchar\string\%}
 
 % Agrega una columna al tabular head
 %	#1	Tamaño de la columna
 %	#2	Texto
 \newcommand{\addtfheadcolumn}[2]{%
-	\ifthenelse{\equal{\GLOBALtabularinit}{true}}{}{%
+	\ifthenelse{\equal{\GLOBALtabularframeinit}{true}}{}{%
 		\throwwarning{Funcion \noexpand\addtfheadcolumn no puede usarse fuera del entorno \noexpand\tabularframehead}\stop}%
 	\emptyvarerr{\addtfheadcolumn}{#1}{Tamano de la columna no definido}%
 	\emptyvarerr{\addtfheadcolumn}{#2}{Texto de la columna no definido}%
+	\ifthenelse{\equal{\GLOBALtabularframestorevar}{true}}{%
+		\immediate\write\tempfile{\unexpanded{\addtfheadcolumn{#1}{#2}}\percentchar}%
+	}{}%
 	\stepcounter{tabularcolnumber}%
-	% \global\edef\GLOBALtabularframetfcontentlist {{#1,#2}, \GLOBALtabularframetfcontentlist}%
 	\column{\dimexpr#1\linewidth}%
 	\ifthenelse{\equal{\thetabularcolnumber}{\GLOBALtabularframecolumnselected}}{%
 		\transparent{1.0}%
@@ -2829,7 +2862,7 @@
 			}
 		\end{minipage}}%
 	\end{columns}%
-	\def\GLOBALtabularinit {false}%
+	\def\GLOBALtabularframeinit {false}%
 }
 
 % Inicia código fuente con parámetros
@@ -4161,8 +4194,8 @@
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.5-1-PRES},
-		Template.Version.Hash={9463700CF621C240B0BE554C071E9B63},
+		Template.Version.Dev={1.1.5-2-PRES},
+		Template.Version.Hash={1083DCB83948A9065F0E6EB73075A5EE},
 		Template.Version.Release={1.1.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
