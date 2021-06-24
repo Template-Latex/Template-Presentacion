@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      1.1.5 (23/06/2021)
+% Versión:      1.1.5 (24/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -1006,6 +1006,7 @@
 }
 
 % Negrita introducida por word
+% 	#1	Expresión
 \newcommand{\mathbit}[1]{
 	\bm{#1}
 }
@@ -1134,7 +1135,14 @@
 
 % Definición de teoremas y lemas
 \makeatletter
-	\renewenvironment{proof}[1][\proofname]{\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\scshape\footnotesize#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+	\renewenvironment{proof}[1][\proofname]{%
+		\par\pushQED{\qed}%
+		\normalfont\topsep6\p@\@plus6\p@\relax\trivlist%
+		\item[\hskip\labelsep\scshape\footnotesize#1\@addpunct{.}]%
+		\ignorespaces%
+	}{%
+		\popQED\endtrivlist\@endpefalse%
+	}
 \makeatother
 
 % Redimensiona una ecuación en linewidth
@@ -1146,35 +1154,52 @@
 	\resizebox{#1\linewidth}{!}{$#2$}%
 }
 
+% Inserta el caption de un objeto tipo ecuación
+%	#1	Texto del caption
+\newcommand{\coreinsertequationcaption}[1]{%
+	\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}%
+		\ifthenelse{\equal{\equationcaptioncenter}{true}}{%
+			\centering%
+		}{
+			\justifying%
+		}%
+		\textcolor{\captiontextcolor}{%
+			\linespread{0.5}\selectfont{%
+				\begin{\captionfontsize}#1\end{\captionfontsize}%
+			}
+		}%
+	\end{changemargin}%
+}
+
 % Insertar una ecuación
 % 	#1	Label (opcional)
 %	#2	Ecuación
-\newcommand{\insertequation}[2][]{%
-	\emptyvarerr{\insertequation}{#2}{Ecuacion no definida}%
-	\ifthenelse{\equal{\numberedequation}{true}}{%
-		\vspace{\marginequationtop cm}%
-		\begin{equation}%
-			\text{#1} #2%
-		\end{equation}%
-		\vspace{\marginequationbottom cm}%
-	}{%
-		\ifx\hfuzz#1\hfuzz%
-		\else%
-			\throwwarning{Label invalido en ecuacion sin numero}%
-		\fi%
-		\insertequationanum{#2}%
-	}%
+\newcommand{\insertequation}[2][]{
+	\emptyvarerr{\insertequation}{#2}{Ecuacion no definida}
+	\ifthenelse{\equal{\numberedequation}{true}}{
+		\vspace{\marginequationtop cm}
+		\begin{equation}
+			\text{#1} #2
+		\end{equation}
+		\vspace{\marginequationbottom cm}
+	}{
+		\ifx\hfuzz#1\hfuzz
+		\else
+			\throwwarning{Label invalido en ecuacion sin numero}
+		\fi
+		\insertequationanum{#2}
+	}
 }
 
 % Insertar una ecuación sin número
 %	#1	Ecuación
-\newcommand{\insertequationanum}[1]{%
-	\emptyvarerr{\insertequationanum}{#1}{Ecuacion no definida}%
-	\vspace{\marginequationtop cm}%
-	\begin{equation*}%
-		\ensuremath{#1}%
-	\end{equation*}%
-	\vspace{\marginequationbottom cm}%
+\newcommand{\insertequationanum}[1]{
+	\emptyvarerr{\insertequationanum}{#1}{Ecuacion no definida}
+	\vspace{\marginequationtop cm}
+	\begin{equation*}
+		\ensuremath{#1}
+	\end{equation*}
+	\vspace{\marginequationbottom cm}
 }
 
 % Insertar una ecuación alineada a la izquierda
@@ -1258,10 +1283,7 @@
 				\text{#1} #2
 			\end{equation}
 			\vspace{\margineqncaptiontop cm}
-			\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-				\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#3\end{\captionfontsize}}
-				\vspace{\margineqncaptionbottom cm}
-			\end{changemargin}
+			\coreinsertequationcaption{#3}
 			\vspace{\margineqncaptionbottom cm}
 		}{
 			\ifx\hfuzz#1\hfuzz
@@ -1283,13 +1305,10 @@
 	\else
 		\vspace{\marginequationtop cm}
 		\begin{equation*}
-			\ensuremath{#1}
-		\end{equation*}
-		\vspace{\margineqncaptiontop cm}
-		\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-			\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#2\end{\captionfontsize}}
-			\vspace{\margineqncaptionbottom cm}
-		\end{changemargin}
+			\ensuremath{#1}%
+		\end{equation*}%
+		\vspace{\margineqncaptiontop cm}%
+		\coreinsertequationcaption{#2}
 		\vspace{\margineqncaptionbottom cm}
 	\fi
 }
@@ -1334,10 +1353,7 @@
 				\ensuremath{#1}
 			\end{gather}
 			\vspace{\margingathercapttop cm}
-			\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-				\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#2\end{\captionfontsize}}
-				\vspace{\margingathercaptbottom cm}
-			\end{changemargin}
+			\coreinsertequationcaption{#2}
 			\vspace{\margingathercaptbottom cm}
 		}{
 			\insertgathercaptionedanum{#1}{#2}
@@ -1358,10 +1374,7 @@
 			\ensuremath{#1}
 		\end{gather*}
 		\vspace{\margingathercapttop cm}
-		\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-			\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#2\end{\captionfontsize}}
-			\vspace{\margingathercaptbottom cm}
-		\end{changemargin}
+		\coreinsertequationcaption{#2}
 		\vspace{\margingathercaptbottom cm}
 	\fi
 }
@@ -1384,7 +1397,7 @@
 		\else
 			\throwwarning{Label invalido en ecuacion (gathered) sin numero}
 		\fi
-		\vspace{\margingatheredtop cm} % \insertgatheredanum{#2} tira warning
+		\vspace{\margingatheredtop cm}
 		\begin{gather*}
 			\ensuremath{#2}
 		\end{gather*}
@@ -1420,10 +1433,7 @@
 				\end{gathered}
 			\end{equation}
 			\vspace{\margingatheredcapttop cm}
-			\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-				\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#3\end{\captionfontsize}}
-				\vspace{\margingatheredcaptbottom cm}
-			\end{changemargin}
+			\coreinsertequationcaption{#3}
 			\vspace{\margingatheredcaptbottom cm}
 		}{
 			\ifx\hfuzz#1\hfuzz
@@ -1448,10 +1458,7 @@
 			\ensuremath{#1}
 		\end{gather*}
 		\vspace{\margingatheredcapttop cm}
-		\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-			\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#2\end{\captionfontsize}}
-			\vspace{\margingatheredcaptbottom cm}
-		\end{changemargin}
+		\coreinsertequationcaption{#2}
 		\vspace{\margingathercaptbottom cm}
 	\fi
 }
@@ -1496,10 +1503,7 @@
 				\ensuremath{#1}
 			\end{align}
 			\vspace{\marginaligncapttop cm}
-			\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-				\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#2\end{\captionfontsize}}
-				\vspace{\marginaligncaptbottom cm}
-			\end{changemargin}
+			\coreinsertequationcaption{#2}
 			\vspace{\marginaligncaptbottom cm}
 		}{
 			\insertaligncaptionedanum{#1}{#2}
@@ -1520,10 +1524,7 @@
 			\ensuremath{#1}
 		\end{align*}
 		\vspace{\marginaligncapttop cm}
-		\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-			\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#2\end{\captionfontsize}}
-			\vspace{\marginaligncaptbottom cm}
-		\end{changemargin}
+		\coreinsertequationcaption{#2}
 		\vspace{\marginaligncaptbottom cm}
 	\fi
 }
@@ -1578,10 +1579,7 @@
 				\end{aligned}
 			\end{equation}
 			\vspace{\marginalignedcapttop cm}
-			\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-				\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#3\end{\captionfontsize}}
-				\vspace{\marginalignedcaptbottom cm}
-			\end{changemargin}
+			\coreinsertequationcaption{#3}
 			\vspace{\marginalignedcaptbottom cm}
 		}{
 			\ifx\hfuzz#1\hfuzz
@@ -1608,10 +1606,7 @@
 			\end{aligned}
 		\end{equation}
 		\vspace{\marginalignedcapttop cm}
-		\begin{changemargin}{\captionlrmargin cm}{\captionlrmargin cm}
-			\centering \textcolor{\captiontextcolor}{\begin{\captionfontsize}#2\end{\captionfontsize}}
-			\vspace{\marginalignedcaptbottom cm}
-		\end{changemargin}
+		\coreinsertequationcaption{#2}
 		\vspace{\marginalignedcaptbottom cm}
 	\fi
 }
@@ -2764,9 +2759,9 @@
 	}{
 	\end{columns}
 	\setcounter{tabularcolnumber}{-1}
-	\immediate\closeout\filetabularframehead
 	\ifthenelse{\equal{\GLOBALtabularframestorevar}{true}}{%
-		\global\def\GLOBALtabularframebarcreated {true}
+		\immediate\closeout\filetabularframehead%
+		\global\def\GLOBALtabularframebarcreated {true}%
 	}{}%
 }
 
@@ -4170,14 +4165,14 @@
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={23/06/2021},
+		Template.Fecha={24/06/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
 		Template.Version.Dev={1.1.5-2-PRES},
-		Template.Version.Hash={1083DCB83948A9065F0E6EB73075A5EE},
+		Template.Version.Hash={958ED4A73FC83DC697A131F13BF33668},
 		Template.Version.Release={1.1.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -4629,7 +4624,6 @@
 % Justificación de textos
 % -----------------------------------------------------------------------------
 \ifthenelse{\equal{\frametextjustified}{true}}{
-	\usepackage{ragged2e}
 	\apptocmd{\frame}{}{\justifying}{}
 }{
 }
