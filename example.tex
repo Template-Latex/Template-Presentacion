@@ -230,17 +230,13 @@ def incmatrix(genl1, genl2):
 			\item C
 		\end{itemize}
 	}{
-		\insertimage{ejemplos/test-image.png}{scale=0.14}{Where are you? de \quotes{Internet}.}
+		epic
 	}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Entorno tabular (2/3)}
-	\begin{tabularframehead}{2}
-		\addtfheadcolumn{0.4}{Primer titular}%
-		\addtfheadcolumn{0.3}{Segundo titular}%
-		\addtfheadcolumn{0.3}{Tercer titular}%
-	\end{tabularframehead}
+	\tabularframeheadrepeat{2}
 	\tabularframecontent{
 		La ecuación \eqref{eqtabular} indica la profundidad de un elemento, aunque no tiene mucho sentido ya que sólo se usa dentro del template. \\
 		\insertequation[\label{eqtabular}]{a = \frac{1}{2} + \cos c} 
@@ -251,11 +247,7 @@ def incmatrix(genl1, genl2):
 
 \begin{frame}
 	\frametitle{Entorno tabular (3/3)}
-	\begin{tabularframehead}{3}
-		\addtfheadcolumn{0.4}{Primer titular}%
-		\addtfheadcolumn{0.3}{Segundo titular}%
-		\addtfheadcolumn{0.3}{Tercer titular}%
-	\end{tabularframehead}
+	\tabularframeheadrepeat{3}
 	\tabularframecontent{
 		\lipsum[11]
 	}{
@@ -305,6 +297,38 @@ def incmatrix(genl1, genl2):
 			\textit{Creador de tablas online para \LaTeX.}\\
 			\url{https://www.tablesgenerator.com}
 		\end{thebibliography}
+	}
+\end{frame}
+
+\begin{frame}
+	\begin{tabularframehead}{1}
+		\addtfheadcolumn{0.2}{Primer titular}%
+		\addtfheadcolumn{0.2}{Segundo titular}%
+		\addtfheadcolumn{0.2}{Tercer titular}%
+		\addtfheadcolumn{0.3}{Tercer \textbf{titular}}%
+		\addtfheadcolumn{0.4}{Tercer titular}%
+	\end{tabularframehead}
+	\tabularframecontent{
+		\begin{itemize}[leftmargin=*]
+			\item A
+			\item B
+			\item C
+		\end{itemize}
+	}{
+		epic
+	}
+\end{frame}
+
+\begin{frame}
+	\tabularframeheadrepeat{2}
+	\tabularframecontent{
+		\begin{itemize}[leftmargin=*]
+			\item A
+			\item B
+			\item C
+		\end{itemize}
+	}{
+		epic
 	}
 \end{frame}
 
