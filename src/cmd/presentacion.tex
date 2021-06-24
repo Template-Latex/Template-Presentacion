@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Funciones del template
-% Versión:      1.1.5 (24/06/2021)
+% Versión:      1.1.6 (24/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -85,7 +85,7 @@
 	\ifthenelse{\equal{\GLOBALtabularframestorevar}{true}}{%
 		\immediate\openout\filetabularframehead=\jobname.tframeh%
 	}{}%
-	\vspace{\dimexpr-\GLOBALtabularframebarheight\textheight-0.5\footheight}%
+	\vspace{\dimexpr-\GLOBALtabularframebarheight\textheight}%
 	\begin{columns}[t,onlytextwidth]%
 	}{
 	\end{columns}
@@ -165,7 +165,7 @@
 				\vspace{-10\fboxrule}%
 				#2%
 			}{%
-				\vspace{-0.5\baselineskip}
+				\vspace{-1\baselineskip}%
 				\verticallycentertext{#2}%
 			}
 		\end{minipage}}%

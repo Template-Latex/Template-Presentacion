@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      1.1.5 (24/06/2021)
+% Versión:      1.1.6 (24/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -105,9 +105,9 @@
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.5-2-PRES},
-		Template.Version.Hash={958ED4A73FC83DC697A131F13BF33668},
-		Template.Version.Release={1.1.5},
+		Template.Version.Dev={1.1.6-PRES},
+		Template.Version.Hash={946B7606CE7FF171AA98393AA1E3D379},
+		Template.Version.Release={1.1.6},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -119,7 +119,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.1.5 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.1.6 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -569,3 +569,9 @@
 \makeatletter
 \let\@cite@ofmt\@firstofone
 \makeatother
+
+% -----------------------------------------------------------------------------
+% Corrige espaciamiento de itemize
+% -----------------------------------------------------------------------------
+\settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
+\addtolength{\leftmargini}{\labelsep}
