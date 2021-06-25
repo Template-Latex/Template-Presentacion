@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      1.1.6 (24/06/2021)
+% Versión:      1.1.7 (25/06/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -2832,7 +2832,6 @@
 		\centering
 		{\begin{minipage}[t][\GLOBALtabularframecontentheight \textheight][t]{\dimexpr\textwidth-10\fboxrule}%
 			\ifthenelse{\equal{\GLOBALtabularframecontentrightcentered}{false}}{%
-				\vspace{-10\fboxrule}%
 				#2%
 			}{%
 				\vspace{-1\baselineskip}%
@@ -4081,14 +4080,14 @@
 % -----------------------------------------------------------------------------
 % Se revisa si las variables no han sido borradas
 % -----------------------------------------------------------------------------
-\def\titulodelinforme {\titulopresentacion}
 \checkvardefined{\autordeldocumento}
+\checkvardefined{\codigodelcurso}
 \checkvardefined{\departamentouniversidad}
 \checkvardefined{\localizacionuniversidad}
 \checkvardefined{\nombredelcurso}
 \checkvardefined{\nombrefacultad}
 \checkvardefined{\nombreuniversidad}
-\checkvardefined{\titulodelinforme}
+\checkvardefined{\temaatratar}
 
 % -----------------------------------------------------------------------------
 % Se añade \xspace a las variables
@@ -4101,7 +4100,7 @@
 	\g@addto@macro\nombredelcurso\xspace
 	\g@addto@macro\nombrefacultad\xspace
 	\g@addto@macro\nombreuniversidad\xspace
-	\g@addto@macro\titulodelinforme\xspace
+	\g@addto@macro\temaatratar\xspace
 \makeatother
 
 % -----------------------------------------------------------------------------
@@ -4129,6 +4128,7 @@
 	\def\pdfmetainfoautor {\autordeldocumento}
 	\def\pdfmetainfocodigodelcurso {\codigodelcurso}
 	\def\pdfmetainfonombredelcurso {\nombredelcurso}
+	\def\pdfmetainfotema {\temaatratar}
 	\def\pdfmetainfotitulo {\titulopresentacion}
 	\def\pdfmetainfounidepto {\departamentouniversidad}
 	\def\pdfmetainfounifacultad {\nombrefacultad}
@@ -4138,6 +4138,7 @@
 	\def\pdfmetainfoautor {}
 	\def\pdfmetainfocodigodelcurso {}
 	\def\pdfmetainfonombredelcurso {}
+	\def\pdfmetainfotema {}
 	\def\pdfmetainfotitulo {}
 	\def\pdfmetainfounidepto {}
 	\def\pdfmetainfounifacultad {}
@@ -4160,21 +4161,22 @@
 		Curso.Codigo={\pdfmetainfocodigodelcurso},
 		Curso.Nombre={\pdfmetainfonombredelcurso},
 		Documento.Autor={\pdfmetainfoautor},
+		Documento.Tema={\pdfmetainfotema},
 		Documento.Titulo={\pdfmetainfotitulo},
 		Template.Autor.Alias={ppizarror},
 		Template.Autor.Email={pablo@ppizarror.com},
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={24/06/2021},
+		Template.Fecha={25/06/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.6-1-PRES},
-		Template.Version.Hash={DDBC0EC426866812CD52729174485F2F},
-		Template.Version.Release={1.1.6},
+		Template.Version.Dev={1.1.7-1-PRES},
+		Template.Version.Hash={56D8FFB2B0EAE344CC2ACE6B5B18ECB5},
+		Template.Version.Release={1.1.7},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -4186,10 +4188,11 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.1.6 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.1.7 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
+	pdfsubject={\pdfmetainfotema},
 	pdftitle={\pdfmetainfotitulo},
 	pdftoolbar={\cfgpdftoolbar}
 }
@@ -4626,8 +4629,7 @@
 % -----------------------------------------------------------------------------
 \ifthenelse{\equal{\frametextjustified}{true}}{
 	\apptocmd{\frame}{}{\justifying}{}
-}{
-}
+}{}
 \newcommand{\justifytext}[1]{\parbox{\linewidth}{#1}}
 
 % -----------------------------------------------------------------------------
@@ -4640,8 +4642,12 @@
 % -----------------------------------------------------------------------------
 % Corrige espaciamiento de itemize
 % -----------------------------------------------------------------------------
-\settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
-\addtolength{\leftmargini}{\labelsep}
+\ifthenelse{\equal{\itemizedeleteleftmargin}{true}}{
+	% \settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
+	% \addtolength{\leftmargini}{\labelsep}
+	\setlist[itemize]{leftmargin=*}
+	\setlist[enumerate]{leftmargin=*}
+}{}
 
 % CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS
 \newcommand{\templatePagecfg}{
