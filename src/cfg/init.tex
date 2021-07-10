@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      1.1.7 (25/06/2021)
+% Versión:      1.1.8 (09/07/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -11,9 +11,7 @@
 % Sitio web:    [https://latex.ppizarror.com/presentacion]
 % Licencia MIT: [https://opensource.org/licenses/MIT]
 
-% -----------------------------------------------------------------------------
 % Se revisa si las variables no han sido borradas
-% -----------------------------------------------------------------------------
 \checkvardefined{\autordeldocumento}
 \checkvardefined{\codigodelcurso}
 \checkvardefined{\departamentouniversidad}
@@ -102,15 +100,15 @@
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={25/06/2021},
+		Template.Fecha={09/07/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.7-5-PRES},
-		Template.Version.Hash={0AB4BE73F6EBC52583C16D284F787AAB},
-		Template.Version.Release={1.1.7},
+		Template.Version.Dev={1.1.8-1-PRES},
+		Template.Version.Hash={ED3985C3A31CC58FB591D6B9FBA13EE2},
+		Template.Version.Release={1.1.8},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -122,7 +120,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.1.7 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.1.8 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -538,10 +536,31 @@
 % -----------------------------------------------------------------------------
 % Formato de columnas
 % -----------------------------------------------------------------------------
+% Centrado
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{\CColor}[2]{>{\columncolor{#1}\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#2}}
+
+\newcolumntype{P}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{\PColor}[2]{>{\columncolor{#1}\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#2}}
+
+\newcolumntype{B}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
+\newcolumntype{\BColor}[2]{>{\columncolor{#1}\centering\let\newline\\\arraybackslash\hspace{0pt}}b{#2}}
+
+% Izquierda
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{\LColor}[2]{>{\columncolor{#1}\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#2}}
+\newcolumntype{T}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{\TColor}[2]{>{\columncolor{#1}\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#2}}
+\newcolumntype{F}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
+\newcolumntype{\FColor}[2]{>{\columncolor{#1}\raggedright\let\newline\\\arraybackslash\hspace{0pt}}b{#2}}
+
+% Derecha
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{\RColor}[2]{>{\columncolor{#1}\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#2}}
+\newcolumntype{H}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{\HColor}[2]{>{\columncolor{#1}\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#2}}
+\newcolumntype{G}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
+\newcolumntype{\GColor}[2]{>{\columncolor{#1}\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}b{#2}}
 
 % -----------------------------------------------------------------------------
 % Parcha el entorno multicols
