@@ -41,6 +41,8 @@ log.txt
 # Distribución
 dist/
 
+# Carpeta compilada fuente
+
 # Archivos gitkeep
 *.gitkeep
 */*.gitkeep

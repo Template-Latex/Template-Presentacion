@@ -1951,7 +1951,6 @@
 	\vspace{-\baselineskip}
 	\par%
 	\begin{wrapfigure}[#5]{l}{#3\linewidth}%
-		% \thisfloatpagestyle{fancy} no funciona bien
 		\setcaptionmargincm{0}
 		\ifthenelse{\equal{\figurecaptiontop}{true}}{}{
 			\vspace{\marginfloatimages pt}}
@@ -1996,7 +1995,6 @@
 	\vspace{-\baselineskip}
 	\par%
 	\begin{wrapfigure}{r}{#3\linewidth}%
-		% \thisfloatpagestyle{fancy} no funciona bien
 		\setcaptionmargincm{0}
 		\ifthenelse{\equal{\figurecaptiontop}{true}}{}{
 			\vspace{\marginfloatimages pt}
@@ -2045,7 +2043,6 @@
 	\vspace{-\baselineskip}
 	\par%
 	\begin{wrapfigure}[#5]{r}{#3\linewidth}%
-		% \thisfloatpagestyle{fancy} no funciona bien
 		\setcaptionmargincm{0}
 		\ifthenelse{\equal{\figurecaptiontop}{true}}{}{
 			\vspace{\marginfloatimages pt}
@@ -2097,7 +2094,6 @@
 	\vspace{-\baselineskip}
 	\par%
 	\begin{wrapfigure}{l}{#3}%
-		% \thisfloatpagestyle{fancy} no funciona bien
 		\setcaptionmargincm{0}
 		\ifthenelse{\equal{\figurecaptiontop}{true}}{}{
 			\vspace{\marginfloatimages pt}
@@ -2149,7 +2145,6 @@
 	\vspace{-\baselineskip}
 	\par%
 	\begin{wrapfigure}[#6]{l}{#3}%
-		% \thisfloatpagestyle{fancy} no funciona bien
 		\setcaptionmargincm{0}
 		\ifthenelse{\equal{\figurecaptiontop}{true}}{}{
 			\vspace{\marginfloatimages pt}
@@ -2201,7 +2196,6 @@
 	\vspace{-\baselineskip}
 	\par%
 	\begin{wrapfigure}{r}{#3}%
-		% \thisfloatpagestyle{fancy} no funciona bien
 		\setcaptionmargincm{0}
 		\ifthenelse{\equal{\figurecaptiontop}{true}}{}{
 			\vspace{\marginfloatimages pt}
@@ -2253,7 +2247,6 @@
 	\vspace{-\baselineskip}
 	\par%
 	\begin{wrapfigure}[#6]{r}{#3}%
-		% \thisfloatpagestyle{fancy} no funciona bien
 		\setcaptionmargincm{0}
 		\ifthenelse{\equal{\figurecaptiontop}{true}}{}{
 			\vspace{\marginfloatimages pt}
@@ -3070,11 +3063,11 @@
 		}%
 	\end{figure}%
 
-	% Reestablece caption y márgenes
+	% Restablece caption y márgenes
 	\setcaptionmargincm{\captionlrmargin}
 	\vspace{\marginimagebottom cm}
 	
-	% Reestablece globales
+	% Restablece globales
 	\def\GLOBALenvimageinitialized {false}
 }
 
@@ -3116,10 +3109,10 @@
 		}%
 	\end{figure*}%
 	
-	% Reestablece caption y márgenes
+	% Restablece caption y márgenes
 	\setcaptionmargincm{\captionlrmargin}
 	
-	% Reestablece globales
+	% Restablece globales
 	\def\GLOBALenvimageinitialized {false}
 }
 
@@ -4077,8 +4070,8 @@
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.9-PRES},
-		Template.Version.Hash={B3A17E387123C121B5BB8EC409CDC1ED},
+		Template.Version.Dev={1.1.9-1-PRES},
+		Template.Version.Hash={28F08F2E7D3326A9E6B820F87D3D6152},
 		Template.Version.Release={1.1.9},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -4366,14 +4359,9 @@
 }
 
 % -----------------------------------------------------------------------------
-% Profundidad de las secciones
+% Crea las sub-sub-sub-secciones
 % -----------------------------------------------------------------------------
-\setcounter{secnumdepth}{4} % Límite máximo subsubsubsección
-
-% Crea las subsubsubsecciones
 \newcounter{subsubsubsection}[subsubsection]
-
-% Establece el número de las subsubsubsecciones
 \ifthenelse{\equal{\showdotaftersnum}{true}}{ % Agrega punto tras el número
 	\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}.}
 	\renewcommand{\theparagraph}{\thesubsubsubsection.\arabic{paragraph}.}
@@ -4381,6 +4369,9 @@
 	\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}}
 	\renewcommand{\theparagraph}{\thesubsubsubsection.\arabic{paragraph}}
 }
+
+% Límite máximo profundidad
+\setcounter{secnumdepth}{4}
 
 % -----------------------------------------------------------------------------
 % Profundidad del índice y bookmarks pdf
@@ -4491,7 +4482,7 @@
 % -----------------------------------------------------------------------------
 % Configuraciones del idioma
 % -----------------------------------------------------------------------------
-% Desactiva carácteres acentuados en operaciones matemáticas
+% Desactiva caracteres acentuados en operaciones matemáticas
 \unaccentedoperators
 
 % -----------------------------------------------------------------------------
@@ -4860,7 +4851,7 @@
 	}
 
 	% -------------------------------------------------------------------------
-	% Se reestablecen números de página y secciones
+	% Se restablecen números de página y secciones
 	% -------------------------------------------------------------------------
 	\setcounter{section}{0}
 	\setcounter{footnote}{0}
