@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      1.1.9 (11/07/2021)
+% Versión:      1.2.0 (12/07/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -2682,6 +2682,21 @@
 	\settablerowcolorslast
 }
 
+% Actualiza el padding de las celdas de las tablas
+%	#1	Padding horizontal (em)
+%	#2	Padding vertical (em)
+\newcommand{\settablecellpadding}[2]{
+	\emptyvarerr{\settablecellpadding}{#1}{Padding horizontal no definido}
+	\emptyvarerr{\settablecellpadding}{#2}{Padding vertical no definido}
+	\setlength{\tabcolsep}{#1 em} % Horizontal
+	\def\arraystretch {#2} % Vertical
+}
+
+% Resetea el padding de las celdas de las tablas
+\newcommand{\resettablecellpadding}{
+	\settablecellpadding{\tablepaddingh}{\tablepaddingv}
+}
+
 % Crea variables para guardar configuraciones del tabularframe
 \global\def\GLOBALtabularframebarfontsize {\normalsize}
 \global\def\GLOBALtabularframebarheight {0.05}
@@ -4064,15 +4079,15 @@
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={11/07/2021},
+		Template.Fecha={12/07/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.1.9-1-PRES},
-		Template.Version.Hash={28F08F2E7D3326A9E6B820F87D3D6152},
-		Template.Version.Release={1.1.9},
+		Template.Version.Dev={1.2.0-PRES},
+		Template.Version.Hash={26B1CE6EECC38290168086F1F7CFC1CA},
+		Template.Version.Release={1.2.0},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -4084,7 +4099,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.1.9 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.2.0 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -4597,10 +4612,9 @@
     \setcounter{footnote}{0}
 
 	% -------------------------------------------------------------------------
-	% Márgenes de páginas y tablas
+	% Márgenes de tablas
 	% -------------------------------------------------------------------------
-	\def\arraystretch {\tablepaddingv} % Se ajusta el padding vertical de las tablas
-	\setlength{\tabcolsep}{\tablepaddingh em} % Se ajusta el padding horizontal de las tablas
+	\resettablecellpadding
 
 	% -------------------------------------------------------------------------
 	% Se define el punto decimal
