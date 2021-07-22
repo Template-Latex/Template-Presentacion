@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Archivo de ejemplo
-% Versión:      1.2.1 (17/07/2021)
+% Versión:      1.2.3 (21/07/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -274,6 +274,15 @@ def incmatrix(genl1, genl2):
 			\end{tabular}
 		\end{table}
 		\disabletablerowcolor % Desactiva el color de celda
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Entorno tabular (3/3)}
+	\tabularframeheadrepeat{3}
+	\tabularframecfgalign{true}{true} % Configura alineación vertical (primer parámetro)
+	\tabularframesinglecontent{%
+		\lipsum[1]
 	}
 \end{frame}
 
