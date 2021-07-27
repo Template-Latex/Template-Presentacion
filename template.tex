@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      1.2.3 (21/07/2021)
+% Versión:      1.2.4 (27/07/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -615,18 +615,16 @@
 % IMPORTACIÓN DE FUNCIONES Y ENTORNOS
 % -----------------------------------------------------------------------------
 % Definición de variables globales
-\def\GLOBALcaptiondefn {EMPTY-VAR}       % Definición del caption
-%\def\GLOBALcaptiondefnimages{EMPTY-VAR} % Definición del caption en images
-%\def\GLOBALcaptiondefnsrc{EMPTY-VAR}    % Definición del caption en sourcecode
-\def\GLOBALchapternumenabled {false}     % Numeración de capítulos empezó
-\def\GLOBALenvimageadded {false}         % Indica que una imagen ha sido añadida
-\def\GLOBALenvimageinitialized {false}   % Entorno images activo
-\def\GLOBALenvmulticol {false}           % Indica que el entorno multicol está activo
-\def\GLOBALsectionalph {false}           % Sección con numeración de letras
-\def\GLOBALsectionanumenabled {false}    % Sección sin numeración
-\def\GLOBALsubsectionanumenabled {false} % Subsección sin numeración
-\def\GLOBALtablerowcolorindex {2}        % Índice tabla colores
-\def\GLOBALtablerowcolorswitch {false}   % Tabla con colores cambiados
+\global\def\GLOBALcaptiondefn {EMPTY-VAR}       % Definición del caption
+\global\def\GLOBALchapternumenabled {false}     % Numeración de capítulos empezó
+\global\def\GLOBALenvimageadded {false}         % Indica que una imagen ha sido añadida
+\global\def\GLOBALenvimageinitialized {false}   % Entorno images activo
+\global\def\GLOBALenvmulticol {false}           % Indica que el entorno multicol está activo
+\global\def\GLOBALsectionalph {false}           % Sección con numeración de letras
+\global\def\GLOBALsectionanumenabled {false}    % Sección sin numeración
+\global\def\GLOBALsubsectionanumenabled {false} % Subsección sin numeración
+\global\def\GLOBALtablerowcolorindex {2}        % Índice tabla colores
+\global\def\GLOBALtablerowcolorswitch {false}   % Tabla con colores cambiados
 
 % Contador global de objetos
 \newcounter{templateEquations}      % Ecuaciones
@@ -717,14 +715,14 @@
 
 % Define el caption del índice
 % 	#1	Título del caption
-\newcommand{\setindexcaption}[1]{\def\GLOBALcaptiondefn {#1}}
-%\newcommand{\setindexcaptionimages}[1]{\def\GLOBALcaptiondefnimages {#1}}
-%\newcommand{\setindexcaptionsourcecode}[1]{\def\GLOBALcaptiondefnsrc {#1}}
+\newcommand{\setindexcaption}[1]{%
+	\global\def\GLOBALcaptiondefn {#1}%
+}
 
 % Resetea los caption
-\newcommand{\resetindexcaption}{\def\GLOBALcaptiondefn {EMPTY-VAR}}
-%\newcommand{\resetindexcaptionimages}{\def\GLOBALcaptiondefnimages {EMPTY-VAR}}
-%\newcommand{\resetindexcaptionsourcecode}{\def\GLOBALcaptiondefnsrc {EMPTY-VAR}}
+\newcommand{\resetindexcaption}{%
+	\global\def\GLOBALcaptiondefn {EMPTY-VAR}%
+}
 
 % Cambia los márgenes del documento
 %	#1	Margen izquierdo
@@ -1651,7 +1649,7 @@
 	\subfloat[#5]{%
 		\fbox{\includegraphics[#3]{#2}}#1}%
 	\endgroup%
-	\def\GLOBALenvimageadded {true}%
+	\global\def\GLOBALenvimageadded {true}%
 }
 
 % Añade una imagen a un env "image" con borde sin leyenda
@@ -1676,13 +1674,13 @@
 	}{}%
 	\fbox{\includegraphics[#2]{#1}}%
 	\endgroup%
-	\def\GLOBALenvimageadded {true}%
+	\global\def\GLOBALenvimageadded {true}%
 }
 
 % Añade un salto de línea en las imágenes
 \newcommand{\imagesnewline}{%
 	\checkonlyonenvimage%
-	\def\GLOBALenvimageadded {false}%
+	\global\def\GLOBALenvimageadded {false}%
 	\vspace{\marginimagemultbottom cm}%
 	\linebreak\noindent%
 }
@@ -1690,13 +1688,17 @@
 % Agrega un espacio horizontal a las imágenes
 % 	#1 Tamaño del espacio
 \newcommand{\imageshspace}[1]{%
-	\checkonlyonenvimage\def\GLOBALenvimageadded {false}\hspace{#1}%
+	\checkonlyonenvimage%
+	\global\def\GLOBALenvimageadded {false}%
+	\hspace{#1}%
 }
 
 % Agrega un espacio vertical a las imágenes
 % 	#1 Tamaño del espacio
 \newcommand{\imagesvspace}[1]{%
-	\checkonlyonenvimage\def\GLOBALenvimageadded {false}~ \\ \vspace*{#1}%
+	\checkonlyonenvimage%
+	\global\def\GLOBALenvimageadded {false}%
+	~ \\ \vspace*{#1}%
 }
 
 % Insertar una imagen
@@ -2350,7 +2352,7 @@
 		\addtocounter{templateTables}{\value{table}}
 		\setcounter{table}{0}
 	}{}
-	\def\GLOBALchapternumenabled {true}
+	\global\def\GLOBALchapternumenabled {true}
 	\coreintializetitlenumbering
 }{}{}
 
@@ -2377,8 +2379,8 @@
 		\addtocounter{templateTables}{\value{table}}
 		\setcounter{table}{0}
 	}{}
-	\def\GLOBALsectionanumenabled {false}
-	\def\GLOBALsubsectionanumenabled {false}
+	\global\def\GLOBALsectionanumenabled {false}
+	\global\def\GLOBALsubsectionanumenabled {false}
 	\coreintializetitlenumbering
 }{}{}
 
@@ -2405,7 +2407,7 @@
 		\addtocounter{templateTables}{\value{table}}
 		\setcounter{table}{0}
 	}{}
-	\def\GLOBALsubsectionanumenabled {false}
+	\global\def\GLOBALsubsectionanumenabled {false}
 	\coreintializetitlenumbering
 }{}{}
 
@@ -2625,7 +2627,7 @@
 	}
 
 	% Actualiza el índice previo
-	\def\GLOBALtablerowcolorindex {#1}
+	\global\def\GLOBALtablerowcolorindex {#1}
 }
 
 % Alterna los colores de las tablas a la última ejecución
@@ -2679,9 +2681,9 @@
 % Alterna los colores de las filas de las tablas
 \newcommand{\switchtablerowcolors}{
 	\ifthenelse{\equal{\GLOBALtablerowcolorswitch}{false}}{
-		\def\GLOBALtablerowcolorswitch {true}
+		\global\def\GLOBALtablerowcolorswitch {true}
 	}{
-		\def\GLOBALtablerowcolorswitch {false}
+		\global\def\GLOBALtablerowcolorswitch {false}
 	}
 	\settablerowcolorslast
 }
@@ -2915,12 +2917,12 @@
 \global\def\GLOBALtabularframecontentwidthright {0.6}
 \global\def\GLOBALtabularframebarcreated {false}
 
-\def\GLOBALtabularframecolumnselected {1}
-\def\GLOBALtabularframeinit {false}
-\def\GLOBALtabularframestorevar {true}
+\def\LOCALtabularframecolumnselected {1}
+\def\LOCALtabularframeinit {false}
+\def\LOCALtabularframestorevar {true}
 
-\def\GLOBALtabularframepercentchar#1{}
-\edef\GLOBALtabularframepercentchar{\expandafter\GLOBALtabularframepercentchar\string\%}
+\def\LOCALtabularframepercentchar#1{}
+\edef\LOCALtabularframepercentchar{\expandafter\LOCALtabularframepercentchar\string\%}
 
 % Archivo que guarda el código generado del framehead
 \newwrite\filetabularframehead
@@ -2972,10 +2974,10 @@
 %	#1	Número de la columna destacada (desde 1)
 \newenvironment{tabularframehead}[1]{%
 	\emptyvarerr{\tabularframehead}{#1}{Numero de columna destacada no definido}
-	\def\GLOBALtabularframecolumnselected {#1}
-	\def\GLOBALtabularframeinit {true}%
+	\def\LOCALtabularframecolumnselected {#1}
+	\def\LOCALtabularframeinit {true}%
 	\setcounter{tabularcolnumber}{0}%
-	\ifthenelse{\equal{\GLOBALtabularframestorevar}{true}}{%
+	\ifthenelse{\equal{\LOCALtabularframestorevar}{true}}{%
 		\immediate\openout\filetabularframehead=\jobname.tframeh%
 	}{}%
 	\vspace{\dimexpr-\GLOBALtabularframebarheight\textheight}%
@@ -2983,7 +2985,7 @@
 	}{
 	\end{columns}
 	\setcounter{tabularcolnumber}{-1}
-	\ifthenelse{\equal{\GLOBALtabularframestorevar}{true}}{%
+	\ifthenelse{\equal{\LOCALtabularframestorevar}{true}}{%
 		\immediate\closeout\filetabularframehead%
 		\global\def\GLOBALtabularframebarcreated {true}%
 	}{}%
@@ -2995,27 +2997,27 @@
 	\ifthenelse{\equal{\GLOBALtabularframebarcreated}{true}}{}{%
 		\throwwarning{Funcion \noexpand\tabularframeheadrepeat no puede usarse si no existe un \noexpand\tabularframehead previo}\stop}%
 	\emptyvarerr{\tabularframeheadrepeat}{#1}{Numero de columna destacada no definido}
-	\def\GLOBALtabularframestorevar {false}
+	\def\LOCALtabularframestorevar {false}
 	\begin{tabularframehead}{#1}%
 		\input{\jobname.tframeh}%
 	\end{tabularframehead}%
-	\def\GLOBALtabularframestorevar {true}
+	\def\LOCALtabularframestorevar {true}
 }
 
 % Agrega una columna al tabular head
 %	#1	Tamaño de la columna
 %	#2	Texto
 \newcommand{\addtfheadcolumn}[2]{%
-	\ifthenelse{\equal{\GLOBALtabularframeinit}{true}}{}{%
+	\ifthenelse{\equal{\LOCALtabularframeinit}{true}}{}{%
 		\throwwarning{Funcion \noexpand\addtfheadcolumn no puede usarse fuera del entorno \noexpand\tabularframehead}\stop}%
 	\emptyvarerr{\addtfheadcolumn}{#1}{Tamano de la columna no definido}%
 	\emptyvarerr{\addtfheadcolumn}{#2}{Texto de la columna no definido}%
-	\ifthenelse{\equal{\GLOBALtabularframestorevar}{true}}{%
-		\immediate\write\filetabularframehead{\unexpanded{\addtfheadcolumn{#1}{#2}}\GLOBALtabularframepercentchar}%
+	\ifthenelse{\equal{\LOCALtabularframestorevar}{true}}{%
+		\immediate\write\filetabularframehead{\unexpanded{\addtfheadcolumn{#1}{#2}}\LOCALtabularframepercentchar}%
 	}{}%
 	\stepcounter{tabularcolnumber}%
 	\column{\dimexpr#1\linewidth}%
-	\ifthenelse{\equal{\thetabularcolnumber}{\GLOBALtabularframecolumnselected}}{%
+	\ifthenelse{\equal{\thetabularcolnumber}{\LOCALtabularframecolumnselected}}{%
 		\transparent{1.0}%
 	}{%
 		\transparent{\opacitytabularframe}%
@@ -3062,7 +3064,7 @@
 			}
 		\end{minipage}}%
 	\end{columns}%
-	\def\GLOBALtabularframeinit {false}%
+	\def\LOCALtabularframeinit {false}%
 }
 
 % Tabular frame de una sola columna
@@ -3089,7 +3091,7 @@
 				}
 		\end{minipage}}%
 	\end{columns}%
-	\def\GLOBALtabularframeinit {false}%
+	\def\LOCALtabularframeinit {false}%
 }
 
 % Inicia código fuente con parámetros
@@ -3291,8 +3293,8 @@
 	% Modifica globales
 	\def\envimageslabelvar {#1}
 	\def\envimagescaptionvar {#2}
-	\def\GLOBALenvimageinitialized {true}
-	\def\GLOBALenvimageadded {false}
+	\global\def\GLOBALenvimageinitialized {true}
+	\global\def\GLOBALenvimageadded {false}
 	
 	% Configura caption y márgenes
 	\vspace{\marginimagetop cm}
@@ -3307,7 +3309,7 @@
 		\ifthenelse{\equal{\envimagescaptionvar}{}}{ % \ifx\hfuzz no sirve
 			\vspace{\captionlessmarginimage cm}%
 		}{%
-			\ifthenelse{\equal{\captionmarginimage}{0}}{}{\vspace{\captionmarginimage cm}}%
+			\ifthenelse{\equal{\captionmarginimages}{0}}{}{\vspace{\captionmarginimages cm}}%
 			\caption{\envimagescaptionvar\envimageslabelvar}%
 		}%
 	\end{figure}%
@@ -3317,7 +3319,7 @@
 	\vspace{\marginimagebottom cm}
 	
 	% Restablece globales
-	\def\GLOBALenvimageinitialized {false}
+	\global\def\GLOBALenvimageinitialized {false}
 }
 
 % Crea una sección de imágenes múltiples completa dentro de un multicol
@@ -3329,8 +3331,8 @@
 	\def\envimageslabelvar {#1}
 	\def\envimagesmcpos {#2}
 	\def\envimagescaptionvar {#3}
-	\def\GLOBALenvimageinitialized {true}
-	\def\GLOBALenvimageadded {false}
+	\global\def\GLOBALenvimageinitialized {true}
+	\global\def\GLOBALenvimageadded {false}
 	\checkinsidemulticol
 	
 	% Configura caption y márgenes
@@ -3353,7 +3355,7 @@
 		\ifthenelse{\equal{\envimagescaptionvar}{}}{ % \ifx\hfuzz no sirve
 			\vspace{\captionlessmarginimage cm}%
 		}{%
-			\ifthenelse{\equal{\captionmarginimage}{0}}{}{\vspace{\captionmarginimage cm}}
+			\ifthenelse{\equal{\captionmarginimagesmc}{0}}{}{\vspace{\captionmarginimagesmc cm}}
 			\caption{\envimagescaptionvar\envimageslabelvar}%
 		}%
 	\end{figure*}%
@@ -3362,7 +3364,7 @@
 	\setcaptionmargincm{\captionlrmargin}
 	
 	% Restablece globales
-	\def\GLOBALenvimageinitialized {false}
+	\global\def\GLOBALenvimageinitialized {false}
 }
 
 % -----------------------------------------------------------------------------
@@ -4313,15 +4315,15 @@
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={21/07/2021},
+		Template.Fecha={27/07/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.2.3-2-PRES},
-		Template.Version.Hash={DBA153F5F49A3E955C986E2C284B33D1},
-		Template.Version.Release={1.2.3},
+		Template.Version.Dev={1.2.4-1-PRES},
+		Template.Version.Hash={1309DBAE6588EC189780A38E9630CF9D},
+		Template.Version.Release={1.2.4},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -4333,7 +4335,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.2.3 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.2.4 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -4779,12 +4781,12 @@
 \let\SOURCEcaptionlrmargin\captionlrmargin
 \BeforeBeginEnvironment{multicols}{%
 	\def\captionlrmargin {\captionlrmarginmc}%
-	\def\GLOBALenvmulticol {true}%
+	\global\def\GLOBALenvmulticol {true}%
 	\setcaptionmargincm{\captionlrmargin}%
 }
 \AfterEndEnvironment{multicols}{%
 	\def\captionlrmargin {\SOURCEcaptionlrmargin}%
-	\def\GLOBALenvmulticol {false}%
+	\global\def\GLOBALenvmulticol {false}%
 	\setcaptionmargincm{\captionlrmargin}%
 }
 
@@ -4822,8 +4824,6 @@
 % Corrige espaciamiento de itemize
 % -----------------------------------------------------------------------------
 \ifthenelse{\equal{\itemizedeleteleftmargin}{true}}{
-	% \settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
-	% \addtolength{\leftmargini}{\labelsep}
 	\setlist[itemize]{leftmargin=*}
 	\setlist[enumerate]{leftmargin=*}
 }{}
@@ -4833,6 +4833,27 @@
 % -----------------------------------------------------------------------------
 % \let\Tiny=\tiny % https://tex.stackexchange.com/q/58087/5764
 \renewcommand{\insertshorttitle}{\titulopresentacioncorto}
+
+% -----------------------------------------------------------------------------
+% Configura los bloques
+% -----------------------------------------------------------------------------
+\addtobeamertemplate{block begin}{
+}{
+	\vspace{\dimexpr-0.4em + \blockpaddingtop em} % Padding superior
+	\addtolength{\leftskip}{\dimexpr-0.4em + \blockpaddingleft em} % Padding izquierdo
+	\addtolength{\rightskip}{\dimexpr-0.4em + \blockpaddingright em} % Padding derecho
+}
+\addtobeamertemplate{block end}{
+	\vspace{\dimexpr-0.4em + \blockpaddingbottom em} % Padding inferior
+}{
+	\vspace{\blockmarginbottom em} % Margen inferior de los bloques
+}
+
+% -----------------------------------------------------------------------------
+% Definición de entornos beamer
+% -----------------------------------------------------------------------------
+\newenvironment<>{blockjustified}[1]{%
+	\begin{block}#2{#1}\justifying}{\end{block}}
 
 % -----------------------------------------------------------------------------
 % CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS

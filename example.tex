@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Archivo de ejemplo
-% Versión:      1.2.3 (21/07/2021)
+% Versión:      1.2.4 (27/07/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -51,9 +51,9 @@
 
 \begin{frame}
 	\frametitle{Bloques de texto}
-	\begin{block}{Bloque 1 (justificado)}
-		\justifytext{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.}
-	\end{block}
+	\begin{blockjustified}{Bloque 1 (justificado)}
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+	\end{blockjustified}
 	
 	\begin{block}{Bloque 2}
 		Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
@@ -288,7 +288,7 @@ def incmatrix(genl1, genl2):
 
 %---------------------------------------------------------------------
 
-\begin{frame}[allowframebreaks]\scriptsize
+\begin{frame}[allowframebreaks]\normalsize
 	\frametitle{\namereferences}
 	\bibliography{library}
 \end{frame}

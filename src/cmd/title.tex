@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Funciones para insertar títulos
-% Versión:      1.2.3 (21/07/2021)
+% Versión:      1.2.4 (27/07/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -77,7 +77,7 @@
 		\addtocounter{templateTables}{\value{table}}
 		\setcounter{table}{0}
 	}{}
-	\def\GLOBALchapternumenabled {true}
+	\global\def\GLOBALchapternumenabled {true}
 	\coreintializetitlenumbering
 }{}{}
 
@@ -104,8 +104,8 @@
 		\addtocounter{templateTables}{\value{table}}
 		\setcounter{table}{0}
 	}{}
-	\def\GLOBALsectionanumenabled {false}
-	\def\GLOBALsubsectionanumenabled {false}
+	\global\def\GLOBALsectionanumenabled {false}
+	\global\def\GLOBALsubsectionanumenabled {false}
 	\coreintializetitlenumbering
 }{}{}
 
@@ -132,7 +132,7 @@
 		\addtocounter{templateTables}{\value{table}}
 		\setcounter{table}{0}
 	}{}
-	\def\GLOBALsubsectionanumenabled {false}
+	\global\def\GLOBALsubsectionanumenabled {false}
 	\coreintializetitlenumbering
 }{}{}
 

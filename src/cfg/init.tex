@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      1.2.3 (21/07/2021)
+% Versión:      1.2.4 (27/07/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -100,15 +100,15 @@
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={21/07/2021},
+		Template.Fecha={27/07/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.2.3-2-PRES},
-		Template.Version.Hash={DBA153F5F49A3E955C986E2C284B33D1},
-		Template.Version.Release={1.2.3},
+		Template.Version.Dev={1.2.4-1-PRES},
+		Template.Version.Hash={1309DBAE6588EC189780A38E9630CF9D},
+		Template.Version.Release={1.2.4},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -120,7 +120,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.2.3 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.2.4 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -566,12 +566,12 @@
 \let\SOURCEcaptionlrmargin\captionlrmargin
 \BeforeBeginEnvironment{multicols}{%
 	\def\captionlrmargin {\captionlrmarginmc}%
-	\def\GLOBALenvmulticol {true}%
+	\global\def\GLOBALenvmulticol {true}%
 	\setcaptionmargincm{\captionlrmargin}%
 }
 \AfterEndEnvironment{multicols}{%
 	\def\captionlrmargin {\SOURCEcaptionlrmargin}%
-	\def\GLOBALenvmulticol {false}%
+	\global\def\GLOBALenvmulticol {false}%
 	\setcaptionmargincm{\captionlrmargin}%
 }
 
@@ -609,8 +609,6 @@
 % Corrige espaciamiento de itemize
 % -----------------------------------------------------------------------------
 \ifthenelse{\equal{\itemizedeleteleftmargin}{true}}{
-	% \settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
-	% \addtolength{\leftmargini}{\labelsep}
 	\setlist[itemize]{leftmargin=*}
 	\setlist[enumerate]{leftmargin=*}
 }{}
@@ -620,3 +618,24 @@
 % -----------------------------------------------------------------------------
 % \let\Tiny=\tiny % https://tex.stackexchange.com/q/58087/5764
 \renewcommand{\insertshorttitle}{\titulopresentacioncorto}
+
+% -----------------------------------------------------------------------------
+% Configura los bloques
+% -----------------------------------------------------------------------------
+\addtobeamertemplate{block begin}{
+}{
+	\vspace{\dimexpr-0.4em + \blockpaddingtop em} % Padding superior
+	\addtolength{\leftskip}{\dimexpr-0.4em + \blockpaddingleft em} % Padding izquierdo
+	\addtolength{\rightskip}{\dimexpr-0.4em + \blockpaddingright em} % Padding derecho
+}
+\addtobeamertemplate{block end}{
+	\vspace{\dimexpr-0.4em + \blockpaddingbottom em} % Padding inferior
+}{
+	\vspace{\blockmarginbottom em} % Margen inferior de los bloques
+}
+
+% -----------------------------------------------------------------------------
+% Definición de entornos beamer
+% -----------------------------------------------------------------------------
+\newenvironment<>{blockjustified}[1]{%
+	\begin{block}#2{#1}\justifying}{\end{block}}
