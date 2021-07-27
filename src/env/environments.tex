@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Definición de entornos
-% Versión:      1.2.4 (27/07/2021)
+% Versión:      1.2.5 (27/07/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -214,10 +214,11 @@
 	\global\def\GLOBALenvimageadded {false}
 	
 	% Configura caption y márgenes
-	\vspace{\marginimagetop cm}
-	\setcaptionmargincm{\captionmarginmultimg}
+	\vspace{\marginimagetop cm}%
+	\setcaptionmargincm{\captionmarginmultimg}%
 	
 	% Inicia la figura
+	\begin{samepage}%
 	\begin{figure}[H] \centering%
 		\thisfloatpagestyle{fancy}%
 		\vspace{\marginimagemulttop cm}%
@@ -232,8 +233,9 @@
 	\end{figure}%
 
 	% Restablece caption y márgenes
-	\setcaptionmargincm{\captionlrmargin}
-	\vspace{\marginimagebottom cm}
+	\setcaptionmargincm{\captionlrmargin}%
+	\vspace{\marginimagebottom cm}%
+	\end{samepage}
 	
 	% Restablece globales
 	\global\def\GLOBALenvimageinitialized {false}
@@ -250,7 +252,7 @@
 	\def\envimagescaptionvar {#3}
 	\global\def\GLOBALenvimageinitialized {true}
 	\global\def\GLOBALenvimageadded {false}
-	\checkinsidemulticol
+	\checkinsidemulticol%
 	
 	% Configura caption y márgenes
 	\setcaptionmargincm{\captionmarginmultimg} % Eso es para los wrapfig
@@ -278,7 +280,7 @@
 	\end{figure*}%
 	
 	% Restablece caption y márgenes
-	\setcaptionmargincm{\captionlrmargin}
+	\setcaptionmargincm{\captionlrmargin}%
 	
 	% Restablece globales
 	\global\def\GLOBALenvimageinitialized {false}
