@@ -31,9 +31,9 @@
 \def\captionfontsize{footnotesize} % Tamaño de fuente de los caption
 \def\captionlabelformat {simple}   % Formato leyenda {empty,simple,parens}
 \def\captionlabelsep {colon}       % Sep. {none,colon,period,space,quad,newline}
-\def\captionlessmarginimage {0.1}  % Margen sup/inf de fig. si no hay ley. [cm]
+\def\captionlessmarginimage {0.1}  % Margen sup/inf de figura si no hay ley. [cm]
 \def\captionlrmargin {0}           % Márgenes izq/der de la leyenda [cm]
-\def\captionlrmarginmc {0}         % Mar. izq/der leyenda dentro de columnas [cm]
+\def\captionlrmarginmc {0}         % Margen izq/der leyenda dentro de columnas [cm]
 \def\captionmarginimage {0}        % Margen vertical entre caption e imagen [cm]
 \def\captionmarginimages {-0.04}   % Margen v entre caption y entorno images [cm]
 \def\captionmarginimagesmc {-0.04} % Margen v entre caption y entorno imagesmc [cm]
@@ -45,8 +45,8 @@
 \def\captionnumsubtable {alph}     % N° subtabla {arabic,alph,Alph,roman,Roman}
 \def\captionnumtable {arabic}      % N° tabla {arabic,alph,Alph,roman,Roman}
 \def\captionsubchar {.}            % Caracter entre N° objeto y N° subfigura/tabla
-\def\captiontbmarginfigure {9.35}  % Margen sup/inf de la leyenda en fig. [pt]
-\def\captiontbmargintable {7}      % Margen sup/inf de la leyenda en tab. [pt]
+\def\captiontbmarginfigure {9.35}  % Margen sup/inf de la leyenda en figuras [pt]
+\def\captiontbmargintable {7}      % Margen sup/inf de la leyenda en tablas [pt]
 \def\captiontextbold {true}        % Etiqueta (código,figura,tabla) en negrita
 \def\captiontextcolor {black}      % Color de la leyenda
 \def\captiontextsubnumbold {true}  % N° subfigura/subtabla en negrita
@@ -54,14 +54,14 @@
 \def\equationcaptioncenter {true}  % Ecuaciones están centradas o justificadas
 \def\figurecaptiontop {false}      % Leyenda arriba de las imágenes
 \def\marginaligncaptbottom {0.1}   % Margen inferior caption en align [cm]
-\def\marginaligncapttop {-0.8}     % Margen superior caption en align [cm]
+\def\marginaligncapttop {-0.75}    % Margen superior caption en align [cm]
 \def\marginalignedcaptbottom {0.1} % Margen inferior caption en aligned [cm]
 \def\marginalignedcapttop {-0.75}  % Margen superior caption en aligned [cm]
 \def\margineqncaptionbottom {0}    % Margen inferior caption ecuación [cm]
-\def\margineqncaptiontop {-0.75}   % Margen superior caption ecuación [cm]
+\def\margineqncaptiontop {-0.7}    % Margen superior caption ecuación [cm]
 \def\margingathercaptbottom {0.1}  % Margen inferior caption en gather [cm]
 \def\margingathercapttop {-0.9}    % Margen superior caption en gather [cm]
-\def\margingatheredcaptbottom{0.1} % Margen inf. caption en gathered [cm]
+\def\margingatheredcaptbottom{0.1} % Margen inferior caption en gathered [cm]
 \def\margingatheredcapttop {-0.7}  % Margen superior caption en gathered [cm]
 \def\sectioncaptiondelimiter {.}   % Caracter delimitador n° objeto y sección
 \def\showsectioncaptioncode {none} % N° sec. código {none,chap,(s/ss/sss/ssss)ec}
@@ -76,7 +76,7 @@
 
 % ANEXO, CITAS, REFERENCIAS
 \def\bibtexrefsep {6}              % Separación entre refs. {bibtex} [pt]
-\def\bibtexstyle {apalike}         % Formato de ref. bibtex {apa,ieeetr,etc...}
+\def\bibtexstyle {apalike}         % Formato referencias bibtex {apa,ieeetr,etc...}
 \def\stylecitereferences {bibtex}  % Estilo cita/ref {bibtex,custom}
 
 % CONFIGURACIONES DE OBJETOS
@@ -94,10 +94,10 @@
 \def\marginaligntop {-0.4}         % Margen superior entorno align [cm]
 \def\marginequationbottom {-0.2}   % Margen inferior ecuaciones [cm]
 \def\marginequationtop {0}         % Margen superior ecuaciones [cm]
-\def\marginfloatimages {-13}       % Margen sup. fig. insertimageleft/right [pt]
+\def\marginfloatimages {-13}       % Margen sup. figuras insertimageleft/right [pt]
 \def\marginfootnote {10}           % Margen derecho footnote [pt]
-\def\margingatherbottom {-0.3}     % Margen inferior entorno gather [cm]
-\def\margingatheredbottom {-0.2}   % Margen inf. entorno gathered [cm]
+\def\margingatherbottom {-0.2}     % Margen inferior entorno gather [cm]
+\def\margingatheredbottom {-0.1}   % Margen inferior entorno gathered [cm]
 \def\margingatheredtop {-0.4}      % Margen superior entorno gathered [cm]
 \def\margingathertop {-0.4}        % Margen superior entorno gather [cm]
 \def\marginimagebottom {-0.50}     % Margen inferior figura [cm]
@@ -194,7 +194,7 @@
 	% \usetheme{Ilmenau}
 	% \usetheme{JuanLesPins}
 	% \usetheme{Luebeck}
-	%\usetheme{Madrid}
+	\usetheme{Madrid}
 	% \usetheme{Malmoe}
 	% \usetheme{Marburg}
 	% \usetheme{Montpellier}
@@ -210,14 +210,14 @@
 	
 	% \useinnertheme{default}
 	% \useinnertheme{circles}
-	\useinnertheme{rectangles}
+	%\useinnertheme{rectangles}
 	% \useinnertheme{rounded}
 	% \useinnertheme{inmargin}
 	
 	% TEMAS TIPO <OUTER>, USAR SÓLO SI NO SE APLICA EL GLOBAL
 	
 	% \useoutertheme{default}
-	\useoutertheme{infolines}
+	%\useoutertheme{infolines}
 	% \useoutertheme{miniframes}
 	% \useoutertheme{smoothbars}
 	% \useoutertheme{sidebar}
@@ -230,7 +230,7 @@
 	% https://deic-web.uab.cat/~iblanes/beamer_gallery/index_by_color.html
 	
 	% \usecolortheme{default}
-	\usecolortheme[named=cardinalred]{structure}
+	%\usecolortheme[named=cardinalred]{structure}
 	% \usecolortheme{sidebartab}
 
 	% \usecolortheme{albatross}
@@ -242,12 +242,12 @@
 	% \usecolortheme{fly}
 	% \usecolortheme{lily}
 	% \usecolortheme{monarca}
-	\usecolortheme{orchid}
+	%\usecolortheme{orchid}
 	% \usecolortheme{rose}
 	% \usecolortheme{seagull}
 	% \usecolortheme{seahorse}
 	% \usecolortheme{spruce}
-	\usecolortheme{whale}
+	%\usecolortheme{whale}
 	% \usecolortheme{wolverine}
 
 	% IDIOMA
@@ -261,9 +261,9 @@
 	% CONFIGURA LOS BLOQUES, VALORES EN [EM]
 	\def\blockmarginbottom {1}
 	\def\blockpaddingbottom {0.5}
-	\def\blockpaddingleft {0.4}
-	\def\blockpaddingright {0.4}
-	\def\blockpaddingtop {0.5}
+	\def\blockpaddingleft {0.5}
+	\def\blockpaddingright {0.5}
+	\def\blockpaddingtop {0.75}
 	
 	% PARA RESTABLECER EL HEADLINE, COMENTAR
 	\setbeamertemplate{headline}{}

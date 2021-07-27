@@ -1240,7 +1240,7 @@
 		\begin{equation}
 			\hfilneg \text{#1} #2 \hspace{10000pt minus 1fil}
 		\end{equation}
-		\vspace{\dimexpr-0.2\baselineskip +\marginequationbottom cm}%
+		\vspace{\dimexpr-0.2\baselineskip + \marginequationbottom cm}%
 		\end{samepage}
 	}{%
 		\ifx\hfuzz#1\hfuzz%
@@ -1255,12 +1255,12 @@
 %	#1	Ecuación
 \newcommand{\insertequationleftanum}[1]{%
 	\emptyvarerr{\insertequationleftanum}{#1}{Ecuacion no definida}%
-	\vspace{\dimexpr\marginequationtop cm -\baselineskip}%
+	\vspace{\dimexpr\marginequationtop cm - \baselineskip}%
 	\begin{samepage}%
 	\begin{equation*}
 		\hfilneg \ensuremath{#1} \hspace{10000pt minus 1fil}
 	\end{equation*}
-	\vspace{\dimexpr-0.2\baselineskip +\marginequationbottom cm}%
+	\vspace{\dimexpr-0.2\baselineskip + \marginequationbottom cm}%
 	\end{samepage}
 }
 
@@ -1270,12 +1270,12 @@
 \newcommand{\insertequationright}[2][]{%
 	\emptyvarerr{\insertequationright}{#2}{Ecuacion no definida}%
 	\ifthenelse{\equal{\numberedequation}{true}}{%
-		\vspace{\dimexpr\marginequationtop cm -\baselineskip}%
+		\vspace{\dimexpr\marginequationtop cm - \baselineskip}%
 		\begin{samepage}%
 		\begin{equation}
 			\hspace{10000pt minus 1fil} \text{#1} #2 \hfilneg
 		\end{equation}
-		\vspace{\dimexpr-0.2\baselineskip +\marginequationbottom cm}%
+		\vspace{\dimexpr-0.2\baselineskip + \marginequationbottom cm}%
 		\end{samepage}
 	}{%
 		\ifx\hfuzz#1\hfuzz%
@@ -1290,12 +1290,12 @@
 %	#1	Ecuación
 \newcommand{\insertequationrightanum}[1]{%
 	\emptyvarerr{\insertequationrightanum}{#1}{Ecuacion no definida}%
-	\vspace{\dimexpr\marginequationtop cm -\baselineskip}%
+	\vspace{\dimexpr\marginequationtop cm - \baselineskip}%
 	\begin{samepage}%
 	\begin{equation*}
 		\hspace{10000pt minus 1fil} \ensuremath{#1} \hfilneg
 	\end{equation*}
-	\vspace{\dimexpr-0.2\baselineskip +\marginequationbottom cm}%
+	\vspace{\dimexpr-0.2\baselineskip + \marginequationbottom cm}%
 	\end{samepage}
 }
 
@@ -1461,7 +1461,7 @@
 	\begin{gather*}
 		\ensuremath{#1}
 	\end{gather*}
-	\vspace{\dimexpr-0.15cm +\margingatheredbottom cm}%
+	\vspace{\dimexpr-0.15cm + \margingatheredbottom cm}%
 	\end{samepage}
 }
 
@@ -1509,9 +1509,9 @@
 		\begin{gather*}
 			\ensuremath{#1}
 		\end{gather*}
-		\vspace{\dimexpr-0.2cm +\margingatheredcapttop cm}%
+		\vspace{\dimexpr-0.2cm + \margingatheredcapttop cm}%
 		\coreinsertequationcaption{#2}%
-		\vspace{\dimexpr-0.05cm +\margingatheredcaptbottom cm}%
+		\vspace{\dimexpr-0.05cm + \margingatheredcaptbottom cm}%
 		\end{samepage}
 	\fi
 }
@@ -1623,7 +1623,7 @@
 	\begin{align*}
 		\ensuremath{#1}
 	\end{align*}
-	\vspace{\dimexpr-0.2cm +\marginalignedbottom cm}%
+	\vspace{\dimexpr-0.2cm + \marginalignedbottom cm}%
 	\end{samepage}
 }
 
@@ -3098,7 +3098,7 @@
 	}{%
 		\transparent{\opacitytabularframe}%
 	}
-	\usebeamercolor[fg]{frametitle}\colorbox{bg}{\begin{minipage}[t][\GLOBALtabularframebarheight\textheight][t]{\dimexpr\linewidth-15\fboxrule}%
+	\usebeamercolor[fg]{frametitle}\colorbox{bg}{\begin{minipage}[t][\GLOBALtabularframebarheight\textheight][t]{\dimexpr\linewidth - 15\fboxrule}%
 		\usebeamercolor[fg]{frametitle}{%
 			\ifthenelse{\equal{\GLOBALtabularframebartextcentered}{false}}{%
 				\verticallycentertext{\GLOBALtabularframebarfontsize{#2}}%
@@ -3122,7 +3122,7 @@
 	\vspace{-2.5\fboxrule}
 	\begin{columns}[t,onlytextwidth]%
 		\column{\GLOBALtabularframecontentwidthleft\linewidth}%
-		\usebeamercolor[fg]{block body}\colorbox{bg}{\begin{minipage}[t][\GLOBALtabularframecontentheight \textheight][t]{\dimexpr\textwidth-15\fboxrule}%
+		\usebeamercolor[fg]{block body}\colorbox{bg}{\begin{minipage}[t][\GLOBALtabularframecontentheight \textheight][t]{\dimexpr\textwidth - 15\fboxrule}%
 			\ifthenelse{\equal{\GLOBALtabularframecontentleftcentered}{false}}{%
 				#1%
 			}{%
@@ -3131,7 +3131,7 @@
 		\end{minipage}}%
 		\column{\GLOBALtabularframecontentwidthright\linewidth}%
 		\centering
-		{\begin{minipage}[t][\GLOBALtabularframecontentheight \textheight][t]{\dimexpr\textwidth-10\fboxrule}%
+		{\begin{minipage}[t][\GLOBALtabularframecontentheight \textheight][t]{\dimexpr\textwidth - 10\fboxrule}%
 			\ifthenelse{\equal{\GLOBALtabularframecontentrightcentered}{false}}{%
 				#2%
 			}{%
@@ -3159,7 +3159,7 @@
 	\fi
 	\begin{columns}[t,onlytextwidth]%
 		\column{1\linewidth}%
-		\colorbox{\tabularframesinglecontentemptycolor}{\begin{minipage}[t][\GLOBALtabularframecontentheight \textheight][t]{\dimexpr\textwidth-15\fboxrule}%
+		\colorbox{\tabularframesinglecontentemptycolor}{\begin{minipage}[t][\GLOBALtabularframecontentheight \textheight][t]{\dimexpr\textwidth - 15\fboxrule}%
 				\ifthenelse{\equal{\GLOBALtabularframecontentleftcentered}{false}}{%
 					#2%
 				}{%
@@ -4399,8 +4399,8 @@
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.2.5-1-PRES},
-		Template.Version.Hash={1C12EF5FCF750FF0AAF9D6512CDBF415},
+		Template.Version.Dev={1.2.5-4-PRES},
+		Template.Version.Hash={5F248B277CFDEF6BE22A3E5BD311ABC6},
 		Template.Version.Release={1.2.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -4922,14 +4922,14 @@
 	\begin{adjustwidth}{%
 		\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo
 	}{
-		\dimexpr-0.4em +\blockpaddingright em % Padding derecho
+		\dimexpr-0.4em + \blockpaddingright em % Padding derecho
 	}
 }
 \addtobeamertemplate{block end}{
 	\end{adjustwidth}
-	\vspace{\dimexpr-0.6em +\blockpaddingbottom em} % Padding inferior
+	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior
 }{
-	\vspace{\dimexpr-1em +\blockmarginbottom em} % Margen inferior de los bloques
+	\vspace{\dimexpr-1em + \blockmarginbottom em} % Margen inferior de los bloques
 }
 
 % -----------------------------------------------------------------------------

@@ -106,8 +106,8 @@
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.2.5-1-PRES},
-		Template.Version.Hash={1C12EF5FCF750FF0AAF9D6512CDBF415},
+		Template.Version.Dev={1.2.5-4-PRES},
+		Template.Version.Hash={5F248B277CFDEF6BE22A3E5BD311ABC6},
 		Template.Version.Release={1.2.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -625,8 +625,8 @@
 \addtobeamertemplate{block begin}{
 }{
 	\setlength\abovedisplayskip{0pt}%
-	\vspace{\dimexpr-0.4em + \blockpaddingtop em} % Padding superior
-	\begin{adjustwidth}{
+	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior
+	\begin{adjustwidth}{%
 		\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo
 	}{
 		\dimexpr-0.4em + \blockpaddingright em % Padding derecho
@@ -634,9 +634,9 @@
 }
 \addtobeamertemplate{block end}{
 	\end{adjustwidth}
-	\vspace{\dimexpr-0.4em + \blockpaddingbottom em} % Padding inferior
+	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior
 }{
-	\vspace{\blockmarginbottom em} % Margen inferior de los bloques
+	\vspace{\dimexpr-1em + \blockmarginbottom em} % Margen inferior de los bloques
 }
 
 % -----------------------------------------------------------------------------
