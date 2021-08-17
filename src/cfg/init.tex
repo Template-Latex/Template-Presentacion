@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      1.2.6 (08/08/2021)
+% Versión:      1.2.7 (17/08/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -100,15 +100,15 @@
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={08/08/2021},
+		Template.Fecha={17/08/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.2.6-PRES},
-		Template.Version.Hash={3AEADE50206BC9B211602FA9C9EF9F16},
-		Template.Version.Release={1.2.6},
+		Template.Version.Dev={1.2.7-PRES},
+		Template.Version.Hash={90F05EFB8FE356019211D6A8056F20F5},
+		Template.Version.Release={1.2.7},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -120,7 +120,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.2.6 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.2.7 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -643,4 +643,13 @@
 % Definición de entornos beamer
 % -----------------------------------------------------------------------------
 \newenvironment<>{blockjustified}[1]{%
-	\begin{block}#2{#1}\justifying}{\end{block}}
+	\begin{block}#2{#1}\justifying
+}{%
+	\end{block}
+}
+
+% -----------------------------------------------------------------------------
+% Configura footnotes
+% -----------------------------------------------------------------------------
+\let\oldfootnote\footnote
+\renewcommand\footnote[1][]{\oldfootnote[frame,#1]}

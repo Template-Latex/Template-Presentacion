@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      1.2.6 (08/08/2021)
+% Versión:      1.2.7 (17/08/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -694,6 +694,9 @@
 % -----------------------------------------------------------------------------
 % Tipografía typewriter
 % -----------------------------------------------------------------------------
+% https://tug.org/FontCatalogue/typewriterfonts.html
+\ifthenelse{\equal{\fonttypewriter}{custom}}{
+}{
 \ifthenelse{\equal{\fonttypewriter}{tmodern}}{
 	\renewcommand*\ttdefault{lmvtt}
 }{
@@ -707,6 +710,9 @@
 \ifthenelse{\equal{\fonttypewriter}{beramono}}{
 	\usepackage[scaled]{beramono}
 }{
+\ifthenelse{\equal{\fonttypewriter}{cascadiacode}}{
+	\usepackage{cascadia-code}
+}{
 \ifthenelse{\equal{\fonttypewriter}{cmpica}}{
 	\usepackage{addfont}
 	\addfont{OT1}{cmpica}{\pica}
@@ -714,11 +720,22 @@
 	\addfont{OT1}{cmpicati}{\picati}
 	\renewcommand*\ttdefault{pica}
 }{
+\ifthenelse{\equal{\fonttypewriter}{cmodern}}{
+}{
 \ifthenelse{\equal{\fonttypewriter}{courier}}{
 	\usepackage{courier}
 }{
+\ifthenelse{\equal{\fonttypewriter}{courier10}}{
+	\usepackage{courierten}
+}{
+\ifthenelse{\equal{\fonttypewriter}{cmvtt}}{
+	\renewcommand*\ttdefault{cmvtt}
+}{
 \ifthenelse{\equal{\fonttypewriter}{dejavusansmono}}{
 	\usepackage[scaled]{DejaVuSansMono}
+}{
+\ifthenelse{\equal{\fonttypewriter}{droidsansmono}}{
+	\usepackage[defaultmono]{droidsansmono}
 }{
 \ifthenelse{\equal{\fonttypewriter}{firamono}}{
 	\usepackage[scale=0.85]{FiraMono}
@@ -750,10 +767,11 @@
 \ifthenelse{\equal{\fonttypewriter}{texgyrecursor}}{
 	\usepackage{tgcursor}
 }{
-	\throwbadconfig{Fuente desconocida}{\fonttypewriter}{anonymouspro,ascii,beramono,
-		cmpica,courier,dejavusansmono,firamono,gomono,inconsolata,kpmonospaced,lcmtt,
-		newtxtt,nimbusmono,nimbusmononarrow,texgyrecursor,tmodern}
-	}}}}}}}}}}}}}}}}
+\ifthenelse{\equal{\fonttypewriter}{txtt}}{
+	\renewcommand*\ttdefault{txtt}
+}{
+	\throwbadconfig{Fuente desconocida}{\fonttypewriter}{custom,anonymouspro,ascii,beramono,cascadiacode,cmpica,cmodern,courier,courier10,cvmtt,dejavusansmono,droidsansmono,firamono,gomono,inconsolata,kpmonospaced,lcmtt,newtxtt,nimbusmono,nimbusmononarrow,texgyrecursor,tmodern,txtt}
+	}}}}}}}}}}}}}}}}}}}}}}}
 }
 
 % -----------------------------------------------------------------------------
@@ -4559,15 +4577,15 @@
 		Template.Autor.Nombre={Pablo Pizarro R.},
 		Template.Autor.Web={https://ppizarror.com},
 		Template.Codificacion={UTF-8},
-		Template.Fecha={08/08/2021},
+		Template.Fecha={17/08/2021},
 		Template.Latex.Compilador={pdflatex},
 		Template.Licencia.Tipo={MIT},
 		Template.Licencia.Web={https://opensource.org/licenses/MIT},
 		Template.Nombre={Template-Presentacion},
 		Template.Tipo={Normal},
-		Template.Version.Dev={1.2.6-PRES},
-		Template.Version.Hash={3AEADE50206BC9B211602FA9C9EF9F16},
-		Template.Version.Release={1.2.6},
+		Template.Version.Dev={1.2.7-PRES},
+		Template.Version.Hash={90F05EFB8FE356019211D6A8056F20F5},
+		Template.Version.Release={1.2.7},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		Universidad.Departamento={\pdfmetainfounidepto},
@@ -4579,7 +4597,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.2.6 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.2.7 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -5102,7 +5120,16 @@
 % Definición de entornos beamer
 % -----------------------------------------------------------------------------
 \newenvironment<>{blockjustified}[1]{%
-	\begin{block}#2{#1}\justifying}{\end{block}}
+	\begin{block}#2{#1}\justifying
+}{%
+	\end{block}
+}
+
+% -----------------------------------------------------------------------------
+% Configura footnotes
+% -----------------------------------------------------------------------------
+\let\oldfootnote\footnote
+\renewcommand\footnote[1][]{\oldfootnote[frame,#1]}
 
 % -----------------------------------------------------------------------------
 % CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS
