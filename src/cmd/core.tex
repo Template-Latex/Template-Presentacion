@@ -1,6 +1,6 @@
 % Template:     Template Presentación LaTeX
 % Documento:    Funciones del núcleo del template
-% Versión:      1.2.7 (17/08/2021)
+% Versión:      1.2.8 (21/08/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -158,9 +158,9 @@
 \newcommand{\corecheckbooleanvar}[1]{%
 	\emptyvarerr{\corecheckbooleanvar}{#1}{Variable no definida}%
 	\ifthenelse{\equal{#1}{true}}{}{%
-		\ifthenelse{\equal{#1}{false}}{}{%
-			\throwwarning{Variable debe ser true o false}\stop}%
-	}%
+	\ifthenelse{\equal{#1}{false}}{}{%
+		\throwwarning{Variable debe ser true o false}\stop%
+	}}%
 }
 
 % Centra verticalmente un texto
