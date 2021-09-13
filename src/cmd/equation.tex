@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Funciones para insertar ecuaciones
-% Versión:      1.3.7 (11/09/2021)
+% Versión:      1.3.8 (12/09/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -46,12 +46,12 @@
 \newcommand{\insertequation}[2][]{%
 	\emptyvarerr{\insertequation}{#2}{Ecuacion no definida}%
 	\ifthenelse{\equal{\numberedequation}{true}}{%
-		\vspace{\marginequationtop cm}%
+		\corevspacevarcm{\marginequationtop}%
 		\begin{samepage}%
 		\begin{equation}%
 			\text{#1} #2
 		\end{equation}
-		\vspace{\marginequationbottom cm}%
+		\corevspacevarcm{\marginequationbottom}%
 		\end{samepage}
 		\coreafterequationfn%
 	}{%
@@ -67,12 +67,12 @@
 %	#1	Ecuación
 \newcommand{\insertequationanum}[1]{%
 	\emptyvarerr{\insertequationanum}{#1}{Ecuacion no definida}%
-	\vspace{\marginequationtop cm}%
+	\corevspacevarcm{\marginequationtop}%
 	\begin{samepage}%
 	\begin{equation*}%
 		\ensuremath{#1}
 	\end{equation*}
-	\vspace{\marginequationbottom cm}%
+	\corevspacevarcm{\marginequationbottom}%
 	\end{samepage}
 	\coreafterequationfn%
 }
@@ -161,14 +161,14 @@
 		\insertequation[#1]{#2}%
 	\else
 		\ifthenelse{\equal{\numberedequation}{true}}{%
-			\vspace{\marginequationtop cm}%
+			\corevspacevarcm{\marginequationtop}%
 			\begin{samepage}%
 			\begin{equation}
 				\text{#1} #2
 			\end{equation}
-			\vspace{\margineqncaptiontop cm}%
+			\corevspacevarcm{\margineqncaptiontop}%
 			\coreinsertequationcaption{#3}%
-			\vspace{\margineqncaptionbottom cm}%
+			\corevspacevarcm{\margineqncaptionbottom}%
 			\end{samepage}
 			\coreafterequationfn%
 		}{%
@@ -189,14 +189,14 @@
 	\ifx\hfuzz#2\hfuzz%
 		\insertequationanum{#1}%
 	\else
-		\vspace{\marginequationtop cm}%
+		\corevspacevarcm{\marginequationtop}%
 		\begin{samepage}%
 		\begin{equation*}
 			\ensuremath{#1}%
 		\end{equation*}%
-		\vspace{\margineqncaptiontop cm}%
+		\corevspacevarcm{\margineqncaptiontop}%
 		\coreinsertequationcaption{#2}%
-		\vspace{\margineqncaptionbottom cm}%
+		\corevspacevarcm{\margineqncaptionbottom}%
 		\end{samepage}
 		\coreafterequationfn%
 	\fi
@@ -207,12 +207,12 @@
 \newcommand{\insertgather}[1]{%
 	\emptyvarerr{\insertgather}{#1}{Ecuacion no definida}%
 	\ifthenelse{\equal{\numberedequation}{true}}{%
-		\vspace{\margingathertop cm}%
+		\corevspacevarcm{\margingathertop}%
 		\begin{samepage}%
 		\begin{gather}%
 			\ensuremath{#1}
 		\end{gather}
-		\vspace{\margingatherbottom cm}%
+		\corevspacevarcm{\margingatherbottom}%
 		\end{samepage}
 		\coreafterequationfn%
 	}{%
@@ -224,12 +224,12 @@
 %	#1	Ecuación
 \newcommand{\insertgatheranum}[1]{%
 	\emptyvarerr{\insertgatheranum}{#1}{Ecuacion no definida}%
-	\vspace{\margingathertop cm}%
+	\corevspacevarcm{\margingathertop}%
 	\begin{samepage}%
 	\begin{gather*}%
 		\ensuremath{#1}
 	\end{gather*}
-	\vspace{\margingatherbottom cm}%
+	\corevspacevarcm{\margingatherbottom}%
 	\end{samepage}
 	\coreafterequationfn%
 }
@@ -243,14 +243,14 @@
 		\insertgather{#1}%
 	\else
 		\ifthenelse{\equal{\numberedequation}{true}}{%
-			\vspace{\margingathertop cm}%
+			\corevspacevarcm{\margingathertop}%
 			\begin{samepage}%
 			\begin{gather}%
 				\ensuremath{#1}
 			\end{gather}
-			\vspace{\margingathercapttop cm}%
+			\corevspacevarcm{\margingathercapttop}%
 			\coreinsertequationcaption{#2}%
-			\vspace{\margingathercaptbottom cm}%
+			\corevspacevarcm{\margingathercaptbottom}%
 			\end{samepage}
 			\coreafterequationfn%
 		}{%
@@ -267,14 +267,14 @@
 	\ifx\hfuzz#2\hfuzz%
 		\insertgatheranum{#1}%
 	\else
-		\vspace{\margingathertop cm}%
+		\corevspacevarcm{\margingathertop}%
 		\begin{samepage}%
 		\begin{gather*}%
 			\ensuremath{#1}
 		\end{gather*}
-		\vspace{\margingathercapttop cm}%
+		\corevspacevarcm{\margingathercapttop}%
 		\coreinsertequationcaption{#2}%
-		\vspace{\margingathercaptbottom cm}%
+		\corevspacevarcm{\margingathercaptbottom}%
 		\end{samepage}
 		\coreafterequationfn%
 	\fi
@@ -286,26 +286,26 @@
 \newcommand{\insertgathered}[2][]{%
 	\emptyvarerr{\insertgathered}{#2}{Ecuacion no definida}%
 	\ifthenelse{\equal{\numberedequation}{true}}{%
-		\vspace{\marginequationtop cm}%
+		\corevspacevarcm{\marginequationtop}%
 		\begin{samepage}%
 		\begin{equation}
 			\begin{gathered}
 				\text{#1} \ensuremath{#2}
 			\end{gathered}
 		\end{equation}
-		\vspace{\margingatheredbottom cm}%
+		\corevspacevarcm{\margingatheredbottom}%
 		\end{samepage}
 	}{%
 		\ifx\hfuzz#1\hfuzz
 		\else
 			\throwwarning{Label invalido en ecuacion (gathered) sin numero}
 		\fi
-		\vspace{\margingatheredtop cm}%
+		\corevspacevarcm{\margingatheredtop}%
 		\begin{samepage}%
 		\begin{gather*}%
 			\ensuremath{#2}
 		\end{gather*}
-		\vspace{\margingatheredbottom cm}%
+		\corevspacevarcm{\margingatheredbottom}%
 		\end{samepage}
 	}
 	\coreafterequationfn%
@@ -315,7 +315,7 @@
 %	#1	Ecuación
 \newcommand{\insertgatheredanum}[1]{%
 	\emptyvarerr{\insertgatheredanum}{#1}{Ecuacion no definida}%
-	\vspace{\margingatheredtop cm}%
+	\corevspacevarcm{\margingatheredtop}%
 	\begin{samepage}%
 	\begin{gather*}
 		\ensuremath{#1}
@@ -335,16 +335,16 @@
 		\insertgathered[#1]{#2}%
 	\else
 		\ifthenelse{\equal{\numberedequation}{true}}{%
-			\vspace{\marginequationtop cm}%
+			\corevspacevarcm{\marginequationtop}%
 			\begin{samepage}%
 			\begin{equation}
 				\begin{gathered}
 					\text{#1} \ensuremath{#2}
 				\end{gathered}
 			\end{equation}
-			\vspace{\margingatheredcapttop cm}%
+			\corevspacevarcm{\margingatheredcapttop}%
 			\coreinsertequationcaption{#3}%
-			\vspace{\margingatheredcaptbottom cm}%
+			\corevspacevarcm{\margingatheredcaptbottom}%
 			\end{samepage}
 			\coreafterequationfn%
 		}{%
@@ -365,7 +365,7 @@
 	\ifx\hfuzz#2\hfuzz%
 		\insertgatheredanum{#1}%
 	\else
-		\vspace{\margingatheredtop cm}%
+		\corevspacevarcm{\margingatheredtop}%
 		\begin{samepage}%
 		\begin{gather*}
 			\ensuremath{#1}
@@ -383,12 +383,12 @@
 \newcommand{\insertalign}[1]{%
 	\emptyvarerr{\insertalign}{#1}{Ecuacion no definida}%
 	\ifthenelse{\equal{\numberedequation}{true}}{%
-		\vspace{\marginaligntop cm}%
+		\corevspacevarcm{\marginaligntop}%
 		\begin{samepage}%
 		\begin{align}
 			\ensuremath{#1}
 		\end{align}
-		\vspace{\marginalignbottom cm}%
+		\corevspacevarcm{\marginalignbottom}%
 		\end{samepage}
 		\coreafterequationfn%
 	}{%
@@ -400,12 +400,12 @@
 %	#1	Ecuación
 \newcommand{\insertalignanum}[1]{%
 	\emptyvarerr{\insertalignanum}{#1}{Ecuacion no definida}%
-	\vspace{\marginaligntop cm}%
+	\corevspacevarcm{\marginaligntop}%
 	\begin{samepage}%
 	\begin{align*}
 		\ensuremath{#1}
 	\end{align*}
-	\vspace{\marginalignbottom cm}%
+	\corevspacevarcm{\marginalignbottom}%
 	\end{samepage}
 	\coreafterequationfn%
 }
@@ -419,14 +419,14 @@
 		\insertalign{#1}%
 	\else
 		\ifthenelse{\equal{\numberedequation}{true}}{%
-			\vspace{\marginaligntop cm}%
+			\corevspacevarcm{\marginaligntop}%
 			\begin{samepage}%
 			\begin{align}
 				\ensuremath{#1}
 			\end{align}
-			\vspace{\marginaligncapttop cm}%
+			\corevspacevarcm{\marginaligncapttop}%
 			\coreinsertequationcaption{#2}%
-			\vspace{\marginaligncaptbottom cm}%
+			\corevspacevarcm{\marginaligncaptbottom}%
 			\end{samepage}
 			\coreafterequationfn%
 		}{%
@@ -443,14 +443,14 @@
 	\ifx\hfuzz#2\hfuzz%
 		\insertalignanum{#1}%
 	\else
-		\vspace{\marginaligntop cm}%
+		\corevspacevarcm{\marginaligntop}%
 		\begin{samepage}%
 		\begin{align*}
 			\ensuremath{#1}
 		\end{align*}
-		\vspace{\marginaligncapttop cm}%
+		\corevspacevarcm{\marginaligncapttop}%
 		\coreinsertequationcaption{#2}%
-		\vspace{\marginaligncaptbottom cm}%
+		\corevspacevarcm{\marginaligncaptbottom}%
 		\end{samepage}
 		\coreafterequationfn%
 	\fi
@@ -462,14 +462,14 @@
 \newcommand{\insertaligned}[2][]{%
 	\emptyvarerr{\insertaligned}{#2}{Ecuacion no definida}%
 	\ifthenelse{\equal{\numberedequation}{true}}{%
-		\vspace{\marginequationtop cm}%
+		\corevspacevarcm{\marginequationtop}%
 		\begin{samepage}%
 		\begin{equation}
 			\begin{aligned}
 				\text{#1} \ensuremath{#2}
 			\end{aligned}
 		\end{equation}
-		\vspace{\marginalignedbottom cm}%
+		\corevspacevarcm{\marginalignedbottom}%
 		\end{samepage}
 		\coreafterequationfn%
 	}{%
@@ -485,7 +485,7 @@
 %	#1	Ecuación
 \newcommand{\insertalignedanum}[1]{%
 	\emptyvarerr{\insertalignedanum}{#1}{Ecuacion no definida}%
-	\vspace{\marginalignedtop cm}%
+	\corevspacevarcm{\marginalignedtop}%
 	\begin{samepage}%
 	\begin{align*}
 		\ensuremath{#1}
@@ -505,16 +505,16 @@
 		\insertaligned[#1]{#2}%
 	\else
 		\ifthenelse{\equal{\numberedequation}{true}}{%
-			\vspace{\marginequationtop cm}%
+			\corevspacevarcm{\marginequationtop}%
 			\begin{samepage}%
 			\begin{equation}
 				\begin{aligned}
 					\text{#1} \ensuremath{#2}
 				\end{aligned}
 			\end{equation}
-			\vspace{\marginalignedcapttop cm}%
+			\corevspacevarcm{\marginalignedcapttop}%
 			\coreinsertequationcaption{#3}%
-			\vspace{\marginalignedcaptbottom cm}%
+			\corevspacevarcm{\marginalignedcaptbottom}%
 			\end{samepage}
 			\coreafterequationfn%
 		}{%
@@ -535,16 +535,16 @@
 	\ifx\hfuzz#2\hfuzz%
 		\insertalignedanum{#1}%
 	\else
-		\vspace{\marginequationtop cm}%
+		\corevspacevarcm{\marginequationtop}%
 		\begin{samepage}%
 		\begin{equation}
 			\begin{aligned}
 				\ensuremath{#1}
 			\end{aligned}
 		\end{equation}
-		\vspace{\marginalignedcapttop cm}%
+		\corevspacevarcm{\marginalignedcapttop}%
 		\coreinsertequationcaption{#2}%
-		\vspace{\marginalignedcaptbottom cm}%
+		\corevspacevarcm{\marginalignedcaptbottom}%
 		\end{samepage}
 		\coreafterequationfn%
 	\fi

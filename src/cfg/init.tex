@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      1.3.7 (11/09/2021)
+% Versión:      1.3.8 (12/09/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -97,16 +97,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={11/09/2021},
+		Template.Date={12/09/2021},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={1.3.7-1-PRES},
-		Template.Version.Hash={B358159CFF5A1AB07F7642D8C97A3522},
-		Template.Version.Release={1.3.7},
+		Template.Version.Dev={1.3.8-1-PRES},
+		Template.Version.Hash={DF49E21E052227ECCD11CB64B5EAA319},
+		Template.Version.Release={1.3.8},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -118,7 +118,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.3.7 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.3.8 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -306,11 +306,6 @@
 }
 
 % -----------------------------------------------------------------------------
-% Configuración anexo
-% -----------------------------------------------------------------------------
-\patchcmd{\appendices}{\quad}{\sectionappendixlastchar\quad}{}{}
-
-% -----------------------------------------------------------------------------
 % Reconfiguración de tamaño de páginas
 % -----------------------------------------------------------------------------
 \makeatletter
@@ -397,7 +392,7 @@
 % Crea las sub-sub-sub-secciones
 % -----------------------------------------------------------------------------
 \newcounter{subsubsubsection}[subsubsection]
-\ifthenelse{\equal{\showdotaftersnum}{true}}{ % Agrega punto tras el número
+\ifthenelse{\equal{\dotaftersnum}{true}}{ % Agrega punto tras el número
 	\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}.}
 	\renewcommand{\theparagraph}{\thesubsubsubsection.\arabic{paragraph}.}
 }{
