@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Definición de entornos
-% Versión:      1.4.1 (14/09/2021)
+% Versión:      1.4.2 (18/09/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -218,7 +218,6 @@
 	% Inicia la figura
 	\begin{samepage}%
 	\begin{figure}[H] \centering%
-		\thisfloatpagestyle{fancy}%
 		\corevspacevarcm{\marginimagemulttop}%
 		}{%
 		\setcaptionmargincm{\captionlrmargin}%
@@ -258,15 +257,14 @@
 	
 	% Inicia la figura
 	\ifthenelse{\equal{#2}{bottom}}{%
-		\begin{figure*}[hb] \centering%
+		\begin{figure*}[b] \centering%
 	}{%
 	\ifthenelse{\equal{#2}{top}}{%
-		\begin{figure*}[ht] \centering%
+		\begin{figure*}[t] \centering%
 	}{%
 		\errmessage{LaTeX Warning: Posicion de imagen invalida, valores esperados: bottom,top}
 		\stop
 	}}%
-		\thisfloatpagestyle{fancy}%
 		\corevspacevarcm{\marginimagemulttop}%
 	}{%
 		\setcaptionmargincm{\captionlrmargin}%
