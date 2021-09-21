@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Configuraciones del template
-% Versión:      1.4.2 (18/09/2021)
+% Versión:      1.4.4 (21/09/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -27,7 +27,6 @@
 
 % CONFIGURACIÓN DE LAS LEYENDAS - CAPTION
 \def\captionalignment {justified}  % Posición {centered,justified,left,right}
-\def\captioncolor {black}          % Color nombre objeto (código,figura,tabla)
 \def\captionfontsize{footnotesize} % Tamaño de fuente de los caption
 \def\captionlabelformat {simple}   % Formato leyenda {empty,simple,parens}
 \def\captionlabelsep {colon}       % Sep. {none,colon,period,space,quad,newline}
@@ -48,7 +47,6 @@
 \def\captiontbmarginfigure {9.35}  % Margen sup/inf de leyenda en figuras [pt]
 \def\captiontbmargintable {7}      % Margen sup/inf de la leyenda en tablas [pt]
 \def\captiontextbold {true}        % Etiqueta (código,figura,tabla) en negrita
-\def\captiontextcolor {black}      % Color de la leyenda
 \def\captiontextsubnumbold {true}  % N° subfigura/subtabla en negrita
 \def\codecaptiontop {true}         % Leyenda arriba del código fuente
 \def\equationcaptioncenter {true}  % Ecuaciones están centradas o justificadas
@@ -122,6 +120,7 @@
 \def\sourcecodeilfontf {\ttfamily} % Tipo de letra código fuente inline
 \def\sourcecodeilfonts {\small}    % Tamaño letra código fuente inline
 \def\sourcecodenumbersep {3}       % Separación entre número línea y código [pt]
+\def\sourcecodenumbersize {\tiny}  % Tamaño fuente número línea
 \def\sourcecodetabsize {3}         % Tamaño tabulación código fuente
 \def\tabledefaultplacement {H}     % Posición por defecto de las tablas
 \def\tablenotesameline {true}      % Notas en tablas en una sola línea
@@ -131,6 +130,8 @@
 \def\tikzdefaultplacement {H}      % Posición por defecto de las figuras tikz
 
 % CONFIGURACIÓN DE LOS COLORES DEL DOCUMENTO
+\def\captioncolor {black}          % Color nombre objeto (código,figura,tabla)
+\def\captiontextcolor {black}      % Color de la leyenda
 \def\highlightcolor {yellow}       % Color del subrayado con \hl
 \def\linenumbercolor {gray}        % Color del n° de línea (\showlinenumbers)
 \def\linkcolor {black}             % Color de los links del documento
@@ -179,10 +180,10 @@
 % CONFIGURA BEAMER
 % https://latex.ppizarror.com/doc/beameruserguide.pdf
 \mode<presentation> {
-
+	
 	% LISTA DE TEMAS GLOBALES, DESCONFIGURAR PARA APLICAR
 	% https://latex.ppizarror.com/beamer_temas.html
-
+	
 	% \usetheme{AnnArbor}
 	% \usetheme{Antibes}
 	% \usetheme{Bergen}
@@ -239,7 +240,7 @@
 	% \usecolortheme{default}
 	%\usecolortheme[named=cardinalred]{structure}
 	% \usecolortheme{sidebartab}
-
+	
 	% \usecolortheme{albatross}
 	% \usecolortheme{beaver}
 	% \usecolortheme{beetle}
@@ -256,11 +257,11 @@
 	% \usecolortheme{spruce}
 	%\usecolortheme{whale}
 	% \usecolortheme{wolverine}
-
+	
 	% IDIOMA
 	\uselanguage{spanish}
 	\languagepath{spanish}
-
+	
 	% CONFIGURACIONES GENERALES
 	\def\itemizedeleteleftmargin {true}
 	\def\tabularframeopacity {0.4}
