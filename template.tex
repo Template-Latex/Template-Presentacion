@@ -67,10 +67,11 @@
 \usepackage{ifthen}
 
 % Carga el idioma
-\ifthenelse{\equal{\usespanishbabel}{true}}{
-	\usepackage[spanish,es-nosectiondot,es-lcroman,es-noquoting]{babel}}{
-\ifthenelse{\equal{\useenglishbabel}{true}}{
-	\usepackage[english]{babel}}{}
+\usepackage{tracklang}
+\IfTrackedLanguage{spanish}{
+	\usepackage[es-nosectiondot,es-lcroman,es-noquoting]{babel}
+}{ % english, otros
+	\usepackage{babel}
 }
 
 % Codificación
@@ -4914,7 +4915,7 @@
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
 		Template.Version.Dev={1.4.5-PRES},
-		Template.Version.Hash={D3EF15802EDADC37F2EA2744D44FF8CA},
+		Template.Version.Hash={C43E3FA9B687FAAD3C05BD46C5D91F9F},
 		Template.Version.Release={1.4.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
@@ -5455,6 +5456,7 @@
 % -----------------------------------------------------------------------------
 % \let\Tiny=\tiny % https://tex.stackexchange.com/q/58087/5764
 \renewcommand{\insertshorttitle}{\documentsubtitle}
+\setbeamercolor{background canvas}{bg=\pagescolor}
 
 % -----------------------------------------------------------------------------
 % Configura los bloques
@@ -5462,50 +5464,50 @@
 % Normal
 \addtobeamertemplate{block begin}{}{
 	\setlength\abovedisplayskip{0pt}%
-	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior
+	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior bloque
 	\begin{adjustwidth}{%
-		\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo
+		\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo bloque
 	}{
-		\dimexpr-0.4em + \blockpaddingright em % Padding derecho
+		\dimexpr-0.4em + \blockpaddingright em % Padding derecho bloque
 	}
 }
 \addtobeamertemplate{block end}{
 	\end{adjustwidth}
-	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior
+	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior bloque
 }{
-	\vspace{\dimexpr-1em + \blockmarginbottom em} % Margen inferior de los bloques
+	\vspace{\dimexpr-1.07em + \blockmarginbottom em} % Margen inferior bloque
 }
 % Alerta
 \addtobeamertemplate{block alerted begin}{}{
 	\setlength\abovedisplayskip{0pt}%
-	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior
+	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior alerta
 	\begin{adjustwidth}{%
-			\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo
+			\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo alerta
 		}{
-			\dimexpr-0.4em + \blockpaddingright em % Padding derecho
+			\dimexpr-0.4em + \blockpaddingright em % Padding derecho alerta
 		}
 	}
 \addtobeamertemplate{block alerted end}{
 	\end{adjustwidth}
-	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior
+	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior alerta
 }{
-	\vspace{\dimexpr-1em + \blockmarginbottom em} % Margen inferior de los bloques
+	\vspace{\dimexpr-1.07em + \blockmarginbottom em} % Margen inferior alerta
 }
 % Ejemplo
 \addtobeamertemplate{block example begin}{}{
 	\setlength\abovedisplayskip{0pt}%
-	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior
+	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior ejemplo
 	\begin{adjustwidth}{%
-			\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo
+			\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo ejemplo
 		}{
-			\dimexpr-0.4em + \blockpaddingright em % Padding derecho
+			\dimexpr-0.4em + \blockpaddingright em % Padding derecho ejemplo
 		}
 	}
 \addtobeamertemplate{block example end}{
 	\end{adjustwidth}
-	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior
+	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior ejemplo
 }{
-	\vspace{\dimexpr-1em + \blockmarginbottom em} % Margen inferior de los bloques
+	\vspace{\dimexpr-1.07em + \blockmarginbottom em} % Margen inferior ejemplo
 }
 
 % -----------------------------------------------------------------------------
@@ -5526,8 +5528,6 @@
 }{%
 	\end{exampleblock}
 }
-
-\setbeamercolor{background canvas}{bg=\pagescolor}
 
 % -----------------------------------------------------------------------------
 % Reinicia número de subfiguras y subtablas
@@ -5569,12 +5569,12 @@
 	% -------------------------------------------------------------------------
 	% Definición de nombres de objetos
 	% -------------------------------------------------------------------------
-	\renewcommand{\appendixname}{\nomltappendixsection} % Nombre del anexo (título)
-	\renewcommand{\figurename}{\nomltwfigure} % Nombre de la leyenda de las fig.
-	\renewcommand{\lstlistingname}{\nomltwsrc} % Nombre leyenda del código fuente
+	\renewcommand{\appendixname}{\nameltappendixsection} % Nombre del anexo (título)
+	\renewcommand{\figurename}{\nameltwfigure} % Nombre de la leyenda de las fig.
+	\renewcommand{\lstlistingname}{\nameltwsrc} % Nombre leyenda del código fuente
 	\renewcommand{\refname}{\namereferences} % Nombre de las referencias (bibtex)
 	\renewcommand{\bibname}{\namereferences} % Nombre de las referencias (natbib)
-	\renewcommand{\tablename}{\nomltwtable} % Nombre de la leyenda de tablas
+	\renewcommand{\tablename}{\nameltwtable} % Nombre de la leyenda de tablas
 
 }
 

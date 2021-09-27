@@ -22,8 +22,6 @@
 \def\graphicxdraft {false}         % En true no carga las imágenes (modo draft)
 \def\pointdecimal {true}           % N° decimales con punto en vez de coma
 \def\showlayoutlines {false}       % Muestra el layout de la página
-\def\useenglishbabel {false}       % Inglés, desactivar para otros idiomas
-\def\usespanishbabel {true}        % Español, desactivar para otros idiomas
 
 % CONFIGURACIÓN DE LAS LEYENDAS - CAPTION
 \def\captionalignment {justified}  % Posición {centered,justified,left,right}
@@ -140,7 +138,7 @@
 \def\linkcolor {black}             % Color de los links del documento
 \def\maintextcolor {black}         % Color principal del texto
 \def\numcitecolor {black}          % Color del n° de las referencias o citas
-\def\pagescolor {red}            % Color de la página
+\def\pagescolor {white}            % Color de la página
 \def\showborderonlinks {false}     % Color de un link por un recuadro de color
 \def\sourcecodebgcolor {lgray}     % Color de fondo del código fuente
 \def\tablelinecolor {black}        % Color de las líneas de las tablas
@@ -168,6 +166,10 @@
 \def\usepdfmetadata {true}         % Añade metadatos al pdf compilado
 
 % NOMBRE DE OBJETOS
+\def\nameltappendixsection {Anexo} % Etiqueta sección en anexo/apéndices
+\def\nameltwfigure {Figura}        % Etiqueta leyenda de las figuras
+\def\nameltwsrc {Código}           % Etiqueta leyenda del código fuente
+\def\nameltwtable {Tabla}          % Etiqueta leyenda de las tablas
 \def\namemathcol {Corolario}       % Nombre de los colorarios
 \def\namemathdefn {Definición}     % Nombre de las definiciones
 \def\namemathej {Ejemplo}          % Nombre de los ejemplos
@@ -176,17 +178,13 @@
 \def\namemathprp {Proposición}     % Nombre de las proposiciones
 \def\namemaththeorem {Teorema}     % Nombre de los teoremas
 \def\namereferences {Referencias}  % Nombre de la sección de referencias
-\def\nomltappendixsection {Anexo}  % Etiqueta sección en anexo/apéndices
-\def\nomltwfigure {Figura}         % Etiqueta leyenda de las figuras
-\def\nomltwsrc {Código}            % Etiqueta leyenda del código fuente
-\def\nomltwtable {Tabla}           % Etiqueta leyenda de las tablas
 
 % CONFIGURA BEAMER
 % https://latex.ppizarror.com/doc/beameruserguide.pdf
 \mode<presentation> {
 	
 	% LISTA DE TEMAS GLOBALES, DESCONFIGURAR PARA APLICAR
-	% https://latex.ppizarror.com/beamer_temas.html
+	% https://latex.ppizarror.com/beamer_themes.html
 	
 	% \usetheme{AnnArbor}
 	% \usetheme{Antibes}
@@ -239,7 +237,7 @@
 	% \useoutertheme{smoothtree}
 	
 	% COLORES DE LA SLIDE, USAR SÓLO SI NO SE APLICA EL GLOBAL
-	% https://latex.ppizarror.com/beamer_colores.html
+	% https://latex.ppizarror.com/beamer_colors.html
 	
 	% \usecolortheme{default}
 	%\usecolortheme[named=cardinalred]{structure}
