@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Configuraciones del template
-% Versión:      1.4.4 (21/09/2021)
+% Versión:      1.4.5 (27/09/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -73,7 +73,7 @@
 \def\tablecaptiontop {true}        % Leyenda arriba de las tablas
 
 % ANEXO, CITAS, REFERENCIAS
-\def\bibtexrefsep {6}              % Separación entre refs. {bibtex} [pt]
+\def\bibtexrefsep {5}              % Separación entre refs. {bibtex} [pt]
 \def\bibtexstyle {apalike}         % Formato refs. bibtex {apa,ieeetr,etc...}
 \def\stylecitereferences {bibtex}  % Estilo cita/ref {bibtex,custom}
 
@@ -115,12 +115,15 @@
 \def\sitemizeii {\iitemdash}       % Estilo itemize nivel 2
 \def\sitemizeiii {\iitemcirc}      % Estilo itemize nivel 3
 \def\sitemizeiv {\iitembsquare}    % Estilo itemize nivel 4
+\def\sourcecodebtmargin {0}        % Margen superior e inferior del bloque [pt]
 \def\sourcecodefontf {\ttfamily}   % Tipo de letra código fuente
 \def\sourcecodefonts{\footnotesize}% Tamaño letra código fuente
 \def\sourcecodeilfontf {\ttfamily} % Tipo de letra código fuente inline
 \def\sourcecodeilfonts {\small}    % Tamaño letra código fuente inline
 \def\sourcecodenumbersep {3}       % Separación entre número línea y código [pt]
 \def\sourcecodenumbersize {\tiny}  % Tamaño fuente número línea
+\def\sourcecodeskipabove {0.75}    % Espacio sobre recuadro código [em]
+\def\sourcecodeskipbelow {1}       % Espacio bajo recuadro código [em]
 \def\sourcecodetabsize {3}         % Tamaño tabulación código fuente
 \def\tabledefaultplacement {H}     % Posición por defecto de las tablas
 \def\tablenotesameline {true}      % Notas en tablas en una sola línea
@@ -137,6 +140,7 @@
 \def\linkcolor {black}             % Color de los links del documento
 \def\maintextcolor {black}         % Color principal del texto
 \def\numcitecolor {black}          % Color del n° de las referencias o citas
+\def\pagescolor {white}            % Color de la página
 \def\showborderonlinks {false}     % Color de un link por un recuadro de color
 \def\sourcecodebgcolor {lgray}     % Color de fondo del código fuente
 \def\tablelinecolor {black}        % Color de las líneas de las tablas

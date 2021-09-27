@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      1.4.4 (21/09/2021)
+% Versión:      1.4.5 (27/09/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -3539,12 +3539,12 @@
 %	#2	Estilo de código
 %	#3	Parámetros
 %	#4	Caption
-\lstnewenvironment{sourcecodep}[4][]{
-	\coreinitsourcecodep{#1}{#2}{#3}{#4}
-}{
-	\ifthenelse{\equal{\showlinenumbers}{true}}{
-		\leftlinenumbers}{
-	}
+\lstnewenvironment{sourcecodep}[4][]{%
+	\coreinitsourcecodep{#1}{#2}{#3}{#4}%
+}{%
+	\ifthenelse{\equal{\showlinenumbers}{true}}{%
+		\leftlinenumbers}{%
+	}%
 }
 
 % Importa código fuente desde un archivo con parámetros
@@ -3553,12 +3553,12 @@
 %	#3	Parámetros
 %	#4	Archivo de código fuente
 %	#5	Caption
-\newcommand{\importsourcecodep}[5][]{
-	\coreinitsourcecodep{#1}{#2}{#3}{#5}
-	\inputlisting{#4}
-	\ifthenelse{\equal{\showlinenumbers}{true}}{
-		\leftlinenumbers}{
-	}
+\newcommand{\importsourcecodep}[5][]{%
+	\coreinitsourcecodep{#1}{#2}{#3}{#5}%
+	\inputlisting{#4}%
+	\ifthenelse{\equal{\showlinenumbers}{true}}{%
+		\leftlinenumbers}{%
+	}%
 }
 
 % Inicia código fuente sin parámetros
@@ -3610,11 +3610,11 @@
 %	#2	Estilo de código
 %	#3	Caption
 \lstnewenvironment{sourcecode}[3][]{%
-	\coreinitsourcecode{#1}{#2}{#3}
+	\coreinitsourcecode{#1}{#2}{#3}%
 }{%
-	\ifthenelse{\equal{\showlinenumbers}{true}}{
-		\leftlinenumbers}{
-	}
+	\ifthenelse{\equal{\showlinenumbers}{true}}{%
+		\leftlinenumbers}{%
+	}%
 }
 
 % Importa código fuente desde un archivo sin parámetros
@@ -4552,15 +4552,18 @@
 % Configuración de códigos fuente
 % -----------------------------------------------------------------------------
 \lstset{
-	aboveskip=0.75em,
+	aboveskip=\sourcecodeskipabove em,
 	basicstyle={\sourcecodefonts\sourcecodefontf\color{\maintextcolor}},
-	belowskip=1em,
+	belowskip=\sourcecodeskipbelow em,
 	breaklines=true,
 	columns=fullflexible,
 	commentstyle=\color{dkgreen}\upshape,
 	extendedchars=true,
 	fontadjust=true,
-	% fancyvrb=false,
+	frame=ltb,
+	framerule=0pt,
+	framexleftmargin=\sourcecodebtmargin pt,
+	framextopmargin=\sourcecodebtmargin pt,
 	identifierstyle=\color{\maintextcolor},
 	keepspaces=true,
 	keywordstyle=\color{blue},
@@ -4903,16 +4906,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={21/09/2021},
+		Template.Date={27/09/2021},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={1.4.4-PRES},
-		Template.Version.Hash={3A33B452DBF9410A630B830919A08B0D},
-		Template.Version.Release={1.4.4},
+		Template.Version.Dev={1.4.5-PRES},
+		Template.Version.Hash={D3EF15802EDADC37F2EA2744D44FF8CA},
+		Template.Version.Release={1.4.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -4924,7 +4927,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.4.4 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.4.5 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -5456,8 +5459,8 @@
 % -----------------------------------------------------------------------------
 % Configura los bloques
 % -----------------------------------------------------------------------------
-\addtobeamertemplate{block begin}{
-}{
+% Normal
+\addtobeamertemplate{block begin}{}{
 	\setlength\abovedisplayskip{0pt}%
 	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior
 	\begin{adjustwidth}{%
@@ -5472,6 +5475,38 @@
 }{
 	\vspace{\dimexpr-1em + \blockmarginbottom em} % Margen inferior de los bloques
 }
+% Alerta
+\addtobeamertemplate{block alerted begin}{}{
+	\setlength\abovedisplayskip{0pt}%
+	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior
+	\begin{adjustwidth}{%
+			\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo
+		}{
+			\dimexpr-0.4em + \blockpaddingright em % Padding derecho
+		}
+	}
+\addtobeamertemplate{block alerted end}{
+	\end{adjustwidth}
+	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior
+}{
+	\vspace{\dimexpr-1em + \blockmarginbottom em} % Margen inferior de los bloques
+}
+% Ejemplo
+\addtobeamertemplate{block example begin}{}{
+	\setlength\abovedisplayskip{0pt}%
+	\vspace{\dimexpr-0.7em + \blockpaddingtop em} % Padding superior
+	\begin{adjustwidth}{%
+			\dimexpr-0.4em + \blockpaddingleft em % Padding izquierdo
+		}{
+			\dimexpr-0.4em + \blockpaddingright em % Padding derecho
+		}
+	}
+\addtobeamertemplate{block example end}{
+	\end{adjustwidth}
+	\vspace{\dimexpr-0.6em + \blockpaddingbottom em} % Padding inferior
+}{
+	\vspace{\dimexpr-1em + \blockmarginbottom em} % Margen inferior de los bloques
+}
 
 % -----------------------------------------------------------------------------
 % Definición de entornos beamer
@@ -5481,6 +5516,18 @@
 }{%
 	\end{block}
 }
+\newenvironment<>{alertblockjustified}[1]{%
+	\begin{alertblock}#2{#1}\justifying
+}{%
+	\end{alertblock}
+}
+\newenvironment<>{exampleblockjustified}[1]{%
+	\begin{exampleblock}#2{#1}\justifying
+}{%
+	\end{exampleblock}
+}
+
+\setbeamercolor{background canvas}{bg=\pagescolor}
 
 % -----------------------------------------------------------------------------
 % Reinicia número de subfiguras y subtablas
