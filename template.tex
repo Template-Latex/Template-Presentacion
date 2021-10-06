@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      1.4.6 (02/10/2021)
+% Versión:      1.4.7 (06/10/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -127,7 +127,6 @@
 \usepackage{bm}            % Caracteres en negrita en ecuaciones
 \usepackage{booktabs}      % Permite manejar elementos visuales en tablas
 \usepackage{caption}       % Leyendas
-\usepackage{changepage}    % Condicionales para administrar páginas
 \usepackage{chngcntr}      % Añade números a las leyendas
 \usepackage{color}         % Colores
 \usepackage{datetime}      % Fechas
@@ -827,6 +826,15 @@
 \global\def\GLOBALsubsectionanumenabled {false} % Subsección sin numeración
 \global\def\GLOBALtablerowcolorindex {2}        % Índice tabla colores
 \global\def\GLOBALtablerowcolorswitch {false}   % Tabla con colores cambiados
+\global\def\GLOBALtwoside {false}               % Indica que el documento es twoside
+
+% Configura si el documento es twoside
+\makeatletter
+\if@twoside
+\global\def\GLOBALtwoside {true}
+\else
+\fi 
+\makeatother
 
 % Signo porcentaje para archivos
 \def\LOCALpercentchar#1{}
@@ -844,6 +852,10 @@
 \newcounter{templateBookmarksLevelPrev}
 \setcounter{templateBookmarksLevelPrev}{\cfgbookmarksopenlevel}
 \addtocounter{templateBookmarksLevelPrev}{-1}
+
+% Aumenta contador de páginas
+\stepcounter{templatePageCounter}
+\AtBeginShipout{\stepcounter{templatePageCounter}}
 
 % Para la compatibilidad con template-tesis se define el capítulo
 \newcounter{chapter}
@@ -2807,13 +2819,10 @@
 % Crea una página vacía sin header o footer
 \newcommand{\insertemptypage}{%
 	\clearpage
-	\setcounter{templatePageCounter}{\thepage}
-	\pagenumbering{gobble}
-	\null
 	\thispagestyle{empty}
+	\addtocounter{page}{-1}
+	\null
 	\clearpage
-	\pagenumbering{arabic}
-	\setcounter{page}{\thetemplatePageCounter}
 }
 
 % Inserta una página vacía, aunque conserva header, footer y numeración
@@ -2821,6 +2830,20 @@
 	\clearpage
 	\null
 	\clearpage
+}
+
+% Define cuál función se ejecuta al insertar páginas en blanco
+\let\addemptypagespredocformat\insertblankpage
+
+% Ejecuta una función dependiendo si la página es par o impar
+%	#1	Par
+%	#2	Impar
+\newcommand{\coretriggeronpage}[2]{%
+	\ifthenelse{\isodd{\value{templatePageCounter}}}{%
+		#2%
+	}{%
+		#1%
+	}
 }
 
 % Añade un archivo pdf con el header
@@ -3244,6 +3267,9 @@
 \newcommand{\createthirdcolumn}[3]{%
 	\createthreecolumn{0.3333}{0.3333}{0.3333}{0}{0}{#1}{#2}{#3}%
 }
+
+% Importación de librerías
+\usepackage{changepage}
 
 % Crea variables para guardar configuraciones del tabularframe
 \global\def\GLOBALtabularframebarfontsize {\normalsize}
@@ -4896,16 +4922,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={02/10/2021},
+		Template.Date={06/10/2021},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={1.4.6-PRES},
-		Template.Version.Hash={5BD1726EB3FD800F8BF9D6F3934E9EF0},
-		Template.Version.Release={1.4.6},
+		Template.Version.Dev={1.4.7-PRES},
+		Template.Version.Hash={2483C429B120F128CEC64B8071DD0645},
+		Template.Version.Release={1.4.7},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -4917,7 +4943,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v1.4.6 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v1.4.7 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -5143,11 +5169,6 @@
 \makeatother
 
 % -----------------------------------------------------------------------------
-% Se activa el modo estricto de revisión de números de página
-% -----------------------------------------------------------------------------
-\strictpagecheck
-
-% -----------------------------------------------------------------------------
 % Se activa el word-wrap para textos con \texttt{}
 % -----------------------------------------------------------------------------
 \ttfamily \hyphenchar\the\font=`\-
@@ -5180,6 +5201,11 @@
 }{
 	\throwbadconfig{Compilador desconocido}{\compilertype}{pdf2latex,xelatex,lualatex}}}
 }
+
+% -----------------------------------------------------------------------------
+% Declaración caracteres unicode adicionales
+% -----------------------------------------------------------------------------
+\DeclareUnicodeCharacter{2212}{-}
 
 % -----------------------------------------------------------------------------
 % Crea las sub-sub-sub-secciones
