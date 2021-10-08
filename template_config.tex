@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Configuraciones del template
-% Versión:      1.4.8 (06/10/2021)
+% Versión:      1.4.9 (08/10/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -102,7 +102,7 @@
 \def\marginimagebottom {-0.50}     % Margen inferior figura [cm]
 \def\marginimagemultbottom {-0.05} % Margen inferior imágenes múltiples [cm]
 \def\marginimagemultright {0.35}   % Margen derecho imágenes múltiples [cm]
-\def\marginimagemulttop {-0.3}     % Margen superior imágenes múltiples [cm]
+\def\marginimagemulttop {0}        % Margen superior imágenes múltiples [cm]
 \def\marginimagetop {0}            % Margen superior figuras [cm]
 \def\numberedequation {true}       % Ecuaciones con \insert... numeradas
 \def\senumerti {\arabic{enumi}.}   % Estilo enumerate nivel 1
@@ -113,15 +113,18 @@
 \def\sitemizeii {\iitemdash}       % Estilo itemize nivel 2
 \def\sitemizeiii {\iitemcirc}      % Estilo itemize nivel 3
 \def\sitemizeiv {\iitembsquare}    % Estilo itemize nivel 4
-\def\sourcecodebtmargin {0}        % Margen superior e inferior del bloque [pt]
+\def\sourcecodebgmarginbottom {0}  % Margen inferior del bloque de color [pt]
+\def\sourcecodebgmarginleft {-1}   % Margen izquierdo del bloque de color [pt]
+\def\sourcecodebgmarginright {0}   % Margen derecho del bloque de color [pt]
+\def\sourcecodebgmargintop {0}     % Margen superior del bloque de color [pt]
 \def\sourcecodefontf {\ttfamily}   % Tipo de letra código fuente
 \def\sourcecodefonts{\footnotesize}% Tamaño letra código fuente
 \def\sourcecodeilfontf {\ttfamily} % Tipo de letra código fuente inline
 \def\sourcecodeilfonts {\small}    % Tamaño letra código fuente inline
-\def\sourcecodenumbersep {3}       % Separación entre número línea y código [pt]
+\def\sourcecodenumbersep {4}       % Separación entre número línea y código [pt]
 \def\sourcecodenumbersize {\tiny}  % Tamaño fuente número línea
 \def\sourcecodeskipabove {0.75}    % Espacio sobre recuadro código [em]
-\def\sourcecodeskipbelow {0.95}    % Espacio bajo recuadro código [em]
+\def\sourcecodeskipbelow {1.15}    % Espacio bajo recuadro código [em]
 \def\sourcecodetabsize {3}         % Tamaño tabulación código fuente
 \def\tabledefaultplacement {H}     % Posición por defecto de las tablas
 \def\tablenotesameline {true}      % Notas en tablas en una sola línea
