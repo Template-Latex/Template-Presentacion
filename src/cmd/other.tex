@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Funciones para insertar elementos
-% Versión:      2.0.0 (05/11/2021)
+% Versión:      2.0.1 (22/11/2021)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -15,8 +15,14 @@
 }
 
 % Crea un salto de columna en el entorno multicol
-\newcommand{\newcolumn}{%
-	\checkinsidemulticol\vfill\null\columnbreak%
+\ifthenelse{\isundefined{\newcolumn}}{
+	\newcommand{\newcolumn}{%
+		\checkinsidemulticol\vfill\null\columnbreak%
+	}
+}{
+	\renewcommand{\newcolumn}{%
+		\checkinsidemulticol\vfill\null\columnbreak%
+	}
 }
 
 % Salto de página en entorno multicol
