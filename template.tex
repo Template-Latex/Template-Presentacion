@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      2.0.6 (10/01/2022)
+% Versión:      2.0.7 (19/03/2022)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -2931,30 +2931,6 @@
 \define@key{Gin}{resolution}{\pdfimageresolution=#1\relax}
 \makeatother
 
-% Parcha el formato de capítulos
-\pretocmd{\chapter}{%
-	\ifthenelse{\equal{\showsectioncaptioncode}{chap}}{ % Reinicia código fuente
-		\addtocounter{templateListings}{\value{lstlisting}}%
-		\setcounter{lstlisting}{0}%
-	}{}%
-	\ifthenelse{\equal{\showsectioncaptioneqn}{chap}}{ % Reinicia ecuaciones
-		\addtocounter{templateEquations}{\value{equation}}%
-		\setcounter{equation}{0}%
-	}{}%
-	\ifthenelse{\equal{\equationrestart}{chap}}{ % Reinicia ecuaciones
-		\addtocounter{templateEquations}{\value{equation}}%
-		\setcounter{equation}{0}%
-	}{}%
-	\ifthenelse{\equal{\showsectioncaptionfig}{chap}}{ % Reinicia figuras
-		\addtocounter{templateFigures}{\value{figure}}%
-		\setcounter{figure}{0}%
-	}{}%
-	\ifthenelse{\equal{\showsectioncaptiontab}{chap}}{ % Reinicia tablas
-		\addtocounter{templateTables}{\value{table}}%
-		\setcounter{table}{0}%
-	}{}%
-}{}{}
-
 % Parcha el formato de secciones al pasar desde una anum, vuelve a activar número
 % de la sección
 \pretocmd{\section}{%
@@ -5177,16 +5153,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={10/01/2022},
+		Template.Date={19/03/2022},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={2.0.6-PRES},
-		Template.Version.Hash={68EA9A5E2226754C75B804A64C655105},
-		Template.Version.Release={2.0.6},
+		Template.Version.Dev={2.0.7-4-PRES},
+		Template.Version.Hash={4E3BD1673CE86DE04CC4497EBE2688B2},
+		Template.Version.Release={2.0.7},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -5198,7 +5174,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v2.0.6 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v2.0.7 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -5862,6 +5838,7 @@
 
 % Agrega caracteres unicode
 \ifdefined\DeclareUnicodeCharacter
+\DeclareUnicodeCharacter{000B}{~}
 \DeclareUnicodeCharacter{00A0}{~}
 \DeclareUnicodeCharacter{00A1}{\textexclamdown}
 \DeclareUnicodeCharacter{00A2}{\textcent}
