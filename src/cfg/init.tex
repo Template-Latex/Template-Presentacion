@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      2.0.7 (19/03/2022)
+% Versión:      2.0.8 (03/04/2022)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -91,16 +91,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={19/03/2022},
+		Template.Date={03/04/2022},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={2.0.7-4-PRES},
-		Template.Version.Hash={4E3BD1673CE86DE04CC4497EBE2688B2},
-		Template.Version.Release={2.0.7},
+		Template.Version.Dev={2.0.8-1-PRES},
+		Template.Version.Hash={59CC78FE8864A4A214BC39F97B3CD408},
+		Template.Version.Release={2.0.8},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -112,7 +112,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v2.0.7 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v2.0.8 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -174,6 +174,7 @@
 		hidelinks,
 		colorlinks=true,
 		citecolor=\numcitecolor,
+		filecolor=\urlcolor,
 		linkcolor=\linkcolor,
 		urlcolor=\urlcolor
 	}
@@ -644,7 +645,22 @@
 % Cambios generales en presentación
 % -----------------------------------------------------------------------------
 % \let\Tiny=\tiny % https://tex.stackexchange.com/q/58087/5764
-\renewcommand{\insertshorttitle}{\documentsubtitle}
+% Desactiva color links en headline y footline
+\makeatletter
+	\renewcommand\insertshorttitle[1][]{%
+		\beamer@setupshort{#1}%
+		\let\thanks=\@gobble%
+		\ifnum\c@page=1%
+		\hyperlinkpresentationend{\beamer@insertshort{\usebeamercolor*[fg]{title in head/foot}\beamer@shorttitle}}%
+		\else%
+		\hyperlinkpresentationstart{\beamer@insertshort{\usebeamercolor*[fg]{title in head/foot}\beamer@shorttitle}}%
+		\fi%
+	}
+	\newcommand\disablebeamercolorlinks{\def\HyColor@UseColor##1{}}
+\makeatletter
+\addtobeamertemplate{headline}{\disablebeamercolorlinks{}}{}
+\addtobeamertemplate{footline}{\disablebeamercolorlinks{}}{}
+% Modifica color de fondo de la página
 \setbeamercolor{background canvas}{bg=\pagescolor}
 
 % -----------------------------------------------------------------------------
@@ -724,6 +740,55 @@
 \makeatletter
 	\@addtoreset{subfigure}{framenumber}
 	\@addtoreset{subtable}{framenumber}
+\makeatother
+
+% -----------------------------------------------------------------------------
+% Establece temas custom
+% -----------------------------------------------------------------------------
+\makeatletter
+\ifthenelse{\equal{\GLOBALcustombeamertheme}{}}{%
+}{
+\ifthenelse{\equal{\GLOBALcustombeamertheme}{FrankfurtBottom}}{%
+	\usetheme{Frankfurt}%
+	\setbeamertemplate{frametitle}[default][colsep=-4bp,rounded=false,shadow=false]%
+	\setbeamertemplate{headline}{}%
+	\setbeamertemplate{footline}{%
+		\hypersetup{hidelinks}%
+		\pgfuseshading{beamer@barshade}%
+		\vskip-0.05ex%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=1ex,dp=0ex]{empty}
+			\begin{pgfpicture}
+				\begin{pgfscope}%
+					\ifbeamer@sb@subsection%
+					\pgfsetfillcolor{subsection in head/foot.bg}%
+					\else%
+					\pgfsetfillcolor{section in head/foot.bg}%
+					\fi%
+					\pgfpathrectangle{\pgfpoint{-.5\paperwidth}{-0.5ex}}{\pgfpoint{\paperwidth}{1ex}}%
+					\pgfsetfading{beamer@belowframetitlemask}{}%
+					\pgfusepath{fill}%
+				\end{pgfscope}%
+			\end{pgfpicture}%
+		\end{beamercolorbox}%
+		\ifbeamer@sb@subsection%
+		\vskip-9.75ex%
+		\else%
+		\vskip-6.85ex%
+		\fi%
+		\begin{beamercolorbox}[ignorebg,ht=2.25ex,dp=3.75ex]{section in head/foot}
+			\insertnavigation{\paperwidth}
+		\end{beamercolorbox}%
+		\ifbeamer@sb@subsection%
+		\begin{beamercolorbox}[ignorebg,ht=2.125ex,dp=1.125ex,%
+			leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+			\usebeamerfont{subsection in head/foot}\insertsubsectionhead
+		\end{beamercolorbox}%
+		\fi%
+	}
+}{
+	\errmessage{Tema no existe}
+	\stop
+}}
 \makeatother
 
 % -----------------------------------------------------------------------------
