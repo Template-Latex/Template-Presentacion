@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Estilos de código fuente
-% Versión:      2.0.8 (03/04/2022)
+% Versión:      2.0.8 (09/04/2022)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -1003,7 +1003,7 @@
 	\emptyvarerr{\inlinesourcecodeboxed}{#3}{Codigo no definido}%
 	\lstset{%
 		basicstyle={\sourcecodeilfonts\sourcecodeilfontf\color{\maintextcolor}}%
-	}
+	}%
 	\checkvalidsourcecodestyle{#2}%
 	\ifthenelse{\equal{#1}{}}{%
 		\Colorbox{\sourcecodebgcolor}{\lstinline[style=#2]!#3!}%
@@ -1015,7 +1015,7 @@
 	}}%
 	\lstset{%
 		basicstyle={\sourcecodefonts\sourcecodefontf\color{\maintextcolor}}%
-	}
+	}%
 }
 
 % Inserta una referencia en un código fuente
