@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      2.0.9 (18/04/2022)
+% Versión:      2.1.0 (25/04/2022)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -5190,16 +5190,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={18/04/2022},
+		Template.Date={25/04/2022},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={2.0.9-4-PRES},
-		Template.Version.Hash={AE077ABC90489AC0E195A168E36C4295},
-		Template.Version.Release={2.0.9},
+		Template.Version.Dev={2.1.0-PRES},
+		Template.Version.Hash={33FE1D2FFCAB250031FAD2BD6D39A843},
+		Template.Version.Release={2.1.0},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -5211,7 +5211,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v2.0.9 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v2.1.0 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -5707,6 +5707,19 @@
 % Chequea que ciertos módulos no hayan sido cargados antes del inicio del documento
 % -----------------------------------------------------------------------------
 \checkmodulenotloaded{tcolorbox}
+
+% -----------------------------------------------------------------------------
+% Da soporte a \hl{} del paquete soul
+% -----------------------------------------------------------------------------
+\soulregister\cite7
+\soulregister\eqref7
+\soulregister\eqref7
+\soulregister\footnote7
+\soulregister\href7
+\soulregister\pageref7
+\soulregister\quotes7
+\soulregister\ref7
+\soulregister\scite7
 
 % -----------------------------------------------------------------------------
 % Configura métodos aplicados al iniciar el documento
