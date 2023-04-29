@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Definición de entornos
-% Versión:      2.1.8 (12/03/2023)
+% Versión:      2.1.9 (29/04/2023)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -215,20 +215,20 @@
 \newenvironment{images}[2][]{%
 	% Modifica globales
 	\def\envimageslabelvar {#1}%
+	\def\envimagescaptioncf {false}%
 	\def\envimagescaptionvar {#2}%
 	\global\def\GLOBALenvimageadded {false}%
 	\global\def\GLOBALenvimageinitialized {true}%
-	
 	% Configura caption y márgenes
 	\corevspacevarcm{\marginimagetop}%
 	\setcaptionmargincm{\captionmarginmultimg} % Eso es para los wrapfig
-	
 	% Inicia la figura
 	\begin{samepage}%
 	\begin{figure}[H] \centering%
 		\ifthenelse{\equal{\GLOBALenvimagecf}{true}}{%
 			\ContinuedFloat%
 			\global\def\GLOBALenvimagecf {false}%
+			\def\envimagescaptioncf {true}%
 		}{}%
 		\corevspacevarcm{\marginimagemulttop}%
 		}{%
@@ -237,15 +237,17 @@
 			\corevspacevarcm{\captionlessmarginimage}%
 		}{%
 			\corevspacevarcm{\captionmarginimages}%
-			\caption{\envimagescaptionvar\envimageslabelvar}%
+			\ifthenelse{\equal{\envimagescaptioncf}{true}}{%
+				\caption[]{\envimagescaptionvar\envimageslabelvar}%
+			}{%
+				\caption{\envimagescaptionvar\envimageslabelvar}%
+			}%
 		}%
 	\end{figure}%
-
 	% Restablece caption y márgenes
 	\setcaptionmargincm{\captionlrmargin}%
 	\corevspacevarcm{\marginimagebottom}%
 	\end{samepage}
-	
 	% Restablece globales
 	\global\def\GLOBALenvimageinitialized {false}%
 }
@@ -258,15 +260,14 @@
 	% Modifica globales
 	\def\envimageslabelvar {#1}%
 	\def\envimagesmcpos {#2}%
+	\def\envimagescaptioncf {false}%
 	\def\envimagescaptionvar {#3}%
 	\global\def\GLOBALenvimageadded {false}%
 	\global\def\GLOBALenvimageinitialized {true}%
 	\checkinsidemulticol%
 	\checkoutsideappendix%
-	
 	% Configura caption y márgenes
 	\setcaptionmargincm{\captionmarginmultimg} % Eso es para los wrapfig
-	
 	% Inicia la figura
 	\ifthenelse{\equal{#2}{bottom}}{%
 		\begin{figure*}[!b] \centering%
@@ -280,6 +281,7 @@
 		\ifthenelse{\equal{\GLOBALenvimagecf}{true}}{%
 			\ContinuedFloat%
 			\global\def\GLOBALenvimagecf {false}%
+			\def\envimagescaptioncf {true}%
 		}{}%
 		\corevspacevarcm{\marginimagemulttop}%
 	}{%
@@ -288,13 +290,15 @@
 			\corevspacevarcm{\captionlessmarginimage}%
 		}{%
 			\corevspacevarcm{\captionmarginimagesmc}%
-			\caption{\envimagescaptionvar\envimageslabelvar}%
+			\ifthenelse{\equal{\envimagescaptioncf}{true}}{%
+				\caption[]{\envimagescaptionvar\envimageslabelvar}%
+			}{%
+				\caption{\envimagescaptionvar\envimageslabelvar}%
+			}%
 		}%
 	\end{figure*}%
-	
 	% Restablece caption y márgenes
 	\setcaptionmargincm{\captionlrmarginmc}%
-	
 	% Restablece globales
 	\global\def\GLOBALenvimageinitialized {false}%
 }

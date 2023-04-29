@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      2.1.8 (12/03/2023)
+% Versión:      2.1.9 (29/04/2023)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -1810,7 +1810,7 @@
 %	#1	Ecuación
 %	#2	Leyenda
 \newcommand{\insertgatheredcaptionedanum}[2]{
-	\emptyvarerr{\insertgatheredcaptionedanum}{#1}{Ecuacion no definida}
+	\emptyvarerr{\insertgatheredcaptionedanum}{#1}{Ecuacion no definida}%
 	\ifx\hfuzz#2\hfuzz%
 		\insertgatheredanum{#1}%
 	\else%
@@ -3944,20 +3944,20 @@
 \newenvironment{images}[2][]{%
 	% Modifica globales
 	\def\envimageslabelvar {#1}%
+	\def\envimagescaptioncf {false}%
 	\def\envimagescaptionvar {#2}%
 	\global\def\GLOBALenvimageadded {false}%
 	\global\def\GLOBALenvimageinitialized {true}%
-	
 	% Configura caption y márgenes
 	\corevspacevarcm{\marginimagetop}%
 	\setcaptionmargincm{\captionmarginmultimg} % Eso es para los wrapfig
-	
 	% Inicia la figura
 	\begin{samepage}%
 	\begin{figure}[H] \centering%
 		\ifthenelse{\equal{\GLOBALenvimagecf}{true}}{%
 			\ContinuedFloat%
 			\global\def\GLOBALenvimagecf {false}%
+			\def\envimagescaptioncf {true}%
 		}{}%
 		\corevspacevarcm{\marginimagemulttop}%
 		}{%
@@ -3966,15 +3966,17 @@
 			\corevspacevarcm{\captionlessmarginimage}%
 		}{%
 			\corevspacevarcm{\captionmarginimages}%
-			\caption{\envimagescaptionvar\envimageslabelvar}%
+			\ifthenelse{\equal{\envimagescaptioncf}{true}}{%
+				\caption[]{\envimagescaptionvar\envimageslabelvar}%
+			}{%
+				\caption{\envimagescaptionvar\envimageslabelvar}%
+			}%
 		}%
 	\end{figure}%
-
 	% Restablece caption y márgenes
 	\setcaptionmargincm{\captionlrmargin}%
 	\corevspacevarcm{\marginimagebottom}%
 	\end{samepage}
-	
 	% Restablece globales
 	\global\def\GLOBALenvimageinitialized {false}%
 }
@@ -3987,15 +3989,14 @@
 	% Modifica globales
 	\def\envimageslabelvar {#1}%
 	\def\envimagesmcpos {#2}%
+	\def\envimagescaptioncf {false}%
 	\def\envimagescaptionvar {#3}%
 	\global\def\GLOBALenvimageadded {false}%
 	\global\def\GLOBALenvimageinitialized {true}%
 	\checkinsidemulticol%
 	\checkoutsideappendix%
-	
 	% Configura caption y márgenes
 	\setcaptionmargincm{\captionmarginmultimg} % Eso es para los wrapfig
-	
 	% Inicia la figura
 	\ifthenelse{\equal{#2}{bottom}}{%
 		\begin{figure*}[!b] \centering%
@@ -4009,6 +4010,7 @@
 		\ifthenelse{\equal{\GLOBALenvimagecf}{true}}{%
 			\ContinuedFloat%
 			\global\def\GLOBALenvimagecf {false}%
+			\def\envimagescaptioncf {true}%
 		}{}%
 		\corevspacevarcm{\marginimagemulttop}%
 	}{%
@@ -4017,13 +4019,15 @@
 			\corevspacevarcm{\captionlessmarginimage}%
 		}{%
 			\corevspacevarcm{\captionmarginimagesmc}%
-			\caption{\envimagescaptionvar\envimageslabelvar}%
+			\ifthenelse{\equal{\envimagescaptioncf}{true}}{%
+				\caption[]{\envimagescaptionvar\envimageslabelvar}%
+			}{%
+				\caption{\envimagescaptionvar\envimageslabelvar}%
+			}%
 		}%
 	\end{figure*}%
-	
 	% Restablece caption y márgenes
 	\setcaptionmargincm{\captionlrmarginmc}%
-	
 	% Restablece globales
 	\global\def\GLOBALenvimageinitialized {false}%
 }
@@ -5216,16 +5220,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={12/03/2023},
+		Template.Date={29/04/2023},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={2.1.8-PRES},
-		Template.Version.Hash={13773A59C722FB85658FB6A9606436B0},
-		Template.Version.Release={2.1.8},
+		Template.Version.Dev={2.1.9-1-PRES},
+		Template.Version.Hash={657BB6AC36F6459F41CCFEC3FA148539},
+		Template.Version.Release={2.1.9},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -5237,7 +5241,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v2.1.8 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v2.1.9 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
