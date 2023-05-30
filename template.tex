@@ -3538,7 +3538,9 @@
 \global\def\GLOBALtabularframebartextcentered {true}
 \global\def\GLOBALtabularframecontentheight {0.65}
 \global\def\GLOBALtabularframecontentleftcentered {false}
+\global\def\GLOBALtabularframecontentleftfontsize {\normalsize}
 \global\def\GLOBALtabularframecontentrightcentered {false}
+\global\def\GLOBALtabularframecontentrightfontsize {\normalsize}
 \global\def\GLOBALtabularframecontentwidthleft {0.4}
 \global\def\GLOBALtabularframecontentwidthright {0.6}
 
@@ -3598,6 +3600,16 @@
 	\corecheckbooleanvar{#2}%
 	\global\def\GLOBALtabularframecontentleftcentered {#1}%
 	\global\def\GLOBALtabularframecontentrightcentered {#2}%
+}
+
+% Función que configura el tamaño de fuente de los tabular frames
+%	#1	Tamaño fuente columna izquierda
+%	#2	Tamaño fuente columna derecha
+\newcommand{\tabularframecfgfontsize}[2]{%
+	\emptyvarerr{\tabularframecfgfontsize}{#1}{Tamano fuente columna izquierda no definido}%
+	\emptyvarerr{\tabularframecfgfontsize}{#2}{Tamano fuente columna derecha no definido}%
+	\global\def\GLOBALtabularframecontentleftfontsize {#1}%
+	\global\def\GLOBALtabularframecontentrightfontsize {#2}%
 }
 
 % Crea el header del tabular frame, acepta columnas creadas con \addtfheadcolumn
@@ -3681,6 +3693,7 @@
 			\vspace{\tabularframepaddingtop em}%
 			\hspace{\tabularframepaddingleft em}%
 			\begin{minipage}[t][\dimexpr\GLOBALtabularframecontentheight \textheight-\tabularframepaddingtop em][t]{\dimexpr\linewidth - \tabularframepaddingleft em - \tabularframepaddingright em}
+				\GLOBALtabularframecontentleftfontsize%
 				\ifthenelse{\equal{\GLOBALtabularframecontentleftcentered}{false}}{%
 					#1%
 				}{%
@@ -3694,6 +3707,7 @@
 			\vspace{\tabularframepaddingtop em}%
 			\hspace{\tabularframepaddingleft em}%
 			\begin{minipage}[t][\dimexpr\GLOBALtabularframecontentheight \textheight-\tabularframepaddingtop em][t]{\dimexpr\linewidth - \tabularframepaddingleft em - \tabularframepaddingright em}
+				\GLOBALtabularframecontentrightfontsize%
 				\ifthenelse{\equal{\GLOBALtabularframecontentrightcentered}{false}}{%
 					#2%
 				}{%
@@ -3727,6 +3741,7 @@
 			\vspace{\tabularframepaddingtop em}%
 			\hspace{\tabularframepaddingleft em}%
 			\begin{minipage}[t][\dimexpr\GLOBALtabularframecontentheight \textheight-\tabularframepaddingtop em][t]{\dimexpr\linewidth - \tabularframepaddingleft em - \tabularframepaddingright em}%
+				\GLOBALtabularframecontentleftfontsize%
 				\ifthenelse{\equal{\GLOBALtabularframecontentleftcentered}{false}}{%
 					#2%
 				}{%
@@ -5228,8 +5243,8 @@
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={2.2.0-1-PRES},
-		Template.Version.Hash={A8B22F1DFD82682B4B129DB83C96CD42},
+		Template.Version.Dev={2.2.0-4-PRES},
+		Template.Version.Hash={1E61772758D042BFE09E8B91CB80A6C4},
 		Template.Version.Release={2.2.0},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
