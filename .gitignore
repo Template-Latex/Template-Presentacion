@@ -55,6 +55,7 @@ dist/
 *.vrb
 *.tmp
 *.tframeh
+*.tframelc
 
 # Otros
 .vscode
