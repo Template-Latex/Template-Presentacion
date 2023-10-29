@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Configuración de página
-% Versión:      2.2.3 (26/10/2023)
+% Versión:      2.2.4 (29/10/2023)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -9,7 +9,7 @@
 % Manual template: [https://latex.ppizarror.com/presentacion]
 % Licencia MIT:    [https://opensource.org/licenses/MIT]
 
-\newcommand{\templatePagecfg}{
+\newcommand{\templatePagecfg}{%
 	
 	% -------------------------------------------------------------------------
 	% Numeración de páginas
@@ -25,8 +25,8 @@
 	% -------------------------------------------------------------------------
 	% Se define el punto decimal
 	% -------------------------------------------------------------------------
-	\ifthenelse{\equal{\pointdecimal}{true}}{
-		\decimalpoint}{
+	\ifthenelse{\equal{\pointdecimal}{true}}{%
+		\decimalpoint}{%
 	}
 	
 	% -------------------------------------------------------------------------
