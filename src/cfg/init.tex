@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      2.2.4 (29/10/2023)
+% Versión:      2.2.5 (04/11/2023)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -91,16 +91,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={29/10/2023},
+		Template.Date={04/11/2023},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={2.2.4-PRES},
-		Template.Version.Hash={3B040E59ACB8C38DF86FE3C4BCAB9AEF},
-		Template.Version.Release={2.2.4},
+		Template.Version.Dev={2.2.5-PRES},
+		Template.Version.Hash={43F780AA354243A6A01CF5328736DBF1},
+		Template.Version.Release={2.2.5},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -112,7 +112,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v2.2.4 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v2.2.5 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -170,7 +170,7 @@
 	}
 }{
 	% Color de links sin borde
-	\hypersetup{ % No reorganizar
+	\hypersetup{% No reorganizar
 		hidelinks,
 		colorlinks=true,
 		citecolor=\numcitecolor,
@@ -185,11 +185,11 @@
 % -----------------------------------------------------------------------------
 % Márgenes de las leyendas por defecto
 \setcaptionmargincm{\captionlrmargin}
-\ifthenelse{\equal{\captiontextbold}{true}}{ % Texto en negrita en etiquetas
+\ifthenelse{\equal{\captiontextbold}{true}}{% Texto en negrita en etiquetas
 	\renewcommand{\captiontextbold}{bf}}{
 	\renewcommand{\captiontextbold}{}
 }
-\ifthenelse{\equal{\captiontextsubnumbold}{true}}{ % Número en negritas
+\ifthenelse{\equal{\captiontextsubnumbold}{true}}{% Número en negritas
 	\renewcommand{\captiontextsubnumbold}{bf}}{
 	\renewcommand{\captiontextsubnumbold}{}
 }
@@ -254,24 +254,24 @@
 }
 
 % Alineado de leyendas
-\ifthenelse{\equal{\captionalignment}{justified}}{ % Leyenda justificada
+\ifthenelse{\equal{\captionalignment}{justified}}{% Leyenda justificada
 	\captionsetup{
 		format=plain,
 		justification=justified
 	}
 }{
-\ifthenelse{\equal{\captionalignment}{centered}}{ % Leyenda centrada
+\ifthenelse{\equal{\captionalignment}{centered}}{% Leyenda centrada
 	\captionsetup{
 		justification=centering
 	}
 }{
-\ifthenelse{\equal{\captionalignment}{left}}{ % Leyenda alineada a la izquierda
+\ifthenelse{\equal{\captionalignment}{left}}{% Leyenda alineada a la izquierda
 	\captionsetup{
 		justification=raggedright,
 		singlelinecheck=false
 	}
 }{
-\ifthenelse{\equal{\captionalignment}{right}}{ % Leyenda alineada a la derecha
+\ifthenelse{\equal{\captionalignment}{right}}{% Leyenda alineada a la derecha
 	\captionsetup{
 		justification=raggedleft,
 		singlelinecheck=false
