@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Configuración inicial del template
-% Versión:      2.3.0 (06/09/2025)
+% Versión:      2.3.1 (07/10/2025)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -91,16 +91,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={06/09/2025},
+		Template.Date={07/10/2025},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={2.3.0-PRES},
-		Template.Version.Hash={2D42F4080CD9639CDEABF21E90F1C3E0},
-		Template.Version.Release={2.3.0},
+		Template.Version.Dev={2.3.1-1-PRES},
+		Template.Version.Hash={5605C54825F6B99E57D85F67DDF195ED},
+		Template.Version.Release={2.3.1},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -112,7 +112,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v2.3.0 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v2.3.1 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -517,10 +517,10 @@
 % Configura número de objetos en el final del documento
 % -----------------------------------------------------------------------------
 \AtEndDocument{
-	\addtocounter{equation}{\value{templateEquations}}
-	\addtocounter{figure}{\value{templateFigures}}
-	\addtocounter{lstlisting}{\value{templateListings}}
-	\addtocounter{table}{\value{templateTables}}
+	\addtocounter{equation}{\value{templateEquations}}%
+	\addtocounter{figure}{\value{templateFigures}}%
+	\addtocounter{lstlisting}{\value{templateListings}}%
+	\addtocounter{table}{\value{templateTables}}%
 }
 
 % -----------------------------------------------------------------------------
@@ -579,8 +579,8 @@
 	\setcaptionmargincm{\captionlrmargin}%
 	\addtocounter{multicoldepth}{-1}
 	\ifnumequal{\number\value{multicoldepth}}{0}{%
-		\global\def\GLOBALenvmulticol {false}
-	}{}
+		\global\def\GLOBALenvmulticol {false}%
+	}{}%
 }
 
 % -----------------------------------------------------------------------------

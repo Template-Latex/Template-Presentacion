@@ -1,6 +1,6 @@
 % Template:     Presentación LaTeX
 % Documento:    Núcleo del template
-% Versión:      2.3.0 (06/09/2025)
+% Versión:      2.3.1 (07/10/2025)
 % Codificación: UTF-8
 %
 % Autor: Pablo Pizarro R.
@@ -277,6 +277,10 @@
 \ifthenelse{\equal{\fontdocument}{libertine}}{
 	\usepackage[libertine]{newtxmath}
 	\usepackage[tt=false]{libertine}
+}{
+\ifthenelse{\equal{\fontdocument}{newtx}}{
+	\usepackage{newtxtext}
+	\usepackage{newtxmath}
 }{
 \ifthenelse{\equal{\fontdocument}{custom}}{
 }{
@@ -720,11 +724,11 @@
 	\usepackage[lf]{venturis}
 	\renewcommand*\familydefault{\sfdefault}
 }{
-	\throwbadconfig[nostop]{Fuente desconocida}{\fontdocument}{(Fuentes recomendadas) lmodern,carial,arial2,times,mathptmx,helvet,opensans,mathpazo,cambria,libertine,custom}
+	\throwbadconfig[nostop]{Fuente desconocida}{\fontdocument}{(Fuentes recomendadas) lmodern,carial,arial2,times,mathptmx,helvet,opensans,mathpazo,cambria,libertine,newtx,custom}
 	\throwbadconfig[noheader-nostop]{Fuente desconocida}{\fontdocument}{(Fuentes adicionales) accanthis,alegreya,alegreyasans,algolrevived,almendra,antpolt,antpoltlight,anttor,anttorcondensed,anttorlight,anttorlightcondensed,arev,arimo,arvo,baskervald,baskervaldx,berasans,beraserif,biolinum,bitter,boisik,bookman,cabin,cabincondensed,cantarell,caladea,carlito,charterbt,chivolight,chivoregular,clara,clearsans,cochineal,coelacanth,coelacanthextralight,coelacanthlight,comfortaa,comicneue,comicneueangular,computerconcrete,computerconcreteeuler,computermodern,computermodernbright,crimson,crimsonpro,crimsonproextralight,crimsonprolight,crimsonpromedium,cyklop}
 	\throwbadconfig[noheader-nostop]{Fuente desconocida}{\fontdocument}{dejavusans,dejavusanscondensed,domitian,droidsans,electrum,erewhon,fbb,fetamont,firasans,firasansnewtxsf,fourier,fouriernc,gfsartemisia,gfsartemisiaeuler,heuristica,iwona,iwonacondensed,iwonalight,iwonalightcondensed,kerkis,kurier,kuriercondensed,kurierlight,kurierlightcondensed,lato,libertinus,librebaskerville,librebodoni,librecaslon,libris,lxfonts}
 	\throwbadconfig[noheader]{Fuente desconocida}{\fontdocument}{merriweather,merriweatherlight,mintspirit,mlmodern,montserratalternatesextralight,montserratalternatesregular,montserratalternatesthin,montserratextralight,montserratlight,montserratregular,montserratthin,newpx,nimbussans,noto,notoserif,opensansserif,overlock,paratype,paratypesanscaption,paratypesansnarrow,pxfonts,quattrocento,raleway,ralewayblack,ralewayextralight,ralewaymedium,ralewaylight,ralewaythin,roboto,robotolight,robotolightcondensed,robotothin,rosario,sourcesanspro,step,stickstoo,uarial,texgyrebonum,txfonts,ugq,universalis,universaliscondensed,venturis}
-	}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+	}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 }
 
 % -----------------------------------------------------------------------------
@@ -5249,16 +5253,16 @@
 		Template.Author.Email={pablo@ppizarror.com},
 		Template.Author.Web={https://ppizarror.com},
 		Template.Author={Pablo Pizarro R.},
-		Template.Date={06/09/2025},
+		Template.Date={07/10/2025},
 		Template.Encoding={UTF-8},
 		Template.Latex.Compiler={pdflatex},
 		Template.License.Type={MIT},
 		Template.License.Web={https://opensource.org/licenses/MIT},
 		Template.Name={Template-Presentacion},
 		Template.Type={Normal},
-		Template.Version.Dev={2.3.0-PRES},
-		Template.Version.Hash={2D42F4080CD9639CDEABF21E90F1C3E0},
-		Template.Version.Release={2.3.0},
+		Template.Version.Dev={2.3.1-1-PRES},
+		Template.Version.Hash={5605C54825F6B99E57D85F67DDF195ED},
+		Template.Version.Release={2.3.1},
 		Template.Web.Dev={https://github.com/Template-Latex/Template-Presentacion},
 		Template.Web.Manual={https://latex.ppizarror.com/presentacion},
 		University.Department={\pdfmetainfouniversitydepartment},
@@ -5270,7 +5274,7 @@
 	pdfmenubar={\cfgpdfmenubar},
 	pdfpagelayout={\cfgpdflayout},
 	pdfpagemode={\cfgpdfpagemode},
-	pdfproducer={Template-Presentacion v2.3.0 | (Pablo Pizarro R.) ppizarror.com},
+	pdfproducer={Template-Presentacion v2.3.1 | (Pablo Pizarro R.) ppizarror.com},
 	pdfremotestartview={Fit},
 	pdfstartpage={1},
 	pdfstartview={\cfgpdfpageview},
@@ -5675,10 +5679,10 @@
 % Configura número de objetos en el final del documento
 % -----------------------------------------------------------------------------
 \AtEndDocument{
-	\addtocounter{equation}{\value{templateEquations}}
-	\addtocounter{figure}{\value{templateFigures}}
-	\addtocounter{lstlisting}{\value{templateListings}}
-	\addtocounter{table}{\value{templateTables}}
+	\addtocounter{equation}{\value{templateEquations}}%
+	\addtocounter{figure}{\value{templateFigures}}%
+	\addtocounter{lstlisting}{\value{templateListings}}%
+	\addtocounter{table}{\value{templateTables}}%
 }
 
 % -----------------------------------------------------------------------------
@@ -5737,8 +5741,8 @@
 	\setcaptionmargincm{\captionlrmargin}%
 	\addtocounter{multicoldepth}{-1}
 	\ifnumequal{\number\value{multicoldepth}}{0}{%
-		\global\def\GLOBALenvmulticol {false}
-	}{}
+		\global\def\GLOBALenvmulticol {false}%
+	}{}%
 }
 
 % -----------------------------------------------------------------------------
